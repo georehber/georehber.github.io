@@ -5,6 +5,19 @@ body {
   color: #a38441;
 }
 
+/* ALTTA TUTMA İÇİN YENİ KODLAR */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
 /* HEADER */
 header {
   background: #a38441;
@@ -66,5 +79,6 @@ footer {
   font-size: 14px;
   margin-top: auto;
 }
+
 
 
