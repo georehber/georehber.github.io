@@ -113,9 +113,14 @@ footer {
   border-left: 2px solid #a38441;
   border-radius: 4px;
   z-index: 2;
-  word-break: normal;
-  white-space: normal;
+
+  /* Önemli kısmı — metni serbest bırakıyoruz */
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word;
 }
+
 /* Harita ekranı doldurur */
 .map-box {
   width: 100%;
@@ -140,5 +145,6 @@ footer {
     height: 70vh;
   }
 }
+
 
 
