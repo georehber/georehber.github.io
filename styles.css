@@ -1,20 +1,15 @@
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: "Georgia", serif;
   background: #fff9e0;
   color: #a38441;
-}
-
-/* ALTTA TUTMA İÇİN YENİ KODLAR */
-html, body {
-  height: 100%;
-}
-
-body {
   display: flex;
   flex-direction: column;
 }
 
+/* İçerik alanı büyüsün, footer aşağı itilsin */
 .content {
   flex: 1;
 }
@@ -79,6 +74,7 @@ footer {
   font-size: 14px;
   margin-top: auto;
 }
+
 
 
 
