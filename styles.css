@@ -104,15 +104,19 @@ footer {
   position: absolute;
   top: 20px;
   left: 40px;
-  max-width: 480px;
+  max-width: 90%; /* açıklama neredeyse tam genişlikte olur */
+  white-space: nowrap; /* tek satırda kal */
+  overflow: hidden; /* taşarsa gizle */
+  text-overflow: ellipsis; /* taşan kısmı üç nokta (...) ile gösterir */
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.4;
   background: rgba(255, 249, 224, 0.9);
   padding: 10px 14px;
-  border-left: 4px solid #a38441;
-  border-radius: 6px;
+  border-left: 2px solid #a38441; /* daha ince çizgi */
+  border-radius: 4px;
   z-index: 2;
 }
+
 
 /* Harita ekranı doldurur */
 .map-box {
@@ -138,3 +142,4 @@ footer {
     height: 70vh;
   }
 }
+
