@@ -112,25 +112,33 @@ footer {
   position: absolute;
   top: 20px;
   left: 40px;
-  right: 40px;        /* genişlik başlıkla uyumlu */
-  max-width: none;    /* sıkışmayı engelle */
+  right: 40px;
+  max-width: 900px;
   font-size: 16px;
   line-height: 1.4;
   background: rgba(255, 249, 224, 0.9);
   padding: 8px 14px;
-  border-left: 2px solid #a38441; /* daha ince separör */
+  border-left: 2px solid #a38441;
   border-radius: 4px;
-  z-index: 2;
-  word-break: break-word; /* uzun kelimeleri uygun yerde kır */
+  z-index: 5; /* haritanın üstünde kalır */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
 }
+
 
 /* Harita ekranı doldurur */
 .map-box {
+  position: relative;
   width: 100%;
-  height: 88vh; /* Ekranın %88'i kadar yükseklik */
-  border: 1px solid #a38441;
+  height: 90vh; /* neredeyse tam ekran */
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   z-index: 1;
 }
+
 
 /* === MOBİL ANTİK KENTLER === */
 @media (max-width: 800px) {
@@ -148,6 +156,7 @@ footer {
     height: 70vh;
   }
 }
+
 
 
 
