@@ -1,13 +1,5 @@
-/* SAYFA YAPISI (sticky footer için) */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-/* BODY - senin orijinal stillerin korunuyor */
 body {
-  display: flex;
-  flex-direction: column;
+  margin: 0;
   font-family: "Georgia", serif;
   background: #fff9e0;
   color: #a38441;
@@ -65,12 +57,12 @@ header nav a:hover {
   line-height: 1.5;
 }
 
-/* FOOTER - sticky footer */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
   background: #a38441;
   color: #fff9e0;
   font-size: 14px;
-  margin-top: auto; /* sayfa sonuna yapıştırır */
+  margin-top: 100px;
 }
