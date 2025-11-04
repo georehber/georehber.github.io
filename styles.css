@@ -100,25 +100,28 @@ footer {
 }
 
 /* Küçük açıklama: sol üstte, header'ın hemen altında */
+.intro-mini,
+.intro-mini * {
+  white-space: normal !important;   /* satır kırılabilsin */
+  overflow: visible !important;      /* gizleme yok */
+  text-overflow: clip !important;    /* … kapalı */
+}
+
+/* Intro kutusunun yerleşimi ve görünümü */
 .intro-mini {
   position: absolute;
   top: 20px;
   left: 40px;
-  right: 40px;
-  max-width: 900px;
+  right: 40px;        /* genişlik başlıkla uyumlu */
+  max-width: none;    /* sıkışmayı engelle */
   font-size: 16px;
   line-height: 1.4;
   background: rgba(255, 249, 224, 0.9);
   padding: 8px 14px;
-  border-left: 2px solid #a38441;
+  border-left: 2px solid #a38441; /* daha ince separör */
   border-radius: 4px;
   z-index: 2;
-
-  /* Önemli kısmı — metni serbest bırakıyoruz */
-  white-space: normal !important;
-  overflow: visible !important;
-  text-overflow: unset !important;
-  word-wrap: break-word;
+  word-break: break-word; /* uzun kelimeleri uygun yerde kır */
 }
 
 /* Harita ekranı doldurur */
@@ -145,6 +148,7 @@ footer {
     height: 70vh;
   }
 }
+
 
 
 
