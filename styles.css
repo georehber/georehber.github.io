@@ -64,16 +64,22 @@ footer {
 
 /* Açıklama kutusu */
 .intro-mini {
-  max-width: 1000px;
-  margin: 40px auto 20px auto;
-  font-size: 16px;
-  line-height: 1.5;
+  position: relative;
+  top: 0;
+  left: 40px;          /* sola hizala */
+  right: auto;
+  max-width: 550px;    /* genişliği sınırla */
+  margin: 20px 0;      /* üstten ve alttan küçük boşluk */
+  font-size: 15px;
+  line-height: 1.4;
   background: rgba(255, 249, 224, 0.9);
-  padding: 12px 18px;
+  padding: 8px 14px;
   border-left: 2px solid #a38441;
-  border-radius: 6px;
+  border-radius: 4px;
   text-align: left;
+  z-index: 2;
 }
+
 
 /* Harita kutusu */
 .map-box {
@@ -93,10 +99,13 @@ footer {
 
 /* === MOBİL === */
 @media (max-width: 800px) {
-  header {
-    flex-direction: column;
-    text-align: center;
+  .intro-mini {
+    left: 0;
+    margin: 10px;
+    max-width: none;
   }
+}
+
 
   header nav a {
     display: block;
@@ -115,4 +124,5 @@ footer {
     height: 70vh;
   }
 }
+
 
