@@ -1,9 +1,10 @@
-/* GENEL AYARLAR (Sticky Footer için) */
+/* SAYFA YAPISI (sticky footer için) */
 html, body {
   height: 100%;
   margin: 0;
 }
 
+/* BODY - senin orijinal stillerin korunuyor */
 body {
   display: flex;
   flex-direction: column;
@@ -64,16 +65,12 @@ header nav a:hover {
   line-height: 1.5;
 }
 
-/* FOOTER (alta yapışsın) */
+/* FOOTER - sticky footer */
 footer {
   text-align: center;
   padding: 20px;
   background: #a38441;
   color: #fff9e0;
   font-size: 14px;
-  margin-top: auto;
+  margin-top: auto; /* sayfa sonuna yapıştırır */
 }
-html {
-  scroll-behavior: smooth;
-}
-
