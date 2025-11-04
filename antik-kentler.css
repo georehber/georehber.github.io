@@ -1,3 +1,4 @@
+/* GENEL YAPI */
 html, body {
   margin: 0;
   padding: 0;
@@ -41,44 +42,42 @@ header nav a:hover {
   text-decoration: underline;
 }
 
-/* CONTENT */
+/* İÇERİK */
 .content {
   flex: 1;
-  padding: 25px 0 0 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: left;
+}
+
+.content h2,
+.content .text {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .content h2 {
-  font-size: 34px;
+  font-size: 32px;
+  margin-top: 30px;
   margin-bottom: 10px;
-  width: 90%;
 }
 
 .text {
   font-size: 18px;
-  margin-bottom: 20px;
   line-height: 1.6;
-  width: 90%;
+  margin-bottom: 15px; /* harita öncesi az boşluk */
 }
 
 /* HARİTA ALANI */
 .map-container {
   width: 100%;
-  max-width: 100%;
+  height: calc(100vh - 240px); /* header + footer hariç alan */
+  border: none;
+  margin: 10px 0 15px 0; /* üstten ve alttan az boşluk */
   flex-grow: 1;
-  height: calc(100vh - 260px); /* header + boşluk + footer arasında esnek */
-  border: 1px solid #a38441;
-  background: #fff4cc;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #a38441;
-  margin-top: 15px;   /* üst yazıdan az boşluk */
-  margin-bottom: 15px; /* footer’dan az boşluk */
 }
 
 /* FOOTER */
@@ -88,5 +87,5 @@ footer {
   background: #a38441;
   color: #fff9e0;
   font-size: 14px;
-  margin-top: auto; /* footer’ı alta iter */
+  margin-top: auto;
 }
