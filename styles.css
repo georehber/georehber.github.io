@@ -1,3 +1,4 @@
+/* GENEL AYARLAR (Sticky Footer için) */
 html, body {
   height: 100%;
   margin: 0;
@@ -6,8 +7,10 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  font-family: "Georgia", serif;
+  background: #fff9e0;
+  color: #a38441;
 }
-
 
 /* HEADER */
 header {
@@ -61,13 +64,12 @@ header nav a:hover {
   line-height: 1.5;
 }
 
-/* FOOTER */
+/* FOOTER (alta yapışsın) */
 footer {
   text-align: center;
   padding: 20px;
   background: #a38441;
   color: #fff9e0;
   font-size: 14px;
-  margin-top: auto; /* sayfanın altına yapışır */
+  margin-top: auto;
 }
-
