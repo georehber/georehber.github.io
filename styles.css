@@ -1,4 +1,4 @@
-/* === TEMEL SAYFA YAPISI (FOOTER SABİT) === */
+/* === TEMEL SAYFA YAPISI === */
 html, body {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@ html, body {
   font-family: "Georgia", serif;
   background: #fff9e0;
   color: #a38441;
-  display: flex;               /* footer için kolon düzeni */
+  display: flex;
   flex-direction: column;
 }
 
@@ -47,7 +47,7 @@ header nav a:hover {
   text-decoration: underline;
 }
 
-/* === CONTENT (GENEL) === */
+/* === GENEL CONTENT === */
 .content {
   max-width: 900px;
   margin: 80px auto;
@@ -74,72 +74,67 @@ footer {
   background: #a38441;
   color: #fff9e0;
   font-size: 14px;
-  /* margin-top: ... KULLANMA — footer'ı yukarı iter */
 }
 
-/* ===================================================== */
-/* ===  ANTİK KENTLER SAYFASI (sol-üst metin + geniş harita)  === */
-/* ===================================================== */
-
-.content--antik {
-  position: relative;
-  max-width: 1400px;     /* bu sayfada daha geniş çalışma alanı */
-  margin: 24px auto 0 auto;
-  padding: 0 20px;
-}
-
-/* Sol-üst köşedeki metin kutusu */
-.content--antik .intro {
-  position: absolute;
-  top: 16px;
-  left: 20px;
-  max-width: 520px;
-  text-align: left;
-  background: rgba(255, 249, 224, 0.9);  /* #fff9e0 şeffaf */
-  padding: 12px 16px;
-  border-left: 4px solid #a38441;
-  border-radius: 8px;
-  z-index: 2; /* haritanın üstünde kalsın */
-}
-
-/* Geniş harita alanı — sayfayı doldursun */
-.content--antik .map-box {
-  width: 100%;
-  height: 85vh;          /* istersen 90vh yapabilirsin */
-  border: 1px solid #a38441;
-  position: relative;
-  z-index: 1;
-  margin-top: 0;         /* intro absolute olduğu için boşluk gerekmiyor */
-}
-
-/* === Mobil uyum === */
+/* === MOBİL GENEL === */
 @media (max-width: 800px) {
   header {
     flex-direction: column;
     text-align: center;
   }
-
   header nav a {
     display: block;
     margin: 8px 0;
   }
+}
 
-  .content--antik {
-    margin-top: 12px;
-    padding: 0 12px;
-  }
+/* ===================================================== */
+/* ===  ANTİK KENTLER SAYFASI (küçük açıklama + geniş harita) === */
+/* ===================================================== */
 
-  .content--antik .intro {
-    position: static;               /* akışa geri al */
+.content--antik {
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Küçük açıklama: sol üstte, header'ın hemen altında */
+.intro-mini {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 1.5;
+  background: rgba(255, 249, 224, 0.9);
+  padding: 10px 14px;
+  border-left: 4px solid #a38441;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+/* Harita ekranı doldurur */
+.map-box {
+  width: 100%;
+  height: 88vh; /* Ekranın %88'i kadar yükseklik */
+  border: 1px solid #a38441;
+  z-index: 1;
+}
+
+/* === MOBİL ANTİK KENTLER === */
+@media (max-width: 800px) {
+  .intro-mini {
+    position: static;
     max-width: none;
-    margin: 8px 0 12px 0;
+    margin: 8px;
     border-left: none;
     border-top: 4px solid #a38441;
     border-radius: 0;
     background: #fff9e0;
   }
 
-  .content--antik .map-box {
-    height: 70vh;                   /* mobilde biraz küçült */
+  .map-box {
+    height: 70vh;
   }
 }
