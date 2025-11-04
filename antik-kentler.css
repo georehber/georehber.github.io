@@ -49,21 +49,23 @@ header nav a:hover {
   flex-direction: column;
 }
 
-/* Üstteki kısa açıklama */
+/* Üstteki kısa açıklama – sol hizalı, satır atlatmasız */
 .intro-mini {
-  width: 90%;
-  max-width: 1000px;
-  margin: 25px auto 10px auto;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 8px 40px 6px 40px; /* header’a yakın, haritaya az mesafe */
+  text-align: left;
+  white-space: nowrap; /* satır atlamayı engeller */
+  overflow: hidden;
+  text-overflow: ellipsis; /* gerekirse “...” yapar */
 }
 
 /* HARİTA KUTUSU */
 .map-box {
   flex: 1;
   width: 100%;
-  height: calc(100vh - 260px); /* header + footer + boşluk dengesi */
-  margin: 10px 0 15px 0; /* üstte ve altta az boşluk */
+  height: calc(100vh - 240px); /* header + footer + yazı boşluğu dengesi */
+  margin: 0;
   border-top: 1px solid #a38441;
   border-bottom: 1px solid #a38441;
   display: flex;
@@ -84,6 +86,4 @@ footer {
   padding: 20px;
   background: #a38441;
   color: #fff9e0;
-  font-size: 14px;
-  margin-top: auto;
-}
+  font-
