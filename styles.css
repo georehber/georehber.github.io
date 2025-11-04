@@ -78,9 +78,10 @@ footer {
 /* Harita kutusu */
 .map-box {
   width: 100%;
-  height: calc(100vh - 280px); /* üst açıklama + footer’ı düşür */
-  margin: 0;
+  height: calc(100vh - 280px); /* footer ve header yüksekliği hariç */
+  margin: 20px 0 0 0; /* Üstte açıklamadan sonra boşluk */
   padding: 0;
+  border: none;
 }
 
 .map-box iframe {
@@ -114,3 +115,4 @@ footer {
     height: 70vh;
   }
 }
+
