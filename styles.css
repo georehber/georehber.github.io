@@ -1,9 +1,13 @@
-body {
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: "Georgia", serif;
-  background: #fff9e0;
-  color: #a38441;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* HEADER */
 header {
@@ -64,5 +68,6 @@ footer {
   background: #a38441;
   color: #fff9e0;
   font-size: 14px;
-  margin-top: 100px;
+  margin-top: auto; /* sayfanın altına yapışır */
 }
+
