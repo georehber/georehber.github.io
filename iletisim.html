@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İletişim | GEOREHBER</title>
+  <link rel="stylesheet" href="iletisim.css" />
+  <meta name="description" content="GEOREHBER · İletişim — Sorularınız ve işbirlikleri için bizimle iletişime geçin." />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <h1>GEOREHBER</h1>
+      <span>Mehmet Ali Yanmaz</span>
+    </div>
+    <nav>
+      <a href="index.html">Anasayfa</a>
+      <a href="antik-kentler.html">Antik Kentler</a>
+      <a href="projelerimiz.html">Projelerimiz</a>
+      <a href="portfolyom.html">Portfolyom</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html"><b>İletişim</b></a>
+    </nav>
+  </header>
+
+  <!-- ANA İÇERİK -->
+  <main class="contact">
+    <h2>Bizimle İletişime Geçin</h2>
+    <p class="desc">
+      Her türlü soru, işbirliği veya proje teklifi için bizimle iletişime geçebilirsiniz.  
+      E-posta üzerinden doğrudan ulaşabilir ya da WhatsApp üzerinden hızlıca mesaj gönderebilirsiniz.
+    </p>
+
+    <div class="contact-box">
+      <div class="mail">
+        <h3>📧 E-posta</h3>
+        <p><a href="mailto:georehber01@gmail.com">georehber01@gmail.com</a></p>
+      </div>
+      <div class="whatsapp">
+        <h3>💬 WhatsApp</h3>
+        <a href="https://wa.me/905000000000" target="_blank" class="wp-btn">Mesaj Gönder</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Tüm hakları saklıdır — Mehmet Ali Yanmaz
+  </footer>
+
+  <!-- POP-UP MESAJ -->
+  <div class="wp-popup" id="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">×</span>
+      <h3>WhatsApp ile İletişim</h3>
+      <p>Selam! Size nasıl yardımcı olabilirim?</p>
+      <a href="https://wa.me/905000000000" target="_blank" class="popup-btn">WhatsApp’tan Yaz</a>
+    </div>
+  </div>
+
+  <button class="popup-trigger" onclick="openPopup()">💬 Mesaj At</button>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
