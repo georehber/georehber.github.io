@@ -118,14 +118,14 @@ footer {
 .popup-content p { margin: 0 0 15px 0; }
 
 .popup-btn {
-  background: #25d366;
+  background: #E1306C;
   color: white;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: bold;
 }
-.popup-btn:hover { background: #1ebc57; }
+.popup-btn:hover { background: #FD1D1D; }
 
 .close {
   position: absolute;
@@ -141,7 +141,7 @@ footer {
   position: fixed;
   right: 25px;
   bottom: 25px;
-  background: #25d366;
+  background: #FD1D1D;
   color: white;
   border: none;
   padding: 14px 18px;
@@ -158,3 +158,4 @@ footer {
   .contact-box { flex-direction: column; gap: 30px; }
   .popup-trigger { bottom: 15px; right: 15px; }
 }
+
