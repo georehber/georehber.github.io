@@ -490,3 +490,174 @@ footer {
     border: 3px solid #000;   /* odaklandığını göstermek için siyah ince kenar */
     box-shadow: 0 10px 18px rgba(0,0,0,0.25); /* yumuşak gölge */
 }
+
+/* =========================================================
+   TEMATİK HARİTALAR — Kart Grid Tasarımı
+========================================================= */
+
+.tematik-grid {
+  max-width: 1000px;
+  margin: 40px auto 80px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.tematik-card {
+  text-decoration: none;
+  background: #fffdf0;
+  border: 2px solid #d8c9a3;
+  padding: 24px;
+  border-radius: 14px;
+  color: #a38441;
+  transition: .25s ease;
+}
+
+.tematik-card:hover {
+  border-color: rgba(0, 0, 0, 0.65);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+}
+
+.tematik-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #000;
+}
+
+.tematik-card p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* =========================================================
+   ÜRÜN KATALOĞU
+========================================================= */
+
+.urun-grid {
+  max-width: 1100px;
+  margin: 40px auto 80px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.urun-card {
+  background: #fffdf0;
+  border: 2px solid #d8c9a3;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  transition: .25s ease;
+}
+
+.urun-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+}
+
+.urun-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.urun-kod {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.urun-fiyat {
+  margin: 6px 0 14px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.urun-btn {
+  background: #a38441;
+  color: #fff9e0;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.urun-btn:hover {
+  background: #8f7138;
+}
+
+/* POPUP */
+.popup-overlay {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 999;
+}
+
+.popup {
+  background: #fffdf0;
+  border: 2px solid #a38441;
+  border-radius: 14px;
+  width: 380px;
+  padding: 24px;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #a38441;
+}
+
+.popup-kod {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.popup-fiyat {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #a38441;
+  border-radius: 8px;
+  margin-top: 4px;
+  font-family: inherit;
+}
+
+.siparis-btn {
+  width: 100%;
+  padding: 12px;
+  background: #25d366;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.siparis-btn:hover {
+  background: #1ebc57;
+}

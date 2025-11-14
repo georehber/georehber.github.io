@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lokasyon Haritaları | GEOREHBER</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="global-anim.css" />
+
+  <meta name="description" content="GEOREHBER · Lokasyon Haritaları — Profesyonel nokta, ilçe ve il bazlı konum haritaları." />
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <h1>GEOREHBER</h1>
+    <span>Mehmet Ali Yanmaz</span>
+  </div>
+
+  <nav>
+    <a href="index.html">Anasayfa</a>
+    <a href="antik-kentler.html">Antik Kentler</a>
+    <a href="hizmetler.html"><b>Hizmetler</b></a>
+    <a href="portfolyom.html">Portfolyom</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="iletisim.html">İletişim</a>
+  </nav>
+</header>
+
+<!-- İÇERİK -->
+<main class="content--projects">
+
+  <h2>Lokasyon Haritaları</h2>
+
+  <p class="desc">
+    Nokta, mahalle, ilçe, il ve bölgesel ölçekte üretilen profesyonel lokasyon haritaları.
+    Aşağıdan dilediğiniz ürünü inceleyebilir ve sipariş verebilirsiniz.
+  </p>
+
+  <!-- ÜRÜN GRIDİ -->
+  <div class="urun-grid">
+
+    <!-- ÜRÜN 1 -->
+    <div class="urun-card" data-ad="İlçe Lokasyon Haritası" data-kod="LKH-001" data-fiyat="350">
+      <img src="img/ilce-lokasyon.jpg" class="urun-img" alt="İlçe Lokasyon Haritası">
+      <h3>İlçe Lokasyon Haritası</h3>
+      <p class="urun-kod">Kod: LKH-001</p>
+      <p class="urun-fiyat">350₺</p>
+      <button class="urun-btn">Ürünü İncele</button>
+    </div>
+
+    <!-- ÜRÜN 2 -->
+    <div class="urun-card" data-ad="İl Bazlı Lokasyon Haritası" data-kod="LKH-002" data-fiyat="450">
+      <img src="img/il-lokasyon.jpg" class="urun-img" alt="İl Lokasyon Haritası">
+      <h3>İl Bazlı Lokasyon Haritası</h3>
+      <p class="urun-kod">Kod: LKH-002</p>
+      <p class="urun-fiyat">450₺</p>
+      <button class="urun-btn">Ürünü İncele</button>
+    </div>
+
+    <!-- ÜRÜN 3 -->
+    <div class="urun-card" data-ad="Türkiye Lokasyon Haritası" data-kod="LKH-003" data-fiyat="600">
+      <img src="img/turkiye-lokasyon.jpg" class="urun-img" alt="Türkiye Lokasyon Haritası">
+      <h3>Türkiye Lokasyon Haritası</h3>
+      <p class="urun-kod">Kod: LKH-003</p>
+      <p class="urun-fiyat">600₺</p>
+      <button class="urun-btn">Ürünü İncele</button>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <span class="popup-close" onclick="popupKapat()">×</span>
+
+    <h3 id="p-ad"></h3>
+    <p id="p-kod" class="popup-kod"></p>
+    <p id="p-fiyat" class="popup-fiyat"></p>
+
+    <div class="form-group">
+      <label>Eklemek istediğiniz bir şey varsa yazınız (opsiyonel):</label>
+      <textarea id="p-aciklama" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Sipariş Adedi:</label>
+      <input type="number" id="p-adet" value="1" min="1">
+    </div>
+
+    <div class="form-group">
+      <label>E-posta Adresiniz:</label>
+      <input type="email" id="p-mail" placeholder="ornek@gmail.com">
+      <small style="color:#a38441;">Gönderimler e-posta üzerinden yapılmaktadır.</small>
+    </div>
+
+    <button class="siparis-btn" onclick="siparisGonder()">Siparişi Tamamla</button>
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+  const popup = document.getElementById("popup");
+
+  // Ürün Kartlarını Dinle
+  document.querySelectorAll(".urun-card").forEach(card => {
+    card.querySelector(".urun-btn").addEventListener("click", () => {
+      document.getElementById("p-ad").innerText = card.dataset.ad;
+      document.getElementById("p-kod").innerText = "Kod: " + card.dataset.kod;
+      document.getElementById("p-fiyat").innerText = "Fiyat: " + card.dataset.fiyat + "₺";
+
+      popup.style.display = "flex";
+    });
+  });
+
+  function popupKapat() {
+    popup.style.display = "none";
+  }
+
+  function siparisGonder() {
+    const ad = document.getElementById("p-ad").innerText;
+    const kod = document.getElementById("p-kod").innerText.replace("Kod: ", "");
+    const fiyat = document.getElementById("p-fiyat").innerText.replace("Fiyat: ", "");
+    const aciklama = document.getElementById("p-aciklama").value;
+    const adet = document.getElementById("p-adet").value;
+    const mail = document.getElementById("p-mail").value;
+
+    if (mail.trim() === "") {
+      alert("Lütfen e-posta adresinizi girin.");
+      return;
+    }
+
+    let msg = 
+`Merhaba, bir ürün siparişi vermek istiyorum.
+
+Ürün: ${ad}
+Kod: ${kod}
+Fiyat: ${fiyat}
+Adet: ${adet}
+
+Açıklama: ${aciklama ? aciklama : "(Yok)"}
+
+E-posta: ${mail}`;
+
+    const link = "https://wa.me/905316066176?text=" + encodeURIComponent(msg);
+    window.open(link, "_blank");
+  }
+</script>
+
+</body>
+</html>
