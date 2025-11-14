@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tematik Haritalar | GEOREHBER</title>
+
+  <!-- VAR OLAN GENEL CSS DOSYALARI -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="global-anim.css" />
+
+  <meta name="description" content="GEOREHBER · Tematik Haritalar — Lokasyon, fiziki, tematik ve proje bazlı harita üretimleri.">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <h1>GEOREHBER</h1>
+      <span>Mehmet Ali Yanmaz</span>
+    </div>
+    <nav>
+      <a href="index.html">Anasayfa</a>
+      <a href="hizmetler.html"><b>Hizmetler</b></a>
+      <a href="portfolyom.html">Portfolyom</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+  </header>
+
+  <!-- İÇERİK -->
+  <main class="content--projects">
+
+    <h2>Tematik Haritalar</h2>
+    <p class="desc">
+      Konuma dayalı veri görselleştirme, fiziki coğrafya temsilleri ve proje odaklı özel harita üretimleri.
+      Aşağıdaki kategoriler, profesyonel harita tasarımı hizmetlerimizin ana sınıflarını oluşturur.
+    </p>
+
+    <!-- SEKME BUTONLARI -->
+    <div class="tab-container" style="max-width:900px; margin:0 auto;">
+
+      <div class="tabs" style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:25px;">
+        <button class="tab active" data-target="lokasyon">Lokasyon Haritaları</button>
+        <button class="tab" data-target="fiziki">Fiziki Haritalar</button>
+        <button class="tab" data-target="tematik">Tematik Haritalar</button>
+        <button class="tab" data-target="ozel">Özel Proje Haritaları</button>
+      </div>
+
+      <!-- LOKASYON -->
+      <div class="tab-content" id="lokasyon">
+        <h3>Lokasyon Haritaları</h3>
+        <p>
+          İl, ilçe, mahalle ve nokta tabanlı tüm veri setleri için net, okunabilir ve yüksek çözünürlüklü
+          lokasyon haritaları üretiyorum. Bu haritalar genellikle:
+        </p>
+        <ul style="text-align:left; max-width:700px; margin:20px auto; line-height:1.6;">
+          <li>Nokta tabanlı konum gösterimleri</li>
+          <li>İl/ilçe sınırları üzerinde tematik işaretlemeler</li>
+          <li>Navigasyon amaçlı sade tasarımlar</li>
+          <li>Web ve baskı uyumlu çıktılar</li>
+        </ul>
+      </div>
+
+      <!-- FİZİKİ -->
+      <div class="tab-content" id="fiziki" style="display:none;">
+        <h3>Fiziki Haritalar</h3>
+        <p>
+          Yükselti, eğim, bakı ve topoğrafik yapıların detaylı gösterimlerini içerir. Fiziki haritalarda:
+        </p>
+        <ul style="text-align:left; max-width:700px; margin:20px auto; line-height:1.6;">
+          <li>DEM tabanlı gölgelendirme (hillshade)</li>
+          <li>Renkli yükseklik ve topoğrafya modelleri</li>
+          <li>Jeomorfolojik form sınıflandırmaları</li>
+          <li>Baskı ve sunum için profesyonel düzenlemeler</li>
+        </ul>
+      </div>
+
+      <!-- TEMATİK -->
+      <div class="tab-content" id="tematik" style="display:none;">
+        <h3>Tematik Haritalar</h3>
+        <p>
+          İstatistiksel verilerin mekânsal dağılımını göstermek için renk, yoğunluk ve sınıflandırma 
+          tekniklerinin kullanıldığı haritalardır:
+        </p>
+        <ul style="text-align:left; max-width:700px; margin:20px auto; line-height:1.6;">
+          <li>Nüfus, eğitim, sağlık, ekonomi gibi istatistiksel veri haritaları</li>
+          <li>Isı haritaları ve yoğunluk analizleri</li>
+          <li>Choropleth (renk sınıflamalı) gösterimler</li>
+          <li>Zaman serisi tematik karşılaştırmalar</li>
+        </ul>
+      </div>
+
+      <!-- ÖZEL -->
+      <div class="tab-content" id="ozel" style="display:none;">
+        <h3>Özel Proje Haritaları</h3>
+        <p>
+          Kurumlara, akademik çalışmalara veya sahaya özel detaylarla oluşturulan haritalardır:
+        </p>
+        <ul style="text-align:left; max-width:700px; margin:20px auto; line-height:1.6;">
+          <li>Tez ve akademik çalışma haritaları</li>
+          <li>Kurumsal rapor ve sunum haritaları</li>
+          <li>Proje gereksinimine göre özel stil tasarımları</li>
+          <li>ArcGIS/GeoPackage uyumlu çıktı desteği</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Tüm hakları saklıdır — Mehmet Ali Yanmaz
+  </footer>
+
+  <!-- SEKME GEÇİŞ SCRİPTİ -->
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        contents.forEach(c => c.style.display = "none");
+        document.getElementById(tab.dataset.target).style.display = "block";
+      });
+    });
+  </script>
+
+</body>
+</html>
