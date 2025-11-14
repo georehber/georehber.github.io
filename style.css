@@ -661,3 +661,17 @@ footer {
 .siparis-btn:hover {
   background: #1ebc57;
 }
+
+/* =========================================================
+   ÜRÜN FORM ALANLARI GELİŞMİŞ SÜRÜM
+========================================================= */
+
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #a38441;
+  border-radius: 8px;
+  margin-top: 4px;
+  font-family: inherit;
+  background: #fff9e0;
+}
