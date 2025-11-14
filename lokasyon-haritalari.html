@@ -41,37 +41,71 @@
     Aşağıdan ürünleri inceleyebilir ve sipariş verebilirsiniz.
   </p>
 
-  <!-- ÜRÜN GRIDİ -->
-  <div class="urun-grid">
+<!-- ÜRÜN GRIDİ -->
+<div class="urun-grid">
 
-    <!-- ÜRÜN 1 -->
-    <div class="urun-card" data-ad="İlçe Lokasyon Haritası" data-kod="LKH-001" data-fiyat="350">
-      <img src="img/ilce-lokasyon.jpg" class="urun-img" alt="İlçe Lokasyon Haritası">
-      <h3>İlçe Lokasyon Haritası</h3>
-      <p class="urun-kod">Kod: LKH-001</p>
-      <p class="urun-fiyat">350₺</p>
-      <button class="urun-btn">Ürünü İncele</button>
-    </div>
-
-    <!-- ÜRÜN 2 -->
-    <div class="urun-card" data-ad="İl Bazlı Lokasyon Haritası" data-kod="LKH-002" data-fiyat="450">
-      <img src="img/il-lokasyon.jpg" class="urun-img" alt="İl Lokasyon Haritası">
-      <h3>İl Bazlı Lokasyon Haritası</h3>
-      <p class="urun-kod">Kod: LKH-002</p>
-      <p class="urun-fiyat">450₺</p>
-      <button class="urun-btn">Ürünü İncele</button>
-    </div>
-
-    <!-- ÜRÜN 3 -->
-    <div class="urun-card" data-ad="Türkiye Lokasyon Haritası" data-kod="LKH-003" data-fiyat="600">
-      <img src="img/turkiye-lokasyon.jpg" class="urun-img" alt="Türkiye Lokasyon Haritası">
-      <h3>Türkiye Lokasyon Haritası</h3>
-      <p class="urun-kod">Kod: LKH-003</p>
-      <p class="urun-fiyat">600₺</p>
-      <button class="urun-btn">Ürünü İncele</button>
-    </div>
-
+  <!-- ÜRÜN 1 | Tip A -->
+  <div class="urun-card focus-card" 
+       data-ad="Detaylı Lokasyon Şablonu – Tip A" 
+       data-kod="MAP-TM-LK-001" 
+       data-fiyat="200">
+    <img src="images/tip-a.jpg" class="urun-img" alt="Detaylı Lokasyon Haritası">
+    <h3>Detaylı Lokasyon Şablonu – Tip A</h3>
+    <p class="urun-kod">Kod: MAP-TM-LK-001</p>
+    <p class="urun-fiyat">200₺</p>
+    <button class="urun-btn">Sipariş Ver</button>
   </div>
+
+  <!-- ÜRÜN 2 | Tip B -->
+  <div class="urun-card focus-card" 
+       data-ad="Geniş Alan Lokasyon Şablonu – Tip B" 
+       data-kod="MAP-TM-LK-002" 
+       data-fiyat="200">
+    <img src="images/tip-b.jpg" class="urun-img" alt="Geniş Alan Lokasyon Haritası">
+    <h3>Geniş Alan Lokasyon Şablonu – Tip B</h3>
+    <p class="urun-kod">Kod: MAP-TM-LK-002</p>
+    <p class="urun-fiyat">200₺</p>
+    <button class="urun-btn">Sipariş Ver</button>
+  </div>
+
+  <!-- ÜRÜN 3 | Tip C -->
+  <div class="urun-card focus-card" 
+       data-ad="Fiziki Lokasyon Şablonu – Tip C" 
+       data-kod="MAP-TM-LK-003" 
+       data-fiyat="200">
+    <img src="images/tip-c.jpg" class="urun-img" alt="Fiziki Lokasyon Haritası">
+    <h3>Fiziki Lokasyon Şablonu – Tip C</h3>
+    <p class="urun-kod">Kod: MAP-TM-LK-003</p>
+    <p class="urun-fiyat">200₺</p>
+    <button class="urun-btn">Sipariş Ver</button>
+  </div>
+
+  <!-- ÜRÜN 4 | Tip D -->
+  <div class="urun-card focus-card" 
+       data-ad="Tematik Lokasyon Şablonu – Tip D" 
+       data-kod="MAP-TM-LK-004" 
+       data-fiyat="200">
+    <img src="images/tip-d.jpg" class="urun-img" alt="Tematik Lokasyon Haritası">
+    <h3>Tematik Lokasyon Şablonu – Tip D</h3>
+    <p class="urun-kod">Kod: MAP-TM-LK-004</p>
+    <p class="urun-fiyat">200₺</p>
+    <button class="urun-btn">Sipariş Ver</button>
+  </div>
+
+  <!-- ÜRÜN 5 | Tip E -->
+  <div class="urun-card focus-card" 
+       data-ad="Klasik Tematik Lokasyon Şablonu – Tip E" 
+       data-kod="MAP-TM-LK-005" 
+       data-fiyat="200">
+    <img src="images/tip-e.jpg" class="urun-img" alt="Klasik Lokasyon Haritası">
+    <h3>Klasik Tematik Lokasyon Şablonu – Tip E</h3>
+    <p class="urun-kod">Kod: MAP-TM-LK-005</p>
+    <p class="urun-fiyat">200₺</p>
+    <button class="urun-btn">Sipariş Ver</button>
+  </div>
+
+</div>
+
 
 </main>
 
@@ -225,7 +259,31 @@ E-posta: ${mail}
     const link = "https://wa.me/905316066176?text=" + encodeURIComponent(msg);
     window.open(link, "_blank");
   }
+
+  // 🔽 BURADAN SONRA YENİ EKLEDİĞİM KISMI KOY
+
+  // Resme tıklayınca büyük aç
+  document.querySelectorAll(".urun-img").forEach(img => {
+    img.addEventListener("click", () => {
+      document.getElementById("popup-img").src = img.src;
+      document.getElementById("img-popup").style.display = "flex";
+    });
+  });
+
+  // Popup kapat
+  function closeImgPopup() {
+    document.getElementById("img-popup").style.display = "none";
+  }
+
 </script>
+
+
+<!-- RESİM POPUP (LIGHTBOX) -->
+<div id="img-popup" class="img-popup-overlay">
+  <span class="img-popup-close" onclick="closeImgPopup()">×</span>
+  <img id="popup-img" class="img-popup-content" alt="Büyük Harita Önizleme">
+</div>
+
 
 </body>
 </html>
