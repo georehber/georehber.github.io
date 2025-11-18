@@ -942,3 +942,10 @@ footer {
     margin-top: 40px;
   }
 }
+/* StoryMaps kartları diğer sayfalardaki gibi yan yana olsun */
+.storymaps-grid .tematik-card {
+  width: 100%;
+  max-width: 350px; /* kart genişliğini sınırladık */
+  margin: 0 auto;
+  display: block;
+}
