@@ -4,10 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hakkımızda | GEOREHBER</title>
-  <meta name="description" content="GEOREHBER · Hakkımızda — Coğrafi bilginin gücünü paylaşmak için yola çıkan bir ekip. Şu anda yapım aşamasında.">
+
+  <meta name="description" content="GEOREHBER · Hakkımızda — Coğrafi bilginin gücünü paylaşan bir ekip.">
+  
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile.css">
   <link rel="stylesheet" href="global-anim.css"/>
+
+  <!-- FontAwesome (ikonlar için) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* Sosyal ikon butonları */
+    .social-buttons {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-buttons a {
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border: 1px solid #A38441;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      text-decoration: none;
+      color: #A38441;
+      transition: 0.25s;
+    }
+
+    .social-buttons a:hover {
+      background: #A38441;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+
 </head>
 
 <body>
@@ -18,6 +56,7 @@
       <h1>GEOREHBER</h1>
       <span>Mehmet Ali Yanmaz</span>
     </div>
+
     <nav>
       <a href="index.html">Anasayfa</a>
       <a href="antik-kentler.html">Antik Kentler</a>
@@ -28,30 +67,92 @@
     </nav>
   </header>
 
+
   <!-- HERO -->
   <section class="hero">
     <h2>Hakkımızda</h2>
     <p class="lead">
-      GeoRehber, mekânsal veriyi anlamlı hikâyelere dönüştürmeyi hedefleyen bir platformdur.  
-      CBS teknolojileri, harita tasarımı ve veri görselleştirme üzerine çalışıyoruz.  
-      Bu sayfa şu anda <strong>yapım aşamasında</strong>.
+      GeoRehber, mekânsal veriyi anlaşılır, estetik ve etkili içeriklere dönüştüren modern bir CBS platformudur.
+      Harita tasarımı, mekânsal analiz, veri üretimi ve dijital hikâye anlatımına odaklanan bir ekibiz.
     </p>
   </section>
 
-  <!-- ANA İÇERİK -->
+
+  <!-- EKİP KARTLARI -->
   <main class="content--about">
+
+    <!-- ÜYE 1 -->
     <div class="about-card">
-      <h3>🌐 GEOREHBER EKİBİ</h3>
-      <p>Coğrafya alanında gelen bir ekip.</p>
-      <div class="construction">Yapım Aşamasında</div>
+      <img src="images/team-mehmetali.jpg"
+           alt="Mehmet Ali Yanmaz"
+           style="width:100%; border-radius:10px; margin-bottom:14px;">
+
+      <h3 style="color:#A38441;">Mehmet Ali Yanmaz</h3>
+      <p style="opacity:0.8; font-weight:600; margin-top:-4px;">Kurucu • CBS Uzmanı</p>
+
+      <p style="font-size:15px; line-height:1.52;">
+        ArcGIS Pro, QGIS, Python ve Google Earth Engine üzerine çalışan;
+        mekânsal analiz, lokasyon çözümleri ve veri görselleştirme alanında uzman bir CBS araştırmacısı.
+      </p>
+
+      <!-- Sosyal ikon butonları -->
+      <div class="social-buttons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="mailto:georehber01@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
     </div>
+
+
+    <!-- ÜYE 2 -->
+    <div class="about-card">
+      <img src="images/team-placeholder.jpg"
+           alt="Ekip Üyesi"
+           style="width:100%; border-radius:10px; margin-bottom:14px;">
+
+      <h3 style="color:#A38441;">Ekip Üyesi</h3>
+      <p style="opacity:0.8; font-weight:600; margin-top:-4px;">Harita Tasarımcısı</p>
+
+      <p style="font-size:15px; line-height:1.52;">
+        Haritaların estetik kimliğini oluşturan tipografi, renk paleti ve layout tasarımlarında çalışır.
+      </p>
+
+      <div class="social-buttons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+
+
+    <!-- ÜYE 3 -->
+    <div class="about-card">
+      <img src="images/team-placeholder2.jpg"
+           alt="Ekip Üyesi"
+           style="width:100%; border-radius:10px; margin-bottom:14px;">
+
+      <h3 style="color:#A38441;">Ekip Üyesi</h3>
+      <p style="opacity:0.8; font-weight:600; margin-top:-4px;">Veri Analisti</p>
+
+      <p style="font-size:15px; line-height:1.52;">
+        Veri temizleme, raster analizler, istatistiksel görselleştirme ve mekânsal veri işleme süreçlerinde görev alır.
+      </p>
+
+      <div class="social-buttons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+
   </main>
+
 
   <!-- NOT -->
   <div class="note">
-    <span class="dot"></span>
-    <p>Hakkımızda bölümü <strong>2025 Aralık</strong> güncellemesiyle genişletilecektir.</p>
+    <p>GeoRehber ekibi <strong>2025 Aralık</strong> güncellemesi ile genişletilecektir.</p>
   </div>
+
 
   <!-- FOOTER -->
   <footer>
