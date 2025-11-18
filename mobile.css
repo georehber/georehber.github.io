@@ -1,186 +1,142 @@
-/* =========================================================
-   GENEL MOBİL AYARLAR (768px altı)
-========================================================= */
-@media (max-width: 768px) {
+/* =======================================
+   1) GENEL MOBİL — tüm telefonlar
+   max-width: 480px
+======================================= */
+@media (max-width: 480px) {
 
   /* HEADER */
   header {
     padding: 14px 20px;
     flex-direction: column;
     gap: 6px;
-    text-align: center;
+  }
+
+  header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
   }
 
   header nav a {
-    margin: 0 10px;
-    font-size: 15px;
-  }
-
-  /* ANA SAYFA */
-  .content {
-    margin: 50px auto;
-    padding: 0 18px;
-  }
-  .content h2 { font-size: 32px; }
-  .text { font-size: 17px; margin-bottom: 40px; }
-
-  /* PROJELER, HİZMETLER */
-  .content--projects {
-    padding: 40px 20px;
-  }
-  .project-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .project-card,
-  .focus-card {
-    max-width: 330px;
-    padding: 20px;
-  }
-
-  /* PORTFOLYO */
-  .hero {
-    padding: 30px 20px 10px 20px;
-  }
-  .hero h2 { font-size: 30px; }
-  .hero .lead { font-size: 16px; }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-  .portfolio-card {
-    max-width: 330px;
-    padding: 20px;
-  }
-
-  .note {
-    padding: 12px 14px;
     font-size: 14px;
+    padding: 5px 0;
   }
 
-  /* HAKKIMIZDA */
-  .content--about {
-    padding: 30px 20px;
+  /* HERO */
+  .hero {
+    padding: 40px 20px 12px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  .hero .lead {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  /* GRID KARTLAR */
+  .home-explore,
+  .portfolio-grid,
+  .project-grid,
+  .tematik-grid,
+  .urun-grid {
     grid-template-columns: 1fr;
+    padding: 0 18px;
+    gap: 20px;
   }
 
-  .about-card {
-    max-width: 330px;
-    padding: 20px;
-  }
-
-  /* İLETİŞİM */
-  .contact {
-    padding: 50px 20px;
-  }
-  .contact h2 { font-size: 30px; }
-  .contact .desc { font-size: 16px; }
-
-  .contact-box {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  /* INSTAGRAM POPUP */
-  .popup-trigger {
-    right: 16px;
-    bottom: 16px;
-    padding: 12px 14px;
-    font-size: 20px;
-  }
-  .wp-popup {
-    right: 10px;
-    bottom: 70px;
-    width: 260px;
-    padding: 14px;
-  }
-
-  /* TEMATİK GRID */
-  .tematik-grid {
-    grid-template-columns: 1fr;
+  .explore-card,
+  .portfolio-card,
+  .project-card,
+  .tematik-card,
+  .urun-card {
+    padding: 18px;
   }
 
   /* ANTİK KENTLER */
   .intro-mini {
-    margin: 10px 16px;
-    white-space: normal;
-    text-align: center;
+    font-size: 14px;
+    margin: 12px 18px;
   }
 
   .map-box {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 150px);
   }
 
-  /* ÜRÜN KARTLARI */
-  .urun-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 0 14px;
-  }
-
-  .urun-card {
-    max-width: 330px;
-    margin: 0 auto;
-    padding: 16px;
-  }
-
-  .urun-img {
-    border-radius: 12px;
-  }
-
-  /* ÜRÜN POPUP */
+  /* POPUP */
   .popup {
-    width: 90%;
-    max-width: 350px;
+    width: 92%;
     padding: 20px;
   }
 
-  .popup-fiyat { font-size: 17px; }
-  .form-group label { font-size: 14px; }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    font-size: 14px;
-    padding: 8px;
+  /* İLETİŞİM */
+  .contact-box {
+    flex-direction: column !important;
+    gap: 26px !important;
   }
 
-  .siparis-btn {
-    padding: 12px;
-    font-size: 16px;
+  footer {
+    padding: 18px;
+    font-size: 13px;
   }
 }
 
+/* =======================================
+   2) ÖZEL CİHAZ: iPhone 13 
+   width: 390px • height: 844px
+   — Bu KISIM sadece iPhone 13'te çalışır —
+======================================= */
+@media (width: 390px) and (height: 844px) {
 
-/* =========================================================
-   480px ALTINDA — Küçük Telefonlar
-========================================================= */
-@media (max-width: 480px) {
-
-  header nav a { font-size: 13px; }
-
-  .portfolio-card,
-  .project-card,
-  .about-card,
-  .urun-card {
-    max-width: 300px;
+  /* iPhone 13'te header biraz daha aşağı kayıyor
+     onu kompaktlaştırıyoruz */
+  header {
+    padding: 10px 16px;
+    gap: 4px;
   }
 
-  .popup-trigger {
-    padding: 10px 12px;
-    font-size: 18px;
+  header nav a {
+    font-size: 13.5px;
   }
 
-  .popup {
+  /* Hero başlık daha dar yapılıyor */
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  /* Anasayfa kartları */
+  .explore-card {
     padding: 16px;
   }
-}
 
+  /* Portfolyo, hizmetler, tematik — daha sıkı */
+  .portfolio-card,
+  .project-card,
+  .tematik-card,
+  .urun-card {
+    padding: 16px;
+  }
 
-/* =========================================================
-   360px ve ALTINDA — Mini Cihazlar
-========================================================= */
-@media (max-width: 360px) {
-  header nav a { font-size: 12px; margin: 0 4px; }
-  .popup-trigger { font-size: 16px; }
-  .popup { max-width: 280px; }
+  /* Popup daha dar */
+  .popup {
+    width: 88%;
+    padding: 18px;
+  }
+
+  /* Antik Kentler haritası iPhone 13 ekranına tam otursun */
+  .map-box {
+    height: calc(100vh - 130px);
+  }
+
+  /* StoryMaps biraz daha kısa */
+  .storymaps-frame iframe {
+    min-height: 73vh;
+  }
+
+  /* Footer küçük */
+  footer {
+    font-size: 12px;
+  }
 }
