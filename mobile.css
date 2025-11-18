@@ -140,3 +140,82 @@
     font-size: 12px;
   }
 }
+
+/* =========================================================
+   HAKKIMIZDA — Mobil Düzen (max-width: 768px)
+========================================================= */
+@media (max-width: 768px) {
+
+  /* GENEL */
+  .content--about {
+    grid-template-columns: 1fr !important; /* Tek sütun */
+    padding: 20px !important;
+    gap: 22px !important;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 40px 20px 10px 20px !important;
+  }
+
+  .hero h2 {
+    font-size: 26px !important;
+  }
+
+  .hero .lead {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding: 0 4px !important;
+  }
+
+  /* KARTLAR */
+  .about-card {
+    max-width: 100% !important;
+    padding: 20px !important;
+  }
+
+  .about-card img {
+    border-radius: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .about-card h3 {
+    font-size: 18px !important;
+  }
+
+  .about-card p {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Sosyal ikonlar */
+  .social-buttons {
+    gap: 10px !important;
+  }
+
+  .social-buttons a {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 16px !important;
+  }
+
+  /* HEADER — Mobil menü kendini sıkıştırmasın */
+  header {
+    padding: 14px 20px !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  header nav a {
+    margin: 0 8px !important;
+    font-size: 14px !important;
+  }
+
+  header .logo h1 {
+    font-size: 20px !important;
+  }
+
+  header .logo span {
+    font-size: 11px !important;
+  }
+}
