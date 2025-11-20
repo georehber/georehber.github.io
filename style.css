@@ -949,3 +949,74 @@ footer {
   margin: 0 auto;
   display: block;
 }
+
+.download-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 20px;
+  background: #A38441;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+.download-btn:hover {
+  background: #8c6f38;
+}
+
+.guide-card {
+  background: #FFF7E8;
+  padding: 24px;
+  border-radius: 14px;
+  margin-top: 40px;
+  border: 1px solid #E5D6B8;
+}
+
+.guide-card h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #A38441;
+}
+
+.guide-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.guide-step span {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background: #A38441;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 26px;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.guide-step p {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.guide-result {
+  margin-top: 18px;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #EAEAEA;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.4;
+}
