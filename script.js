@@ -10,20 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.innerHTML = '🌙';
     toggleBtn.title = 'Karanlık Modu Aç/Kapat';
 
-    // --- HAMBURGER MENU (Mobilde Görünür) ---
+    // --- HAMBURGER MENU ---
     const hamburger = document.createElement('button');
     hamburger.className = 'hamburger';
     hamburger.innerHTML = '☰';
     hamburger.ariaLabel = 'Menüyü Aç';
 
-    // Mobil layout:
-    // [Hamburger] [Logo] [Dark Mode]
-    // Hamburger en sola, logo ortada, dark mode en sağda
-    if (header && logo) {
-        // Hamburger'i logo'dan ÖNCE ekle (sol tarafa)
-        header.insertBefore(hamburger, logo);
-        // Dark mode butonu en sona (sağa)
-        header.appendChild(toggleBtn);
+    // PC'de: Logo | Nav (linkler + dark mode) 
+    // Dark mode butonunu NAV'IN İÇİNE ekle (en sona) - böylece PC'de sağda kalır
+    if (nav) {
+        nav.appendChild(toggleBtn);
+    }
+
+    // Hamburger'i header'ın EN SONUNA ekle (mobilde görünür, PC'de gizli)
+    if (header) {
+        header.appendChild(hamburger);
     }
 
     // Mobil Menü Toggle
