@@ -75,6 +75,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
   transition: background 0.3s, border-color 0.3s;
@@ -114,16 +115,16 @@ header nav a:hover {
   border: 1px solid var(--border-color);
   color: var(--text-main);
   cursor: pointer;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 14px;
-  margin-left: 20px;
+  font-size: 16px;
   transition: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  /* Küçülmesin */
+  margin: 0 auto;
+  /* Ortalanmış */
 }
 
 .theme-btn:hover {
@@ -435,6 +436,11 @@ button:active,
   color: var(--text-main);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  /* Taşmayı engelle */
+  word-wrap: break-word;
+  /* Uzun kelimeleri kır */
+  overflow-wrap: break-word;
 }
 
 .project-card .construction {
@@ -499,21 +505,25 @@ button:active,
   position: relative;
   padding: 100px 20px;
   text-align: center;
-  background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);
-  overflow: hidden;
+  background: var(--bg-body);
+  /* Sayfa ile aynı renk - kesik görünüm yok */
+  z-index: 1;
+  /* Normal akışta olsun */
 }
 
-/* Arka plana hafif bir desen veya dekoratif öğe ekleyebiliriz */
+/* Dekoratif arka plan - sadece hero içinde kalsın */
 .hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 20%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, var(--primary) 0%, transparent 50%);
   opacity: 0.03;
   pointer-events: none;
+  z-index: -1;
+  /* İçeriğin arkasında */
 }
 
 .hero-content {
@@ -614,6 +624,9 @@ button:active,
   box-shadow: var(--shadow-md);
   transition: 0.25s;
   text-align: left;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .portfolio-card:hover {
