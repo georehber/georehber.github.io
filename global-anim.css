@@ -43,9 +43,8 @@
   }
 
   header nav a:hover {
-    color: var(--primary-light);
-    /* #fff9e0 -> var */
-
+    color: #fff;
+    /* Beyaz - hem light hem dark modda okunur */
   }
 
   header nav a:hover::before {

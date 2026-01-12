@@ -117,17 +117,85 @@ header nav a:hover {
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 14px;
-  margin-left: 15px;
+  margin-left: 20px;
   transition: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  /* Küçülmesin */
 }
 
 .theme-btn:hover {
   background: var(--bg-body);
   border-color: var(--primary);
   color: var(--primary);
+}
+
+/* =========================================================
+    HAMBURGER MENÜ (Varsayılan: Gizli)
+========================================================= */
+.hamburger {
+  display: none;
+  /* PC'de GİZLİ */
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-main);
+  padding: 5px;
+  z-index: 1001;
+}
+
+/* Mobilde Göster */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  header {
+    flex-wrap: nowrap;
+  }
+
+  header nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Gizli - ekran dışında */
+    width: 260px;
+    height: 100vh;
+    background: var(--bg-card);
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 40px 20px;
+    gap: 0;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  header nav.active {
+    right: 0;
+    /* Açık */
+  }
+
+  header nav a {
+    font-size: 17px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  header nav a:last-child {
+    border-bottom: none;
+  }
+
+  .theme-btn {
+    margin: 20px 0 0 0;
+    align-self: flex-start;
+  }
 }
 
 
