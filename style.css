@@ -7,22 +7,23 @@
   /* Renk Paleti */
   --primary: #A38441;
   --primary-hover: #8f7138;
-  --primary-light: #fff9e0; /* Hover background vb. */
-  
+  --primary-light: #fff9e0;
+  /* Hover background vb. */
+
   --bg-body: #F7F7F7;
   --bg-card: #FFFFFF;
   --bg-header: #FFFFFF;
   --bg-footer: #FFFFFF;
-  
+
   --text-main: #1A1A1A;
   --text-secondary: #555555;
   --text-muted: #777777;
-  
+
   --border-color: #E4E4E4;
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
-  --shadow-md: 0 2px 10px rgba(0,0,0,0.05);
-  --shadow-lg: 0 8px 20px rgba(0,0,0,0.11);
-  
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.11);
+
   /* Diğer */
   --whatsapp: #25D366;
   --whatsapp-hover: #1EBB57;
@@ -43,20 +44,23 @@
   --text-muted: #999999;
 
   --border-color: #333333;
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
-  --shadow-md: 0 2px 10px rgba(0,0,0,0.3);
-  --shadow-lg: 0 8px 20px rgba(0,0,0,0.5);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  height: 100%; /* Sayfanın en az 100% yüksekliğinde olmasını sağlar */
+  height: 100%;
+  /* Sayfanın en az 100% yüksekliğinde olmasını sağlar */
   font-family: "Inter", sans-serif;
   background: var(--bg-body);
   color: var(--text-main);
   display: flex;
-  flex-direction: column; /* İçeriği dikey sıralar (header, main, footer) */
+  flex-direction: column;
+  /* İçeriği dikey sıralar (header, main, footer) */
   transition: background 0.3s, color 0.3s;
 }
 
@@ -119,6 +123,7 @@ header nav a:hover {
   align-items: center;
   justify-content: center;
 }
+
 .theme-btn:hover {
   background: var(--bg-body);
   border-color: var(--primary);
@@ -127,29 +132,150 @@ header nav a:hover {
 
 
 /* =========================================================
-    FOOTER
+    FOOTER (GELİŞMİŞ)
 ========================================================= */
 footer {
-  text-align: center;
-  padding: 24px;
   background: var(--bg-footer);
   color: var(--text-main);
-  font-size: 14px;
   border-top: 1px solid var(--border-color);
+  padding: 60px 20px 20px;
+  font-size: 14px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  text-align: left;
+}
+
+.footer-brand h3 {
+  color: var(--primary);
+  font-size: 20px;
+  margin: 0 0 10px 0;
+}
+
+.footer-brand p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  color: var(--text-main);
+  font-size: 16px;
+  margin: 0 0 16px 0;
+  font-weight: 600;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer-links ul li a:hover {
+  color: var(--primary);
+  padding-left: 5px;
+  /* Ufak kayma efekti */
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-body);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  /* Yuvarlak */
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.social-icons a:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 40px auto 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
 
 /* =========================================================
     İÇERİK ESNETME (FOOTER AŞAĞI İTME KURALI)
 ========================================================= */
-.content,           /* index.html */
-.content--projects, /* hizmetler.html, tematik-haritalar.html, lokasyon-haritalari.html */
-.content--portfolio, /* portfolyom.html */
-.content--about,     /* hakkimizda.html */
-.content--antik,     /* antik-kentler.html */
-.contact            /* iletisim.html */
-{
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sayfa Yüklenme Animasyonu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Buton Tıklama Efekti */
+button:active,
+.cta-primary:active,
+.cta-secondary:active,
+.project-card:active {
+  transform: scale(0.98);
+}
+
+.content,
+/* index.html */
+.content--projects,
+/* hizmetler.html, tematik-haritalar.html, lokasyon-haritalari.html */
+.content--portfolio,
+/* portfolyom.html */
+.content--about,
+/* hakkimizda.html */
+.content--antik,
+/* antik-kentler.html */
+.contact
+
+/* iletisim.html */
+  {
   flex: 1;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 
@@ -173,7 +299,8 @@ footer {
   font-size: 17px;
   margin-bottom: 60px;
   line-height: 1.6;
-  color: var(--text-secondary); /* #333 -> var(--text-secondary) gibi */
+  color: var(--text-secondary);
+  /* #333 -> var(--text-secondary) gibi */
 }
 
 
@@ -220,11 +347,12 @@ footer {
 
 .service-card-link {
   text-decoration: none;
-  display: block;   
-  height: 100%;     
+  display: block;
+  height: 100%;
 }
+
 .service-card-link .project-card {
-  height: 100%;     
+  height: 100%;
 }
 
 
@@ -237,11 +365,12 @@ footer {
   transition: 0.25s;
   text-align: left;
   color: var(--text-main);
-  display: flex;            
-  flex-direction: column;   
+  display: flex;
+  flex-direction: column;
 }
+
 .project-card .construction {
-  margin-top: auto;   
+  margin-top: auto;
 }
 
 .project-card:hover {
@@ -267,48 +396,129 @@ footer {
 .project-card p {
   font-size: 15px;
   line-height: 1.5;
-  color: var(--text-secondary); /* #444 -> secondary */
+  color: var(--text-secondary);
+  /* #444 -> secondary */
 }
+
 .project-card .construction {
   display: inline-block !important;
   width: auto !important;
-  align-self: flex-start; 
+  align-self: flex-start;
 }
 
 .construction {
   margin-top: 15px;
   padding: 7px 16px;
   background: var(--primary);
-  color: #fff; /* White text on primary is OK */
+  color: #fff;
+  /* White text on primary is OK */
   font-weight: 600;
   border-radius: 999px;
   font-size: 13px;
 
-  display: inline-block !important; 
-  width: auto !important;           
+  display: inline-block !important;
+  width: auto !important;
 }
 
 
 /* =========================================================
     PORTFOLYO & HAKKIMIZDA (Hero Başlık)
 ========================================================= */
+/* =========================================================
+    PORTFOLYO & HAKKIMIZDA (Hero Başlık)
+========================================================= */
 .hero {
-  padding: 60px 40px 20px 40px;
+  position: relative;
+  padding: 100px 20px;
   text-align: center;
+  background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);
+  overflow: hidden;
+}
+
+/* Arka plana hafif bir desen veya dekoratif öğe ekleyebiliriz */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 20%);
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
 }
 
 .hero h2 {
-  font-size: 34px;
-  margin: 0 0 10px 0;
+  font-size: 48px;
+  margin: 0 0 20px 0;
   color: var(--text-main);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .hero .lead {
-  max-width: 740px;
-  margin: 0 auto;
-  font-size: 17px;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  font-size: 18px;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 4px 15px rgba(163, 132, 65, 0.3);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  background: var(--primary-hover);
+  box-shadow: 0 6px 20px rgba(163, 132, 65, 0.4);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--text-main);
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  transition: 0.2s;
+}
+
+.cta-secondary:hover {
+  background: var(--bg-card);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Mobil ayarlar */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 32px;
+  }
 }
 
 /* =========================================================
@@ -335,7 +545,7 @@ footer {
   background: var(--bg-card);
   box-shadow: var(--shadow-md);
   transition: 0.25s;
-  text-align: left; 
+  text-align: left;
 }
 
 .portfolio-card:hover {
@@ -366,8 +576,8 @@ footer {
   text-align: left;
   max-width: 360px;
 
-  display: flex;             
-  flex-direction: column;    
+  display: flex;
+  flex-direction: column;
 }
 
 /* Hakkımızda — Kart Hover  */
@@ -383,7 +593,8 @@ footer {
   max-width: 760px;
   margin: 30px auto 40px auto !important;
   text-align: center !important;
-  background: var(--primary-light); /* #fffdf0 yerine */
+  background: var(--primary-light);
+  /* #fffdf0 yerine */
   border: 1px dashed var(--primary);
   border-radius: 10px;
   padding: 14px 16px;
@@ -393,7 +604,7 @@ footer {
 }
 
 .note .dot {
-  display: none; 
+  display: none;
 }
 
 .note p {
@@ -466,9 +677,9 @@ footer {
   bottom: 25px;
   z-index: 10000;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .trigger-label {
@@ -478,7 +689,7 @@ footer {
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   border: 1px solid var(--border-color);
   white-space: nowrap;
 }
@@ -491,7 +702,7 @@ footer {
   border-radius: 50%;
   font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   display: flex;
   align-items: center;
@@ -500,7 +711,7 @@ footer {
 
 .popup-trigger:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
 .popup-trigger i.fab.fa-instagram {
@@ -516,11 +727,11 @@ footer {
   border: none;
   border-radius: 16px;
   padding: 25px;
-  z-index: 9999; 
+  z-index: 9999;
   box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-color);
-  box-sizing: border-box; 
-  
-  display: none; 
+  box-sizing: border-box;
+
+  display: none;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
@@ -549,7 +760,10 @@ footer {
   cursor: pointer;
   transition: color 0.2s ease;
 }
-.close:hover { color: var(--text-main); }
+
+.close:hover {
+  color: var(--text-main);
+}
 
 .popup-btn {
   display: flex;
@@ -567,15 +781,22 @@ footer {
   width: 100%;
   box-sizing: border-box;
 }
-.popup-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-.popup-btn i.fab.fa-instagram { font-size: 20px; }
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.popup-btn i.fab.fa-instagram {
+  font-size: 20px;
+}
 
 
 /* =========================================================
     ANTİK KENTLER SAYFASI (antik-kentler.html)
 ========================================================= */
 .content--antik {
-  display: block; 
+  display: block;
 }
 
 .intro-mini {
@@ -588,7 +809,7 @@ footer {
 
 .map-box {
   width: 100%;
-  height: calc(100vh - 160px); 
+  height: calc(100vh - 160px);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -620,7 +841,7 @@ footer {
   color: var(--text-main);
   transition: 0.25s;
   box-shadow: var(--shadow-md);
-  text-align: left; 
+  text-align: left;
 }
 
 .tematik-card:hover {
@@ -652,7 +873,7 @@ footer {
   border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 18px;
-  text-align: center; 
+  text-align: center;
   transition: 0.25s;
   box-shadow: var(--shadow-md);
 }
@@ -668,9 +889,10 @@ footer {
   border-radius: 10px;
   margin-bottom: 12px;
   object-fit: contain;
-  background: var(--bg-body); /* #FAFAFA */
+  background: var(--bg-body);
+  /* #FAFAFA */
   padding: 4px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .urun-kod {
@@ -705,11 +927,14 @@ footer {
 ========================================================= */
 .popup-overlay {
   position: fixed;
-  display: none; 
+  display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.35);
-  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 999;
 }
 
@@ -721,8 +946,8 @@ footer {
   padding: 26px;
   position: relative;
   box-shadow: var(--shadow-lg);
-  max-height: 90vh; 
-  overflow-y: auto; 
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .popup-close {
@@ -760,13 +985,14 @@ footer {
 .form-group select {
   width: 100%;
   padding: 9px;
-  border: 1px solid #D5D5D5; /* Keep simplified or var? */
+  border: 1px solid #D5D5D5;
+  /* Keep simplified or var? */
   border-radius: 8px;
   margin-top: 4px;
   font-family: inherit;
   background: var(--bg-body);
   color: var(--text-main);
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .siparis-btn {
@@ -792,8 +1018,8 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.75);
-  display: none; 
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 2000;
@@ -804,7 +1030,7 @@ footer {
   max-height: 90%;
   border-radius: 14px;
   border: 3px solid #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .img-popup-close {
@@ -858,7 +1084,8 @@ footer {
 .explore-card p {
   flex: 1;
   font-size: 15px;
-  color: var(--text-secondary); /* #444 */
+  color: var(--text-secondary);
+  /* #444 */
 }
 
 .explore-card .go {
@@ -902,6 +1129,7 @@ footer {
   box-shadow: var(--shadow-lg);
   border-color: var(--primary);
 }
+
 /* Kart tamamen tıklanabilir olsun */
 .clickable-card {
   position: relative;
@@ -910,15 +1138,15 @@ footer {
 /* Görünmez overlay link */
 .full-card-link {
   position: absolute;
-  inset: 0;          
-  z-index: 2;        
+  inset: 0;
+  z-index: 2;
   text-decoration: none;
 }
 
 /* İncele yazısı overlay’in üzerinde kalsın */
 .incele-yazi {
   position: relative;
-  z-index: 3;        
+  z-index: 3;
   color: var(--primary) !important;
   font-weight: 600;
   text-decoration: none;
@@ -934,7 +1162,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 80px;            
+  gap: 80px;
   margin-top: 50px;
   flex-wrap: wrap;
   text-align: center;
@@ -943,7 +1171,7 @@ footer {
 .contact-section {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 .contact-section h3 {
@@ -970,13 +1198,13 @@ footer {
   font-size: 32px;
   cursor: pointer;
   color: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transition: 0.25s ease;
 }
 
 .contact-big-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
 .contact-big-btn.mail {
@@ -993,9 +1221,10 @@ footer {
     margin-top: 40px;
   }
 }
+
 .storymaps-grid .tematik-card {
   width: 100%;
-  max-width: 350px; 
+  max-width: 350px;
   margin: 0 auto;
   display: block;
 }
@@ -1017,11 +1246,13 @@ footer {
 }
 
 .guide-card {
-  background: var(--primary-light); /* #FFF7E8 */
+  background: var(--primary-light);
+  /* #FFF7E8 */
   padding: 24px;
   border-radius: 14px;
   margin-top: 40px;
-  border: 1px solid var(--primary); /* Simplified */
+  border: 1px solid var(--primary);
+  /* Simplified */
 }
 
 .guide-card h3 {
@@ -1056,17 +1287,20 @@ footer {
 .guide-step p {
   margin: 0;
   font-size: 15px;
-  color: var(--text-secondary); /* #333 */
+  color: var(--text-secondary);
+  /* #333 */
   line-height: 1.4;
 }
 
 .guide-result {
   margin-top: 18px;
-  background: var(--bg-card); /* white */
+  background: var(--bg-card);
+  /* white */
   padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
   font-size: 15px;
-  color: var(--text-secondary); /* #444 */
+  color: var(--text-secondary);
+  /* #444 */
   line-height: 1.4;
 }

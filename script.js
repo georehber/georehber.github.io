@@ -4,9 +4,37 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.className = 'theme-btn';
     toggleBtn.innerHTML = '🌙'; // Default icon
     toggleBtn.title = 'Karanlık Modu Aç/Kapat';
-    
+
     // Header'da navigasyonun yanına ekleyelim
+    const header = document.querySelector('header');
     const nav = document.querySelector('header nav');
+
+    // --- HAMBURGER MENU EKLEME ---
+    const hamburger = document.createElement('button');
+    hamburger.className = 'hamburger';
+    hamburger.innerHTML = '☰'; // Basit ikon
+    hamburger.ariaLabel = 'Menüyü Aç';
+
+    // Hamburger'i Logodan sonra, Nav'dan önce ekleyelim
+    if (header && nav) {
+        header.insertBefore(hamburger, nav);
+    }
+
+    // Mobil Menü Mantığı
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        hamburger.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Linklere tıklayınca menüyü kapat
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            hamburger.innerHTML = '☰';
+        });
+    });
+    // ----------------------------
+
     if (nav) {
         nav.appendChild(toggleBtn);
     } else {
