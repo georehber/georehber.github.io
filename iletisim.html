@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile.css">
   <link rel="stylesheet" href="global-anim.css">
+
+  <script src="script.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  
-  </head>
+
+</head>
+
 <body>
 
   <header>
@@ -28,40 +32,40 @@
   <main class="contact">
     <h2>Bizimle İletişime Geçin</h2>
     <p class="desc">
-      Her türlü soru, işbirliği veya proje teklifi için bizimle iletişime geçebilirsiniz.   
+      Her türlü soru, işbirliği veya proje teklifi için bizimle iletişime geçebilirsiniz.
       E-posta üzerinden doğrudan ulaşabilir ya da WhatsApp üzerinden hızlıca mesaj gönderebilirsiniz.
     </p>
 
-<div class="contact-box-new">
+    <div class="contact-box-new">
 
-  <!-- Mail -->
-  <div class="contact-section">
-    <h3>📧 E-posta</h3>
-    <p>Mail için tıklayın.</p>
+      <!-- Mail -->
+      <div class="contact-section">
+        <h3>📧 E-posta</h3>
+        <p>Mail için tıklayın.</p>
 
-    <a href="mailto:georehber01@gmail.com">
-      <button class="contact-big-btn mail">
-        <i class="fas fa-envelope"></i>
-      </button>
-    </a>
-  </div>
+        <a href="mailto:georehber01@gmail.com">
+          <button class="contact-big-btn mail">
+            <i class="fas fa-envelope"></i>
+          </button>
+        </a>
+      </div>
 
-  <!-- WhatsApp -->
-  <div class="contact-section">
-    <h3>💬 WhatsApp</h3>
-    <p>Mesaj için tıklayın</p>
+      <!-- WhatsApp -->
+      <div class="contact-section">
+        <h3>💬 WhatsApp</h3>
+        <p>Mesaj için tıklayın</p>
 
-    <a href="https://wa.me/905316066176" target="_blank">
-      <button class="contact-big-btn whatsapp">
-        <i class="fab fa-whatsapp"></i>
-      </button>
-    </a>
-  </div>
+        <a href="https://wa.me/905316066176" target="_blank">
+          <button class="contact-big-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </button>
+        </a>
+      </div>
 
-</div>
+    </div>
 
 
-</div>
+    </div>
 
   </main>
 
@@ -69,61 +73,62 @@
     © 2025 Tüm hakları saklıdır — Mehmet Ali Yanmaz
   </footer>
 
-  
+
   <div class="trigger-wrapper">
-      <span class="trigger-label">Bizi Takip Edin!</span>
-      <button class="popup-trigger" id="popupTrigger">
-          <i class="fab fa-instagram"></i>
-      </button>
+    <span class="trigger-label">Bizi Takip Edin!</span>
+    <button class="popup-trigger" id="popupTrigger">
+      <i class="fab fa-instagram"></i>
+    </button>
   </div>
 
   <div class="wp-popup" id="wpPopup">
-      <span class="close" id="popupClose">&times;</span>
-      
-      <h3>Bizi Takip Edin!</h3>
-      
-      <p style="text-align: center; margin-bottom: 25px; color: #555;">
-          Güncel projeler ve haritalar için Instagram hesabımıza göz atın.
-      </p>
-      
-      <a href="https://www.instagram.com/georehber?igsh=MXV2aGlzYW9udDZ2aA==" target="_blank" class="popup-btn">
-          <i class="fab fa-instagram"></i>
-          Instagram'a Git
-      </a>
+    <span class="close" id="popupClose">&times;</span>
+
+    <h3>Bizi Takip Edin!</h3>
+
+    <p style="text-align: center; margin-bottom: 25px; color: #555;">
+      Güncel projeler ve haritalar için Instagram hesabımıza göz atın.
+    </p>
+
+    <a href="https://www.instagram.com/georehber?igsh=MXV2aGlzYW9udDZ2aA==" target="_blank" class="popup-btn">
+      <i class="fab fa-instagram"></i>
+      Instagram'a Git
+    </a>
   </div>
 
 
-  
+
   <script>
-      // Gerekli HTML elementlerini ID'lerine göre seçiyoruz
-      const triggerButton = document.getElementById('popupTrigger');
-      const popupBox = document.getElementById('wpPopup');
-      const closeButton = document.getElementById('popupClose');
+    // Gerekli HTML elementlerini ID'lerine göre seçiyoruz
+    const triggerButton = document.getElementById('popupTrigger');
+    const popupBox = document.getElementById('wpPopup');
+    const closeButton = document.getElementById('popupClose');
 
-      // 1. Tetikleme butonuna (Instagram ikonu) tıklandığında:
-      triggerButton.addEventListener('click', function() {
-          // Önce kutuyu 'display: block' yaparak görünür hale getir
-          popupBox.style.display = 'block'; 
-          
-          // CSS animasyonunun çalışması için çok küçük bir gecikme sonrası
-          // 'show' sınıfını ekle (opacity: 0 -> 1 animasyonu başlar)
-          setTimeout(() => { 
-              popupBox.classList.add('show');
-          }, 10);
-      });
+    // 1. Tetikleme butonuna (Instagram ikonu) tıklandığında:
+    triggerButton.addEventListener('click', function () {
+      // Önce kutuyu 'display: block' yaparak görünür hale getir
+      popupBox.style.display = 'block';
 
-      // 2. Kapatma butonuna (X) tıklandığında:
-      closeButton.addEventListener('click', function() {
-          // 'show' sınıfını kaldır (opacity: 1 -> 0 animasyonu başlar)
-          popupBox.classList.remove('show');
-          
-          // CSS'teki animasyon süresi (0.3s = 300ms) bittikten sonra
-          // kutuyu tekrar 'display: none' yaparak DOM'dan kaldır
-          setTimeout(() => {
-              popupBox.style.display = 'none';
-          }, 300); // Bu süre CSS'teki 'transition' süresiyle aynı olmalı
-      });
+      // CSS animasyonunun çalışması için çok küçük bir gecikme sonrası
+      // 'show' sınıfını ekle (opacity: 0 -> 1 animasyonu başlar)
+      setTimeout(() => {
+        popupBox.classList.add('show');
+      }, 10);
+    });
+
+    // 2. Kapatma butonuna (X) tıklandığında:
+    closeButton.addEventListener('click', function () {
+      // 'show' sınıfını kaldır (opacity: 1 -> 0 animasyonu başlar)
+      popupBox.classList.remove('show');
+
+      // CSS'teki animasyon süresi (0.3s = 300ms) bittikten sonra
+      // kutuyu tekrar 'display: none' yaparak DOM'dan kaldır
+      setTimeout(() => {
+        popupBox.style.display = 'none';
+      }, 300); // Bu süre CSS'teki 'transition' süresiyle aynı olmalı
+    });
   </script>
-  
+
 </body>
+
 </html>

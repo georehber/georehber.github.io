@@ -1,121 +1,126 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QGIS Eklentileri | GEOREHBER</title>
 
-  <meta name="description" content="GEOREHBER · QGIS Eklentileri — GeoRehber Location Map ve QGIS için geliştirilen otomasyon araçları.">
+  <meta name="description"
+    content="GEOREHBER · QGIS Eklentileri — GeoRehber Location Map ve QGIS için geliştirilen otomasyon araçları.">
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="mobile.css" />
   <link rel="stylesheet" href="global-anim.css" />
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">
-    <h1>GEOREHBER</h1>
-  </div>
-  <nav>
-    <a href="index.html">Anasayfa</a>
-    <a href="hizmetler.html">Hizmetler</a>
-    <a href="portfolyo.html"><b>Portfolyo</b></a>
-    <a href="iletisim.html">İletişim</a>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <h1>GEOREHBER</h1>
+    </div>
+    <nav>
+      <a href="index.html">Anasayfa</a>
+      <a href="hizmetler.html">Hizmetler</a>
+      <a href="portfolyo.html"><b>Portfolyo</b></a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero">
-  <h2>QGIS Eklentileri</h2>
-  <p class="lead">
-    QGIS ve Python (PyQGIS) birleşimiyle geliştirilen GeoRehber eklentileri.  
-    Lokasyon haritaları, otomatik layout üretimi ve tekrarlayan CBS iş akışlarını hızlandıran araçlar.
-  </p>
-</section>
-
-<!-- İÇERİK -->
-<main class="content--portfolio">
-
-  <div class="portfolio-grid">
-
-    <!-- EKLENTİ 1 -->
-    <article class="portfolio-card">
-      <h3>GeoRehber Location Map</h3>
-      <p>
-        İl / ilçe verilerinden otomatik olarak lokasyon haritası, sayfa düzeni,kartografik tasarım yapan, lejant, ölçek çubuğu
-        ve yön oku oluşturan QGIS eklentisi. 
-      </p>
-      <p style="font-size:14px; color:#555;">
-        QGIS 3 için geliştirilmiştir. Kurulum, kullanım dökümantasyonu ve örnek proje dosyaları
-        bu sayfadan paylaşılacaktır.
-      </p>
-      <a href="plugins/georehber_location_map.zip" download class="download-btn">
-          Eklentiyi İndir (.zip)
-      </a>
-    </article>
-
-    <!-- PLANLANAN EKLENTİLER -->
-    <article class="portfolio-card">
-      <h3>⚙️ Planlanan QGIS Eklentileri</h3>
-      <p>
-        Toplu semboloji, otomatik çıktı alma, veri temizleme ve rapor oluşturma gibi 
-        süreçleri hızlandıracak yeni QGIS eklentileri üzerinde çalışıyoruz.
-      </p>
-      <p style="font-size:14px; color:#555;">
-        Geliştirme süreci tamamlandıkça, her eklenti için ayrı kartlar ve indirilebilir paketler eklenecek.
-      </p>
-      <div class="construction">Yapım Aşamasında</div>
-    </article>
-    
-
-  </div>
-
-<div class="guide-card">
-  <h3>QGIS Eklenti Kurulum Rehberi</h3>
-
-  <div class="guide-step">
-    <span>1</span>
-    <p>Eklentiyi yukarıdaki <strong>İndir (.zip)</strong> butonu ile indirin.</p>
-  </div>
-
-  <div class="guide-step">
-    <span>2</span>
-    <p>QGIS menüsünden <strong>Plugins → Manage and Install Plugins...</strong> bölümüne gidin.</p>
-  </div>
-
-  <div class="guide-step">
-    <span>3</span>
-    <p>Sol alttaki <strong>Install from ZIP</strong> seçeneğine tıklayın.</p>
-  </div>
-
-  <div class="guide-step">
-    <span>4</span>
-    <p>
-      ZIP dosyasını seçin.
+  <!-- HERO -->
+  <section class="hero">
+    <h2>QGIS Eklentileri</h2>
+    <p class="lead">
+      QGIS ve Python (PyQGIS) birleşimiyle geliştirilen GeoRehber eklentileri.
+      Lokasyon haritaları, otomatik layout üretimi ve tekrarlayan CBS iş akışlarını hızlandıran araçlar.
     </p>
-  </div>
+  </section>
 
-  <div class="guide-step">
-    <span>5</span>
-    <p><strong>Install Plugin</strong> butonuna basın.</p>
-  </div>
+  <!-- İÇERİK -->
+  <main class="content--portfolio">
 
-  <p class="guide-result">
-    Kurulum tamamlandığında QGIS üst menüsünde eklenti aktif olur.
-  </p>
-</div>
+    <div class="portfolio-grid">
+
+      <!-- EKLENTİ 1 -->
+      <article class="portfolio-card">
+        <h3>GeoRehber Location Map</h3>
+        <p>
+          İl / ilçe verilerinden otomatik olarak lokasyon haritası, sayfa düzeni,kartografik tasarım yapan, lejant,
+          ölçek çubuğu
+          ve yön oku oluşturan QGIS eklentisi.
+        </p>
+        <p style="font-size:14px; color:#555;">
+          QGIS 3 için geliştirilmiştir. Kurulum, kullanım dökümantasyonu ve örnek proje dosyaları
+          bu sayfadan paylaşılacaktır.
+        </p>
+        <a href="plugins/georehber_location_map.zip" download class="download-btn">
+          Eklentiyi İndir (.zip)
+        </a>
+      </article>
+
+      <!-- PLANLANAN EKLENTİLER -->
+      <article class="portfolio-card">
+        <h3>⚙️ Planlanan QGIS Eklentileri</h3>
+        <p>
+          Toplu semboloji, otomatik çıktı alma, veri temizleme ve rapor oluşturma gibi
+          süreçleri hızlandıracak yeni QGIS eklentileri üzerinde çalışıyoruz.
+        </p>
+        <p style="font-size:14px; color:#555;">
+          Geliştirme süreci tamamlandıkça, her eklenti için ayrı kartlar ve indirilebilir paketler eklenecek.
+        </p>
+        <div class="construction">Yapım Aşamasında</div>
+      </article>
 
 
-  
-</main>
+    </div>
 
-<!-- FOOTER -->
-<footer>
-  © 2025 Tüm hakları saklıdır — Mehmet Ali Yanmaz
-</footer>
+    <div class="guide-card">
+      <h3>QGIS Eklenti Kurulum Rehberi</h3>
+
+      <div class="guide-step">
+        <span>1</span>
+        <p>Eklentiyi yukarıdaki <strong>İndir (.zip)</strong> butonu ile indirin.</p>
+      </div>
+
+      <div class="guide-step">
+        <span>2</span>
+        <p>QGIS menüsünden <strong>Plugins → Manage and Install Plugins...</strong> bölümüne gidin.</p>
+      </div>
+
+      <div class="guide-step">
+        <span>3</span>
+        <p>Sol alttaki <strong>Install from ZIP</strong> seçeneğine tıklayın.</p>
+      </div>
+
+      <div class="guide-step">
+        <span>4</span>
+        <p>
+          ZIP dosyasını seçin.
+        </p>
+      </div>
+
+      <div class="guide-step">
+        <span>5</span>
+        <p><strong>Install Plugin</strong> butonuna basın.</p>
+      </div>
+
+      <p class="guide-result">
+        Kurulum tamamlandığında QGIS üst menüsünde eklenti aktif olur.
+      </p>
+    </div>
+
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Tüm hakları saklıdır — Mehmet Ali Yanmaz
+  </footer>
 
 </body>
+
 </html>
