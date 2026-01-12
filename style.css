@@ -150,44 +150,48 @@ header nav a:hover {
 
 /* Mobilde Göster */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    order: 1;
-    /* Sol tarafta */
-  }
-
   header {
+    flex-wrap: wrap;
+    /* İki satıra geç */
     padding: 12px 16px;
-    /* Daha kümpıkt */
-    flex-wrap: nowrap;
+    gap: 8px;
   }
 
+  /* 1. Satır: Logo (sol) + Dark Mode (sağ) */
   header .logo {
-    order: 2;
-    /* Ortada */
+    order: 1;
     flex: 1;
-    text-align: center;
   }
 
   header .logo h1 {
     font-size: 20px;
+    text-align: left;
   }
 
   .theme-btn {
-    order: 3;
-    /* Sağ tarafta */
+    order: 2;
     margin: 0;
     padding: 4px 8px;
     font-size: 14px;
   }
 
+  /* 2. Satır: Hamburger (sol, tam genişlik satırı) */
+  .hamburger {
+    display: block;
+    order: 3;
+    width: 100%;
+    /* Yeni satıra geç */
+    text-align: left;
+    padding: 8px 0 0 0;
+    font-size: 24px;
+  }
+
+  /* Menü - Soldan açılır */
   header nav {
     position: fixed;
     top: 0;
     left: -100%;
-    /* SOLDAN açılacak */
     width: 200px;
-    /* Daha dar */
     height: 100vh;
     background: var(--bg-card);
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
@@ -201,7 +205,6 @@ header nav a:hover {
 
   header nav.active {
     left: 0;
-    /* Açık */
   }
 
   header nav a {
