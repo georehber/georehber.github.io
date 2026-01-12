@@ -93,12 +93,18 @@
   .hero-actions {
     flex-direction: column;
     gap: 12px;
+    padding: 0 20px;
   }
 
   .cta-primary,
   .cta-secondary {
     width: 100%;
+    max-width: 280px;
+    /* Çok genişlemesin */
+    margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
+    padding: 12px 20px;
   }
 
   /* === KARTLAR === */
