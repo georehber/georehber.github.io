@@ -1,221 +1,188 @@
-/* =======================================
-   1) GENEL MOBİL — tüm telefonlar
-   max-width: 480px
-======================================= */
-@media (max-width: 480px) {
+/* =========================================================
+   MOBİL STİLLER - GEOREHBER
+   ========================================================= */
 
-  /* HEADER */
+/* =========================================================
+   HAMBURGER VE MOBİL HEADER (max-width: 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* === HEADER İKİ SATIR DÜZENİ === */
   header {
-    padding: 14px 20px;
-    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 12px 16px;
     gap: 6px;
   }
 
+  /* 1. SATIR: Logo (sol) + Dark Mode (sağ) */
+  header .logo {
+    order: 1;
+    flex: 1;
+  }
+
+  header .logo h1 {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .theme-btn {
+    order: 2;
+    margin: 0;
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+
+  /* 2. SATIR: Hamburger (sol, yeni satırda) */
+  .hamburger {
+    display: block;
+    order: 3;
+    width: 100%;
+    text-align: left;
+    padding: 6px 0 0 0;
+    font-size: 24px;
+  }
+
+  /* === AÇILIR MENÜ (Soldan) === */
   header nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 180px;
+    height: 100vh;
+    background: var(--bg-card);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px 12px;
+    flex-direction: column;
+    padding: 60px 16px 30px 16px;
+    gap: 0;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  header nav.active {
+    left: 0;
   }
 
   header nav a {
-    font-size: 14px;
-    padding: 5px 0;
+    font-size: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0;
+    text-align: left;
+    width: 100%;
   }
 
-  /* HERO */
+  header nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* === HERO === */
   .hero {
-    padding: 40px 20px 12px;
+    padding: 40px 20px 20px 20px;
   }
 
   .hero h2 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .hero .lead {
     font-size: 15px;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
-  /* GRID KARTLAR */
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* === KARTLAR === */
   .home-explore,
   .portfolio-grid,
   .project-grid,
   .tematik-grid,
-  .urun-grid {
+  .urun-grid,
+  .content--about {
     grid-template-columns: 1fr;
-    padding: 0 18px;
-    gap: 20px;
+    padding: 0 16px;
+    gap: 18px;
   }
 
   .explore-card,
   .portfolio-card,
   .project-card,
   .tematik-card,
-  .urun-card {
+  .urun-card,
+  .about-card {
     padding: 18px;
+    max-width: 100%;
   }
 
-  /* ANTİK KENTLER */
+  /* === FOOTER === */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-links ul {
+    padding: 0;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  /* === İLETİŞİM === */
+  .contact-box,
+  .contact-box-new {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  /* === ANTİK KENTLER === */
   .intro-mini {
     font-size: 14px;
-    margin: 12px 18px;
+    margin: 12px 16px;
   }
 
   .map-box {
-    height: calc(100vh - 150px);
+    height: calc(100vh - 140px);
   }
 
-  /* POPUP */
+  /* === POPUP === */
   .popup {
-    width: 92%;
+    width: 90%;
     padding: 20px;
-  }
-
-  /* İLETİŞİM */
-  .contact-box {
-    flex-direction: column !important;
-    gap: 26px !important;
-  }
-
-  footer {
-    padding: 18px;
-    font-size: 13px;
-  }
-}
-
-/* =======================================
-   2) ÖZEL CİHAZ: iPhone 13 
-   width: 390px • height: 844px
-   — Bu KISIM sadece iPhone 13'te çalışır —
-======================================= */
-@media (width: 390px) and (height: 844px) {
-
-  /* iPhone 13'te header biraz daha aşağı kayıyor
-     onu kompaktlaştırıyoruz */
-  header {
-    padding: 10px 16px;
-    gap: 4px;
-  }
-
-  header nav a {
-    font-size: 13.5px;
-  }
-
-  /* Hero başlık daha dar yapılıyor */
-  .hero h2 {
-    font-size: 24px;
-  }
-
-  /* Anasayfa kartları */
-  .explore-card {
-    padding: 16px;
-  }
-
-  /* Portfolyo, hizmetler, tematik — daha sıkı */
-  .portfolio-card,
-  .project-card,
-  .tematik-card,
-  .urun-card {
-    padding: 16px;
-  }
-
-  /* Popup daha dar */
-  .popup {
-    width: 88%;
-    padding: 18px;
-  }
-
-  /* Antik Kentler haritası iPhone 13 ekranına tam otursun */
-  .map-box {
-    height: calc(100vh - 130px);
-  }
-
-  /* StoryMaps biraz daha kısa */
-  .storymaps-frame iframe {
-    min-height: 73vh;
-  }
-
-  /* Footer küçük */
-  footer {
-    font-size: 12px;
   }
 }
 
 /* =========================================================
-   HAKKIMIZDA — Mobil Düzen (max-width: 768px)
-========================================================= */
-@media (max-width: 768px) {
-
-  /* GENEL */
-  .content--about {
-    grid-template-columns: 1fr !important; /* Tek sütun */
-    padding: 20px !important;
-    gap: 22px !important;
-  }
-
-  /* HERO */
-  .hero {
-    padding: 40px 20px 10px 20px !important;
-  }
-
-  .hero h2 {
-    font-size: 26px !important;
-  }
-
-  .hero .lead {
-    font-size: 15px !important;
-    line-height: 1.5 !important;
-    padding: 0 4px !important;
-  }
-
-  /* KARTLAR */
-  .about-card {
-    max-width: 100% !important;
-    padding: 20px !important;
-  }
-
-  .about-card img {
-    border-radius: 8px !important;
-    margin-bottom: 12px !important;
-  }
-
-  .about-card h3 {
-    font-size: 18px !important;
-  }
-
-  .about-card p {
-    font-size: 14px !important;
-    line-height: 1.45 !important;
-  }
-
-  /* Sosyal ikonlar */
-  .social-buttons {
-    gap: 10px !important;
-  }
-
-  .social-buttons a {
-    width: 34px !important;
-    height: 34px !important;
-    font-size: 16px !important;
-  }
-
-  /* HEADER — Mobil menü kendini sıkıştırmasın */
+   KÜÇÜK TELEFONLAR (max-width: 480px)
+   ========================================================= */
+@media (max-width: 480px) {
   header {
-    padding: 14px 20px !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-
-  header nav a {
-    margin: 0 8px !important;
-    font-size: 14px !important;
+    padding: 10px 12px;
   }
 
   header .logo h1 {
-    font-size: 20px !important;
+    font-size: 18px;
   }
 
-  header .logo span {
-    font-size: 11px !important;
+  .hamburger {
+    font-size: 22px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .hero .lead {
+    font-size: 14px;
   }
 }
