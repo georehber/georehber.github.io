@@ -152,37 +152,61 @@ header nav a:hover {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    order: 1;
+    /* Sol tarafta */
   }
 
   header {
+    padding: 12px 16px;
+    /* Daha kümpıkt */
     flex-wrap: nowrap;
+  }
+
+  header .logo {
+    order: 2;
+    /* Ortada */
+    flex: 1;
+    text-align: center;
+  }
+
+  header .logo h1 {
+    font-size: 20px;
+  }
+
+  .theme-btn {
+    order: 3;
+    /* Sağ tarafta */
+    margin: 0;
+    padding: 4px 8px;
+    font-size: 14px;
   }
 
   header nav {
     position: fixed;
     top: 0;
-    right: -100%;
-    /* Gizli - ekran dışında */
-    width: 260px;
+    left: -100%;
+    /* SOLDAN açılacak */
+    width: 200px;
+    /* Daha dar */
     height: 100vh;
     background: var(--bg-card);
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    padding: 80px 20px 40px 20px;
+    padding: 70px 16px 30px 16px;
     gap: 0;
-    transition: right 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out;
     z-index: 1000;
   }
 
   header nav.active {
-    right: 0;
+    left: 0;
     /* Açık */
   }
 
   header nav a {
-    font-size: 17px;
-    padding: 16px 0;
+    font-size: 16px;
+    padding: 14px 0;
     border-bottom: 1px solid var(--border-color);
     margin: 0;
     text-align: left;
@@ -191,11 +215,6 @@ header nav a:hover {
 
   header nav a:last-child {
     border-bottom: none;
-  }
-
-  .theme-btn {
-    margin: 20px 0 0 0;
-    align-self: flex-start;
   }
 }
 
