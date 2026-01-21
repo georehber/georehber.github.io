@@ -572,7 +572,7 @@ button:active,
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   justify-items: center;
 }
@@ -582,6 +582,7 @@ button:active,
   border-radius: 10px;
   padding: 24px;
   max-width: 360px;
+  width: 100%;
   background: var(--bg-card);
   box-shadow: var(--shadow-md);
   transition: 0.25s;
@@ -589,6 +590,8 @@ button:active,
   overflow: hidden;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
 }
 
 .portfolio-card:hover {
@@ -1274,7 +1277,7 @@ button:active,
 
 .download-btn {
   display: inline-block;
-  margin-top: 12px;
+  margin-top: auto;
   padding: 12px 20px;
   background: var(--primary);
   color: #fff;
@@ -1282,6 +1285,7 @@ button:active,
   font-weight: 600;
   border-radius: 8px;
   transition: 0.25s ease;
+  align-self: flex-start;
 }
 
 .download-btn:hover {
