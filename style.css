@@ -1296,9 +1296,9 @@ button:active,
   /* #FFF7E8 */
   padding: 24px;
   border-radius: 14px;
-  margin-top: 40px;
+  margin: 40px auto 0 auto;
   border: 1px solid var(--primary);
-  /* Simplified */
+  max-width: 600px;
 }
 
 .guide-card h3 {
