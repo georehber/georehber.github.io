@@ -115,9 +115,7 @@
   /* === KARTLAR === */
   .home-explore,
   .portfolio-grid,
-  .project-grid,
   .tematik-grid,
-  .urun-grid,
   .content--about {
     grid-template-columns: 1fr;
     padding: 0 16px;
@@ -126,9 +124,7 @@
 
   .explore-card,
   .portfolio-card,
-  .project-card,
   .tematik-card,
-  .urun-card,
   .about-card {
     padding: 18px;
     max-width: 100%;
@@ -166,11 +162,7 @@
     height: calc(100vh - 140px);
   }
 
-  /* === POPUP === */
-  .popup {
-    width: 90%;
-    padding: 20px;
-  }
+
 }
 
 /* =========================================================
