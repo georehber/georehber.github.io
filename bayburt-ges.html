@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mekânsal Analiz - Georehber</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        .pdf-viewer-section {
+            padding: 2rem 0 3rem;
+        }
+
+        .pdf-header {
+            margin-bottom: 2rem;
+        }
+
+        .pdf-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .pdf-back-link:hover {
+            opacity: 0.7;
+        }
+
+        .pdf-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-description {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
+            max-width: 48rem;
+        }
+
+        .pdf-container {
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background-color: var(--card);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .pdf-iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            min-height: 600px;
+        }
+
+        .pdf-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background-color: var(--card);
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .pdf-loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .pdf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .pdf-loading-text {
+            font-size: 0.95rem;
+            color: var(--muted-foreground);
+            font-weight: 500;
+        }
+
+        .pdf-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pdf-download-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background-color: var(--secondary);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .pdf-download-bar span {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+        }
+
+        .pdf-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 640px) {
+            .pdf-title {
+                font-size: 1.5rem;
+            }
+            .pdf-iframe-wrapper {
+                height: 70vh;
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container navbar-content">
+                <a href="index.html" class="navbar-brand">GEOREHBER</a>
+
+                <!-- Desktop Menu -->
+                <div class="desktop-menu">
+                    <a href="index.html#about" class="nav-link">Hakkında</a>
+                    <a href="index.html#portfolio" class="nav-link">Portfolyo</a>
+                    <a href="index.html#contact" class="nav-link">İletişim</a>
+                    <button id="themeToggle" class="theme-toggle" title="Gece Modu">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-controls">
+                    <button id="themeToggleMobile" class="theme-toggle" title="Gece Modu">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <button id="mobileMenuBtn" class="mobile-menu-btn" title="Menü">
+                        <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu" style="display: none;">
+                <a href="index.html#about" class="mobile-nav-link">Hakkında</a>
+                <a href="index.html#portfolio" class="mobile-nav-link">Portfolyo</a>
+                <a href="index.html#contact" class="mobile-nav-link">İletişim</a>
+            </div>
+        </nav>
+
+        <!-- PDF Viewer Section -->
+        <section class="pdf-viewer-section">
+            <div class="container">
+                <div class="pdf-header">
+                    <a href="index.html#portfolio" class="pdf-back-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Portfolyoya Dön
+                    </a>
+                    <h1 class="pdf-title">Mekânsal Analiz</h1>
+                    <p class="pdf-description">GES kurulumu için uygun alanların belirlenmesi (Bayburt).</p>
+                </div>
+
+                <div class="pdf-container">
+                    <div class="pdf-download-bar">
+                        <span>Bayburt_GES.pdf</span>
+                        <a href="https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf" 
+                           target="_blank" class="pdf-download-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            İndir
+                        </a>
+                    </div>
+                    <div class="pdf-iframe-wrapper">
+                        <div class="pdf-loading" id="pdfLoading">
+                            <div class="pdf-spinner"></div>
+                            <span class="pdf-loading-text">PDF yükleniyor...</span>
+                        </div>
+                        <iframe 
+                            src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf&embedded=true"
+                            title="Bayburt GES - Mekânsal Analiz"
+                            onload="document.getElementById('pdfLoading').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 Mehmet Ali Yanmaz. Tüm hakları saklıdır.</p>
+                    <div class="footer-links">
+                        <a href="https://linkedin.com/in/mehmetaliyanmaz" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="mailto:georehber01@gmail.com" title="E-posta">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
