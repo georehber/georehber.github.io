@@ -580,12 +580,30 @@ body.dark .profile-img-wrapper {
 }
 
 .project-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: rgba(var(--primary), 0.5);
+    border-color: #22c55e;
+    animation: projectGlow 1.5s ease-in-out infinite;
 }
 
 body.dark .project-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: projectGlowDark 1.5s ease-in-out infinite;
+}
+
+@keyframes projectGlow {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
+    }
+}
+
+@keyframes projectGlowDark {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+    }
+    50% {
+        box-shadow: 0 4px 24px rgba(34, 197, 94, 0.5);
+    }
 }
 
 .project-header {
