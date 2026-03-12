@@ -13,26 +13,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mekânsal Analiz - Bayburt GES Uygunluk | GeoRehber</title>
-    <meta name="description" content="Bayburt ili sınırları içerisinde Güneş Enerjisi Santrali (GES) kurulumu için uygun alanların belirlendiği CBS tabanlı mekânsal analiz raporu.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://georehber.com/bayburt-ges.html">
-    <meta property="og:title" content="Mekânsal Analiz - Bayburt GES Uygunluk | GeoRehber">
-    <meta property="og:description" content="Bayburt ili sınırları içerisinde Güneş Enerjisi Santrali (GES) kurulumu için uygun alanların belirlendiği CBS tabanlı mekânsal analiz raporu.">
-    <meta property="og:image" content="https://georehber.com/assets/logo.png">
-    <meta property="og:site_name" content="GeoRehber">
-    <meta property="og:locale" content="tr_TR">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://georehber.com/bayburt-ges.html">
-    <meta property="twitter:title" content="Mekânsal Analiz - Bayburt GES Uygunluk | GeoRehber">
-    <meta property="twitter:description" content="Bayburt ili sınırları içerisinde Güneş Enerjisi Santrali (GES) kurulumu için uygun alanların belirlendiği CBS tabanlı mekânsal analiz raporu.">
-    <meta property="twitter:image" content="https://georehber.com/assets/logo.png">
-
+    <title>Sayfa Bulunamadı - Georehber</title>
+    <meta name="description" content="Aradığınız sayfa bulunamadı. Lütfen ana sayfaya veya portfolyoya dönün.">
     <link rel="icon" type="image/png" href="assets/logo.png">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,144 +24,49 @@
         href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
         rel="stylesheet">
     <style>
-        .pdf-viewer-section {
-            padding: 2rem 0 3rem;
-        }
-
-        .pdf-header {
-            margin-bottom: 2rem;
-        }
-
-        .pdf-back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .pdf-back-link:hover {
-            opacity: 0.7;
-        }
-
-        .pdf-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .pdf-description {
-            color: var(--muted-foreground);
-            font-size: 1.125rem;
-            max-width: 48rem;
-        }
-
-        .pdf-container {
-            width: 100%;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background-color: var(--card);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .pdf-iframe-wrapper {
-            position: relative;
-            width: 100%;
-            height: 85vh;
-            min-height: 600px;
-        }
-
-        .pdf-loading {
-            position: absolute;
-            inset: 0;
+        .error-section {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            background-color: var(--card);
-            z-index: 1;
-            transition: opacity 0.4s ease;
+            text-align: center;
+            min-height: 70vh;
+            padding: 4rem 1rem;
         }
 
-        .pdf-loading.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .error-content h1 {
+            font-size: 6rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 1rem;
         }
 
-        .pdf-spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+        .error-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .pdf-loading-text {
-            font-size: 0.95rem;
+        .error-content p {
+            font-size: 1.125rem;
             color: var(--muted-foreground);
-            font-weight: 500;
+            max-width: 32rem;
+            margin: 0 auto 2.5rem;
         }
 
-        .pdf-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: relative;
-            z-index: 2;
-        }
-
-        .pdf-download-bar {
+        .error-buttons {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            background-color: var(--secondary);
-            border-bottom: 1px solid var(--border);
             flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .pdf-download-bar span {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--muted-foreground);
-        }
-
-        .pdf-download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .pdf-download-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            gap: 1rem;
+            justify-content: center;
         }
 
         @media (max-width: 640px) {
-            .pdf-title {
-                font-size: 1.5rem;
+            .error-content h1 {
+                font-size: 4rem;
             }
-            .pdf-iframe-wrapper {
-                height: 70vh;
-                min-height: 400px;
+            .error-content h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -259,47 +148,25 @@
             </div>
         </nav>
 
-        <!-- PDF Viewer Section -->
-        <section class="pdf-viewer-section">
-            <div class="container">
-                <div class="pdf-header">
-                    <a href="index.html#portfolio" class="pdf-back-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7" />
-                        </svg>
-                        Portfolyoya Dön
+        <!-- Main Content -->
+        <main class="error-section">
+            <div class="container error-content">
+                <h1>404</h1>
+                <h2>Sayfa bulunamadı</h2>
+                <p>Aradığınız sayfa taşınmış, silinmiş veya geçici olarak kullanılamıyor olabilir. Ana sayfaya dönerek sitemizi incelemeye devam edebilirsiniz.</p>
+                <div class="error-buttons">
+                    <a href="index.html" class="btn btn-primary">
+                        Ana Sayfa
                     </a>
-                    <h1 class="pdf-title">Mekânsal Analiz</h1>
-                    <p class="pdf-description">GES kurulumu için uygun alanların belirlenmesi (Bayburt).</p>
-                </div>
-
-                <div class="pdf-container">
-                    <div class="pdf-download-bar">
-                        <span>Bayburt_GES.pdf</span>
-                        <a href="https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf" 
-                           target="_blank" class="pdf-download-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                <polyline points="7 10 12 15 17 10" />
-                                <line x1="12" y1="15" x2="12" y2="3" />
-                            </svg>
-                            İndir
-                        </a>
-                    </div>
-                    <div class="pdf-iframe-wrapper">
-                        <div class="pdf-loading" id="pdfLoading">
-                            <div class="pdf-spinner"></div>
-                            <span class="pdf-loading-text">PDF yükleniyor...</span>
-                        </div>
-                        <iframe 
-                            src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf&embedded=true"
-                            title="Bayburt GES - Mekânsal Analiz"
-                            onload="document.getElementById('pdfLoading').classList.add('hidden')">
-                        </iframe>
-                    </div>
+                    <a href="index.html#portfolio" class="btn btn-secondary">
+                        Portfolyo
+                    </a>
+                    <a href="qgis-eklentileri.html" class="btn btn-secondary">
+                        QGIS Eklentileri
+                    </a>
                 </div>
             </div>
-        </section>
+        </main>
 
         <!-- Footer -->
         <footer class="footer">
