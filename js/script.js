@@ -196,3 +196,88 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('scroll', reveal);
+
+// ====== GA4 Event Tracking ======
+document.addEventListener('DOMContentLoaded', () => {
+    // Helper function to send GA4 events safely
+    function trackEvent(eventName, eventParams) {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, eventParams);
+        } else {
+            console.warn('GA4 (gtag) is not loaded for tracking event: ' + eventName);
+        }
+    }
+
+    // Helper function to get link text safely
+    function getLinkText(el) {
+        return (el.innerText || el.textContent || '').trim().substring(0, 100);
+    }
+
+    document.addEventListener('click', (e) => {
+        // Find the closest interactive element
+        const target = e.target.closest('a, button, .btn, .project-card, .plugin-card a, .download-btn');
+        if (!target) return;
+
+        let eventName = '';
+        const params = {
+            page_path: window.location.pathname,
+            link_text: getLinkText(target),
+            destination_url: target.href || '',
+        };
+
+        const hrefUrl = params.destination_url.toLowerCase();
+        
+        // --- 1. Social Media & GitHub Links ---
+        if (target.closest('.instagram') || hrefUrl.includes('instagram.com')) {
+            eventName = 'click_social_instagram';
+            params.event_category = 'social_media';
+            params.event_label = 'Instagram Profile';
+        } else if (target.closest('.linkedin') || hrefUrl.includes('linkedin.com')) {
+            eventName = 'click_social_linkedin';
+            params.event_category = 'social_media';
+            params.event_label = 'LinkedIn Profile';
+        } else if (target.closest('.youtube') || hrefUrl.includes('youtube.com')) {
+            eventName = 'click_social_youtube';
+            params.event_category = 'social_media';
+            params.event_label = 'YouTube Channel';
+        } else if (hrefUrl.includes('github.com')) {
+            eventName = 'click_github';
+            params.event_category = 'social_media';
+            params.event_label = 'GitHub Link';
+        } 
+        // --- 2. Contact Buttons ---
+        else if (target.closest('.email') || hrefUrl.includes('mailto:')) {
+            eventName = 'click_contact';
+            params.event_category = 'contact';
+            params.event_label = 'Email';
+        } else if (target.closest('.whatsapp') || hrefUrl.includes('wa.me')) {
+            eventName = 'click_contact';
+            params.event_category = 'contact';
+            params.event_label = 'WhatsApp';
+        }
+        // --- 3. PDF / Portfolio Links ---
+        else if (hrefUrl.includes('.pdf') || target.closest('.pdf-download-btn') || target.closest('.project-card') || hrefUrl.includes('storymaps.arcgis.com') || hrefUrl.includes('udemy.com')) {
+            eventName = 'click_portfolio_pdf';
+            params.event_category = 'portfolio';
+            params.event_label = params.link_text || 'Portfolio Item/PDF';
+        } 
+        // --- 4. QGIS Plugin Download Links ---
+        else if (target.closest('.download-btn') || (hrefUrl.includes('plugins/') && hrefUrl.includes('.zip'))) {
+            eventName = 'click_plugin_download';
+            params.event_category = 'download';
+            let pluginName = target.closest('.plugin-card')?.querySelector('.plugin-name')?.textContent || '';
+            params.event_label = pluginName ? 'Plugin: ' + pluginName : 'ZIP Download';
+        }
+        // --- 5. CTA Buttons (Catch-all for other interactive buttons/links) ---
+        else if (target.classList.contains('btn-primary') || target.classList.contains('btn-secondary') || target.classList.contains('btn-link') || target.classList.contains('nav-link')) {
+            eventName = 'click_cta';
+            params.event_category = 'engagement';
+            params.event_label = params.link_text || 'CTA Button / Nav Link';
+        }
+        
+        // Send event if matched
+        if (eventName) {
+            trackEvent(eventName, params);
+        }
+    });
+});
