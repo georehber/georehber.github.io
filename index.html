@@ -5,22 +5,24 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-3NJW4TZFDZ');
+        gtag('config', 'G-3NJW4TZFDZ');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Georehber - Mehmet Ali Yanmaz</title>
-    <meta name="description" content="Mehmet Ali Yanmaz'ın coğrafi bilgi sistemleri (CBS), uzaktan algılama, mekânsal veri analizi ve QGIS eklentileri portfolyosu.">
-    
+    <meta name="description"
+        content="Mehmet Ali Yanmaz'ın coğrafi bilgi sistemleri (CBS), uzaktan algılama, mekânsal veri analizi ve QGIS eklentileri portfolyosu.">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://georehber.com/">
     <meta property="og:title" content="Georehber - Mehmet Ali Yanmaz">
-    <meta property="og:description" content="Mehmet Ali Yanmaz'ın coğrafi bilgi sistemleri (CBS), uzaktan algılama, mekânsal veri analizi ve QGIS eklentileri portfolyosu.">
+    <meta property="og:description"
+        content="Mehmet Ali Yanmaz'ın coğrafi bilgi sistemleri (CBS), uzaktan algılama, mekânsal veri analizi ve QGIS eklentileri portfolyosu.">
     <meta property="og:image" content="https://georehber.com/assets/logo.png">
     <meta property="og:site_name" content="GeoRehber">
     <meta property="og:locale" content="tr_TR">
@@ -29,7 +31,8 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://georehber.com/">
     <meta property="twitter:title" content="Georehber - Mehmet Ali Yanmaz">
-    <meta property="twitter:description" content="Mehmet Ali Yanmaz'ın coğrafi bilgi sistemleri (CBS), uzaktan algılama, mekânsal veri analizi ve QGIS eklentileri portfolyosu.">
+    <meta property="twitter:description"
+        content="Mehmet Ali Yanmaz'ın coğrafi bilgi sistemleri (CBS), uzaktan algılama, mekânsal veri analizi ve QGIS eklentileri portfolyosu.">
     <meta property="twitter:image" content="https://georehber.com/assets/logo.png">
 
     <link rel="icon" type="image/png" href="assets/logo.png">
@@ -58,7 +61,7 @@
 
                 <!-- Desktop Menu -->
                 <div class="desktop-menu">
-                    <a href="#about" class="nav-link" onclick="smoothScroll(event, 'about')">Hakkında</a>
+                    <a href="#about" class="nav-link" onclick="smoothScroll(event, 'about')">Hakkımda</a>
                     <a href="#portfolio" class="nav-link" onclick="smoothScroll(event, 'portfolio')">Portfolyo</a>
                     <a href="#contact" class="nav-link" onclick="smoothScroll(event, 'contact')">İletişim</a>
                     <button id="themeToggle" class="theme-toggle" title="Gece Modu">
@@ -119,7 +122,7 @@
 
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="mobile-menu" style="display: none;">
-                <a href="#about" class="mobile-nav-link" onclick="smoothScroll(event, 'about')">Hakkında</a>
+                <a href="#about" class="mobile-nav-link" onclick="smoothScroll(event, 'about')">Hakkımda</a>
                 <a href="#portfolio" class="mobile-nav-link" onclick="smoothScroll(event, 'portfolio')">Portfolyo</a>
                 <a href="#contact" class="mobile-nav-link" onclick="smoothScroll(event, 'contact')">İletişim</a>
             </div>
@@ -148,7 +151,7 @@
 
                         <div class="hero-buttons">
                             <button class="btn btn-primary" onclick="smoothScroll(event, 'portfolio')">Çalışmaları
-                                Gör</button>
+                                İncele</button>
                             <button class="btn btn-secondary" onclick="smoothScroll(event, 'contact')">İletişime
                                 Geç</button>
                         </div>
@@ -161,6 +164,7 @@
                                 <span class="tech-tag">ArcGIS Pro</span>
                                 <span class="tech-tag">QGIS</span>
                                 <span class="tech-tag">ERDAS Imagine</span>
+                                <span class="tech-tag">Google Earth Engine</span>
                                 <span class="tech-tag">Uzaktan Algılama</span>
                                 <span class="tech-tag">Mekansal Veri Analizi</span>
                             </div>
@@ -228,7 +232,7 @@
                             Yazılımlar ve Araçlar
                         </div>
                         <p class="about-text">
-                            ArcGIS Pro, QGIS, ERDAS Imagine gibi profesyonel CBS yazılımlarında deneyimim var. Python
+                            ArcGIS Pro, QGIS, ERDAS Imagine ve Google Earth Engine gibi profesyonel CBS yazılımlarında deneyimim var. Python
                             programlama dili kullanarak veri analizi ve makine öğrenmesi modellemeleri yapıyorum.
                         </p>
                     </div>
@@ -244,23 +248,6 @@
                 <div class="portfolio-grid">
                     <!-- Project 1 -->
                     <div class="project-card reveal"
-                        onclick="window.open('https://storymaps.arcgis.com/stories/1e30b8bdacc247a5ad81db688fe236a5', '_blank')"
-                        style="cursor: pointer;">
-                        <div class="project-header">
-                            <svg class="project-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span class="project-status completed">TAMAMLANDI</span>
-                        </div>
-                        <h3 class="project-title">StoryMaps</h3>
-                        <p class="project-description">Türkiye’de tehlike altındaki memeli türleri</p>
-                        <button class="btn btn-link">Detayları Gör <span style="margin-left: 0.5rem;">→</span></button>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card reveal"
                         onclick="window.open('https://www.udemy.com/course/arcgis-pro-georehber/?referralCode=47108E9DAFE854ECC196', '_blank')"
                         style="cursor: pointer;">
                         <div class="project-header">
@@ -274,10 +261,43 @@
                         <h3 class="project-title">CBS Kursları</h3>
                         <p class="project-description">Temel ve ileri düzey CBS eğitimleri, uygulamalı analiz örnekleri.
                         </p>
-                        <button class="btn btn-link">Detayları Gör <span style="margin-left: 0.5rem;">→</span></button>
+                        <button class="btn btn-link">Projeyi İncele <span style="margin-left: 0.5rem;">→</span></button>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card reveal" onclick="window.location.href='qgis-eklentileri.html'"
+                        style="cursor: pointer;">
+                        <div class="project-header">
+                            <svg class="project-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            <span class="project-status completed">TAMAMLANDI</span>
+                        </div>
+                        <h3 class="project-title">QGIS Eklentileri</h3>
+                        <p class="project-description">QGIS için geliştirilen eklentiler(plugin).</p>
+                        <button class="btn btn-link">Projeyi İncele <span style="margin-left: 0.5rem;">→</span></button>
                     </div>
 
                     <!-- Project 3 -->
+                    <div class="project-card reveal" onclick="window.location.href='meke-maari.html'"
+                        style="cursor: pointer;">
+                        <div class="project-header">
+                            <svg class="project-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            <span class="project-status completed">TAMAMLANDI</span>
+                        </div>
+                        <h3 class="project-title">Mekânsal Analiz</h3>
+                        <p class="project-description">Meke Maarı'nın zamansal değişimi ve konum analizi.</p>
+                        <button class="btn btn-link">Projeyi İncele <span style="margin-left: 0.5rem;">→</span></button>
+                    </div>
+
+                    <!-- Project 4 -->
                     <div class="project-card reveal" onclick="window.location.href='bayburt-ges.html'"
                         style="cursor: pointer;">
                         <div class="project-header">
@@ -291,24 +311,24 @@
                         </div>
                         <h3 class="project-title">Mekânsal Analiz</h3>
                         <p class="project-description">GES kurulumu için uygun alanların belirlenmesi (Bayburt).</p>
-                        <button class="btn btn-link">Detayları Gör <span style="margin-left: 0.5rem;">→</span></button>
+                        <button class="btn btn-link">Projeyi İncele <span style="margin-left: 0.5rem;">→</span></button>
                     </div>
 
-                    <!-- Project 4 -->
-                    <div class="project-card reveal" onclick="window.location.href='qgis-eklentileri.html'"
+                    <!-- Project 5 -->
+                    <div class="project-card reveal"
+                        onclick="window.open('https://storymaps.arcgis.com/stories/1e30b8bdacc247a5ad81db688fe236a5', '_blank')"
                         style="cursor: pointer;">
                         <div class="project-header">
                             <svg class="project-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
                             </svg>
                             <span class="project-status completed">TAMAMLANDI</span>
                         </div>
-                        <h3 class="project-title">QGIS Eklentileri</h3>
-                        <p class="project-description">QGIS için geliştirilen eklentiler(plugin).</p>
-                        <button class="btn btn-link">Detayları
-                            Gör <span style="margin-left: 0.5rem;">→</span></button>
+                        <h3 class="project-title">StoryMaps</h3>
+                        <p class="project-description">Türkiye’de tehlike altındaki memeli türleri</p>
+                        <button class="btn btn-link">Projeyi İncele <span style="margin-left: 0.5rem;">→</span></button>
                     </div>
                 </div>
             </div>
