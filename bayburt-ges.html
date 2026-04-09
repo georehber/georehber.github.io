@@ -275,8 +275,12 @@
                     </svg>
                     Portfolyoya Dön
                 </a>
-                <h1 class="project-hero-title">Mekânsal Analiz</h1>
-                <p class="project-hero-subtitle">GES kurulumu için uygun alanların belirlenmesi (Bayburt).</p>
+                <div>
+                    <span class="project-tag">Karar Destek Sistemleri</span>
+                    <span class="project-tag">AHP & ÇKKV</span>
+                </div>
+                <h1 class="project-hero-title">Bayburt İli GES Uygunluk Analizi</h1>
+                <p class="project-hero-subtitle">Bayburt ili sınırları içerisinde güneş enerjisi santrali (GES) kurulumu için çok kriterli mekânsal veri kümelerinin ağırlıklı analiziyle hazırlanan mekânsal uygunluk projesi.</p>
             </div>
         </section>
 
@@ -307,6 +311,96 @@
                             onload="document.getElementById('pdfLoading').classList.add('hidden')">
                         </iframe>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+                <!-- Proje Özeti -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Proje Özeti</h2>
+                    <p class="detail-text">Güneş Enerjisi Santralleri (GES), kurulum aşamasında yüksek radyasyon potansiyeli beklerken aynı zamanda topoğrafik ve çevresel sınırlılıklarla kısıtlanan kompleks yatırımlardır. Bu proje, Bayburt ili genelinde verimli ve yönetmeliklere uygun GES arazilerini belirlemek amacıyla geliştirilmiş, çeşitli raster ve vektör veri setlerinin AHP (Analitik Hiyerarşi Süreci) gibi çok kriterli karar verme (ÇKKV) yöntemleriyle çakıştırıldığı, bilimsel temelli bir mekânsal karar destek modellemesidir.</p>
+                </div>
+
+                <!-- Çözülen Problem -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Çözülen Problem</h2>
+                    <p class="detail-text">Dev ölçekli enerji yatırımlarında yer seçimi rastgele yapılamaz. Yatırımın yapılacağı arazinin eğimi, bakısı, güneşlenme süresi, trafo merkezlerine olan fiziki uzaklığı, yakın çevrede tarım veya orman alanlarının bulunup bulunmadığı gibi onlarca farklı çevresel/sosyal faktörün aynı anda değerlendirilmesi gerekir. Aylar sürebilecek bu çok katmanlı mühendislik problemi, CBS temelli mekânsal modelleme kullanılarak yüksek doğrulukta sistematize edilmiştir.</p>
+                </div>
+
+                <!-- Yaklaşım / Çözüm Mantığı -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Yaklaşım / Çözüm Mantığı</h2>
+                    <p class="detail-text">Geniş yüzölçümüne sahip çalışma alanı içerisinde kanunen kısıtlayıcı olan alanlar (göller, tarım arazileri vb.) öncelikle analiz dışında tutulmuştur. Kalan potansiyel alanlar; güneye bakan yamaçlar (Aspect), optimum eğim oranları (Slope) ve şebekeye yakınlık gibi kriterlere göre uygunluk değerleriyle puanlanarak (Reclassify) uzman ağırlıklandırma yöntemleriyle (AHP) birbiri üzerine çakıştırılmıştır (Weighted Sum).</p>
+                </div>
+
+                <!-- Sistem Nasıl Çalışıyor -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Analiz Adımları</h2>
+                    <div class="timeline-cards">
+                        <div class="t-card">
+                            <div class="t-number">1</div>
+                            <div class="t-text">Girdi Verilerinin Toplanması: Sayısal Yükseklik Modeli (DEM) üzerinden eğim ve bakı üretimi; yollar, altyapı ve arazi kullanım verilerinin temini.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">2</div>
+                            <div class="t-text">Distance Accumulation (Mesafe Analizi): Tesislerin yollara, akarsulara, göllere ve enerji nakil hatlarına olan yakınlık/uzaklık maliyetlerinin hesaplanması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">3</div>
+                            <div class="t-text">Kısıtlama Yönetimi: Çevresel koruma bölgeleri, su alanları ve sivil yerleşim sınırlarının maskelenerek uygunsuz alan olarak ayrılması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">4</div>
+                            <div class="t-text">Reclassify (Yeniden Sınıflandırma): Güneş ışınımı, arazi örtüsü, eğim gibi parametrelerin amaca uygun olarak yeni değerlerle sınıflandırılması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">5</div>
+                            <div class="t-text">Weighted Sum (Ağırlıklı Toplam): Analitik Hiyerarşi Süreci (AHP) ile hesaplanan önem yüzdelerine göre kriterlerin matematiksel olarak birleştirilmesi.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">6</div>
+                            <div class="t-text">Kartografik Görselleştirme: Nihai haritanın "En Yüksek Uygunluk", "Uygun", "Düşük Uygunluk" seviyelerine ayrılarak sunulması.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temel Özellikler -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Temel Kazanımlar</h2>
+                    <ul class="feature-grid">
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Karar Destek Sistemleri (DSS) ile riskten arındırılmış yatırım stratejisi</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Milyonlarca metrekare alanın piksel hassasiyetinde filtrelenmesi</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Enerji nakil hatlarına mesafe temelli altyapı maliyet optimizasyonu</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Yenilenebilir enerji dönüşümü için somut, kanıta dayalı fizibilite tabanı</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CBS Perspektifi -->
+                <div class="detail-block highlight-block">
+                    <h2 class="detail-title">CBS / Mekânsal Analiz Perspektifi</h2>
+                    <p class="detail-text">Proje, CBS tabanlı ÇKKV (Çok Kriterli Karar Verme) modellerinin enerji sektöründe yer seçimi süreçlerini devrimsel bir biçimde dönüştürdüğünü göstermektedir. "Projeyi nereye kurmalıyız?" sorusu, sübjektif idari kararlarla değil; doğrudan topografi, ulaşılırlık, mevzuat ve ekoloji gibi somut kısıtların kesişim kümesinde yer alan algoritmalar vasıtasıyla geometrik hassasiyetle yanıtlanmaktadır.</p>
+                </div>
+
+
+                <!-- CTA -->
+                <div class="cta-block">
+                    <h2 class="cta-title">Tam Raporu İnceleyin</h2>
+                    <p class="cta-desc">Bayburt ili üzerine tasarladığım bu modellemenin metodolojisini, analiz denklemlerini ve hazırladığım uygunluk haritalarını içeren detaylı araştırma PDF raporumu hemen görüntüleyebilirsiniz.</p>
+                    <a href="https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf" target="_blank" class="btn btn-primary cta-btn">PDF Raporu İndir & İncele</a>
                 </div>
             </div>
         </section>

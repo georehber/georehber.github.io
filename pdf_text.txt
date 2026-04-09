@@ -1,0 +1,178 @@
+Bayburt İl Güneş Enerjs Santralne Uygun Alan Analz  
+1
+2 3 6
+8
+7
+5
+Tablo 1 Tablo 2
+VERİLER
+Güneş
+ Işınımı
+Enerj
+Hatları
+Yollar
+Eğm
+Araz
+Kullanımı
+Bakı
+Akarsular
+Göller
+DİSTANCE
+ACCUMULATİONRECLASSİFY
+WEİGHTED
+SUM
+SONUÇ
+HARİTASI
+Güneş
+Işınımı
+Arazi
+Kullanımı
+4
+Bakı Yollara
+UzaklıkEğim
+Enerji
+Hattına
+Uzaklık
+Göllere
+Uzaklık
+Akarsulara
+Uzaklık
+Kullanılan
+ Krterler
+Şekil 1
+Şekil 5
+Bakırçay Ünverstes - İnsan ve Toplum Blmler Fakültes
+Coğrafya Bölümü 
+1.GİRİŞ
+Bu çalışma, Bayburt ilinde güneş enerji santralleri için uygun alanların belirlenmesine yönelik bir analiz sunmaktadır.  
+Bayburt’un konum haritası, bölgenin jeopolitik ve fiziksel özelliklerini görselleştirmek adına posterde yer almaktadır. Elde edilen
+sonuçlar, bölgedeki güneş enerjisi potansiyelini etkin bir şekilde kullanarak sürdürülebilir enerji politikalarına katkı sağlamayı
+hedeflemektedir. Bu kapsamda, çalışmada güneş enerji santralleri için uygun alanların belirlenmesi amacıyla çok kriterli karar
+verme (ÇKKV) yöntemleri ve coğrafi bilgi sistemleri (CBS) entegrasyonu kullanılmıştır. Analiz süreci, bölgenin topografik,
+iklimsel ve çevresel özelliklerini dikkate alarak gerçekleştirilmiştir. Arazi kullanımı, güneş ışınımı, eğim, bakı, yollar, enerji iletim
+hatları, göller ve akarsular gibi parametreler uygunluk analizinde temel girdiler olarak değerlendirilmiştir. Sonuçlar, Bayburt
+ilinde güneş enerji santralleri için yüksek uygunluk taşıyan alanların coğrafi dağılımını görselleştirmekte ve enerji planlaması için
+karar vericilere yol göstermektedir. Çalışma, sürdürülebilir enerji yönetimi ve iklim değişikliğiyle mücadele kapsamında
+yenilenebilir enerji kaynaklarının etkin kullanımını teşvik etmektedir.
+Çalışmada, Bayburt ilinde güneş enerji
+santralleri için uygun alanların belirlenmesi
+amacıyla analizler CBS tabanlı yöntemlerle
+gerçekleştirilmiştir. Çok kriterli karar verme
+(ÇKKV) yöntemleriyle uygunluk analizi
+yapılmıştır.
+¹Mehmet Al YANMAZ   -   ²Dr. Şevk DANACIOĞLU
+2.MATERYAL ve YÖNTEM
+2.1  Çalışma Alanı
+2.2 Ver
+Haritada, Türkiye'nin kuzeydoğusunda yer alan Bayburt
+ilinin coğrafi konumu ayrıntılı olarak gösterilmektedir.
+Bayburt, 40°26' kuzey enlemi ve 40°13' doğu boylamı
+arasında yer almakta olup Karadeniz Bölgesi’nin iç
+kesimlerinde konumlanmaktadır. İl, kuzeyde Trabzon ve
+Rize, doğuda Erzurum, güneyde Erzincan ve batıda
+Gümüşhane illeri ile sınır komşusudur. Bayburt’un yüzey
+şekilleri genel olarak engebeli bir yapı sergilemekte olup
+ortalama yükseltisi 1500 metre civarındadır. Bu durum,
+ilin iklimsel ve demografik özellikleri üzerinde doğrudan
+etkilidir. Haritada, Bayburt’un idari sınırlarının yanı sıra,
+akarsu ağları, ve yüksekliği gibi temel coğrafi unsurlar da
+belirtilmiştir. Bu harita, çalışmada incelenen konuların
+mekânsal bağlamını desteklemek ve Bayburt’un coğrafi
+özelliklerini görselleştirmek amacıyla hazırlanmıştır.
+Tablo 1'de gösterilen, güneş enerji santralleri için uygun alanların belirlenmesi amacıyla yapılan bu çalışmada, farklı
+kaynaklardan elde edilen çok çeşitli veriler kullanılmıştır. Kullanılan veriler, raster ve vektör formatlarında olup, çözünürlük,
+tür, birim ve kaynak bilgileri aşağıdaki şekilde özetlenmiştir:
+Güneş Işınımı: Çalışmada güneş enerjisi potansiyelini ölçmek için kullanılan bu veri, [kWh/m²] biriminde olup, 30m
+çözünürlükte raster formatında işlenmiştir. Veri, 2024 yılına ait Global Solar Atlas’tan temin edilmiştir.
+Eğim ve Bakı: Eğim ve bakı analizleri için kullanılan bu veriler, Sayısal Yükseklik Modelinden türetilmiş olup, sırasıyla
+eğim açısı (°) ve bakı yönü (°) bilgilerini içermektedir. Her iki veri de 30m çözünürlüğe sahiptir ve raster formatındadır.
+Arazi Kullanımı: Arazi kullanım sınıflarını içeren bu veri, 2023 yılına ait Esri Living Atlas’tan temin edilmiş olup, 30m
+çözünürlüğe sahip bir raster veri setidir.
+Enerji Hatları, Yol ve Göller: Enerji iletim hatları, yollar ve göller vektör formatında olup, Open Street Map (OSM)
+verilerinden 2024 yılı için alınmıştır. Bu veriler mesafe analizlerinde kullanılmıştır.
+Akarsular: Sayısal Yükseklik Modeli (DEM) kullanılarak üretilen bu veri, 30m çözünürlükte ve raster formatındadır.
+Bu veriler, güneş enerji santrali uygunluk analizinde belirlenen kriterlere göre işlenmiş ve analiz sürecine entegre edilmiştir.
+Tablo 2'de AHP yöntemine göre kriterlerin ağırlıklandırılması için ikili karşılaştırmalar yapılmıştır. Tabloda, her bir kriterin
+diğer kriterlere göre önceliği belirlenmiş ve bu değerler normalleştirilerek ağırlık katsayıları elde edilmiştir. Bu tablodaki
+veriler, kriterlerin güneş enerji santrali yer seçimi üzerindeki etkilerini ortaya koyarak uygun alanların belirlenmesi sürecinde
+kullanılmıştır.
+2.3 Yöntem
+Şekil 2
+3. BULGULAR
+Çalışma sonucunda, Bayburt ili genelinde güneş enerji santralleri için en uygun alanlar belirlenmiştir. AHP yöntemiyle
+ağırlıklandırılan kriterler kullanılarak yapılan CBS tabanlı analizler sonucunda uygunluk haritası oluşturulmuştur.
+Harita, uygunluk seviyelerini görsel olarak temsil ederek bölgedeki enerji potansiyelini ortaya koymuştur:
+Analiz sonuçlarına göre:
+En yüksek uygunluk alanları (mavi tonlar): İlin güney ve güneydoğu kesimlerinde yoğunlaşmaktadır. Bu bölgeler,
+yüksek güneş ışınımı, uygun eğim ve enerji iletim hatlarına yakınlık gibi faktörlerle ön plana çıkmıştır.
+Yüksek ve orta uygunluk alanları (yeşil ve sarı tonlar): İl genelinde geniş bir alana yayılmıştır. Bu alanlar, güneş
+ışınımı ve eğim açısından avantajlı olmakla birlikte, bazı kısıtlayıcı faktörlerin etkisi altındadır.
+Düşük uygunluk ve uygun olmayan alanlar (turuncu ve kırmızı tonlar): Özellikle yerleşim yerlerine, su
+kaynaklarına ve tarım alanlarına yakın bölgelerde görülmektedir. Bu alanlar, çevresel ve yasal kısıtlamalar
+nedeniyle enerji santrali kurulumu için uygun değildir.
+4. SONUÇ ve DEĞERLENDİRME
+Bu çalışma, Bayburt ili için güneş enerji santrali kurulumu açısından en uygun alanların belirlenmesi amacıyla Coğrafi
+Bilgi Sistemleri (CBS) ve Analitik Hiyerarşi Süreci (AHP) yöntemlerini bir arada kullanarak kapsamlı bir analiz
+gerçekleştirmiştir. Çalışma sonucunda elde edilen uygunluk haritası, bölgedeki arazi özellikleri, güneş ışınımı potansiyeli
+ve çeşitli çevresel faktörler dikkate alınarak hazırlanmıştır.
+Bu sonuçlar, Bayburt ilinde yenilenebilir enerji kaynaklarının etkin kullanımına yönelik önemli bir potansiyel
+sunduğunu ortaya koymaktadır. Özellikle enerji altyapısı ve ekonomik maliyetler göz önüne alındığında, kuzeydoğu  
+bölgeleri güneş enerji yatırımları için öncelikli değerlendirilmesi gereken alanlar olarak öne çıkmaktadır. Bu bağlamda,
+bölgeye yapılacak yatırımların sürdürülebilir enerji politikaları ile uyumlu olduğu söylenebilir.
+5. KAYNAKÇA
+1-Eroğlu, H. (2018). Güneş Enerji Santralleri İçin Uygunluk Haritasının Elde Edilmesi: Bir Uygulama. Iğdır
+Üniversitesi Fen Bilimleri Enstitüsü Dergisi, 8(4), 97-106. DOI: 10.21597/jist.430615
+2-Matpay, B. (2024). Coğrafi bakımdan güneş enerji santrali (GES) için uygun yerlerin belirlenmesi: Van ili örneği.
+Türk Coğrafya Dergisi, 85, 7-19. DOI: 10.17211/tcd.1442528 .
+3-Uyan, M. (2017). Güneş Enerjisi Santrali Kurulabilecek Alanların AHP Yöntemi Kullanılarak CBS Destekli
+Haritalanması. Pamukkale Üniversitesi Mühendislik Bilimleri Dergisi, 23(4), 343-351. DOI: 10.5505/pajes.2016.59489
+Bu çalışmada, güneş enerji santralleri için uygun alanların belirlenmesi amacıyla Model Builder kullanılarak bir analiz modeli
+geliştirilmiştir. Şekilde yer alan model, veri işleme, analiz ve sonuç üretimi aşamalarını adım adım görselleştirmektedir.
+Girdi Veriler: Modelin temel girdilerini güneş ışınımı, arazi kullanımı, eğim, bakı (aspect) gibi coğrafi kriterler ile yollar,
+akarsular, enerji iletim hatları ve göller gibi mesafe analizine dayalı veriler oluşturmaktadır.
+Veri İşleme:
+Distance Accumulation (Mesafe Analizi): Yollar, akarsular, enerji hatları ve göller gibi veriler için mesafe analizleri
+gerçekleştirilmiştir.
+Reclassify (Yeniden Sınıflandırma): Güneş ışınımı, eğim ve arazi kullanım gibi kriterler, uygunluk değerlerine göre yeniden
+sınıflandırılmıştır.
+Ağırlıklandırılmış Toplam Analizi (Weighted Sum): Tüm veriler, Analitik Hiyerarşi Süreci (AHP) ile belirlenen ağırlık
+katsayıları kullanılarak ağırlıklı toplam yöntemiyle birleştirilmiştir. Bu süreçte, her kriterin uygunluk analizi üzerindeki etkisi
+dikkate alınmıştır.
+Sonuç Haritası: Modelin çıktısı, güneş enerji santralleri için uygun alanları içeren nihai uygunluk haritasıdır. Harita, alanları
+uygunluk seviyelerine göre sınıflandırarak karar vericilere rehberlik etmektedir.
+Sonuç Alanlarının Yüzdelik Dağılımı ;
+Yapılan analiz sonucunda, Bayburt ilinde güneş enerji
+santralleri için uygun alanlar farklı uygunluk kategorilerine
+ayrılmıştır. Şekilde görülen yüzdelik dağılım, her bir uygunluk
+sınıfının çalışma alanı içerisindeki kapladığı alan yüzdesini
+göstermektedir.
+Şekil 4
+Şekil 3 Şekil 6
+Şekil 4'te bulunan haritalar, çalışmada kullanılan
+kriter haritalarıdır. Her haritada kırmızı renk,
+potansiyel güneş enerjisi santrali alanına uygun
+olmayan alanları, mavi renk ise uygun olan
+alanları göstermektedir. Haritalar, çok kriterli
+karar verme (ÇKKV) yöntemine dayalı olarak
+analiz edilmiştir.
+Güneş ışınımının yüksek olduğu bölgeler, santral
+kurulumunda öncelikli olarak belirlenmiştir.
+Arazi kullanımı kriteri, mevcut doğal ve insan
+yapımı özelliklerin analiz edilmesiyle
+değerlendirilmiştir. Tarım alanları ve yerleşim
+yerleri gibi hassas bölgeler uygun olmayan
+kategoride sınıflandırılırken, çorak ve bozkır
+araziler öncelikli alanlar olarak tanımlanmıştır.
+Bakı, arazinin güneşe dönük yönelimini temsil
+eder ve bu bağlamda güney yönelimli alanlar
+daha avantajlı bulunmuştur.  Arazinin eğimi,
+santral kurulum maliyetleri ve panel
+ yerleşiminde optimizasyon sağlanması açısından büyük önem taşımaktadır.
+Çalışmada düşük eğimli alanlar tercih edilmiş, dik eğimli bölgeler ise düşük
+uygunluk seviyesinde değerlendirilmiştir. Enerji hattına ve yollara uzaklık
+kriterleri, altyapıya erişim kolaylığını ve ekonomik verimliliği doğrudan
+etkilediği için analizde öncelikli parametreler arasında yer almıştır.
+Çevresel sürdürülebilirlik ilkeleri doğrultusunda, göllere ve akarsulara
+uzaklık kriterleri de detaylı bir şekilde değerlendirilmiştir. Su kaynaklarına
+yakınlık, hem doğal ekosistemlerin korunması hem de yasal kısıtlamalar
+açısından önem taşımaktadır.

@@ -279,8 +279,12 @@
                     </svg>
                     Portfolyoya Dön
                 </a>
-                <h1 class="project-hero-title">Mekânsal Analiz</h1>
-                <p class="project-hero-subtitle">Meke Maarı'nın zamansal değişimi ve mekânsal inceleme.</p>
+                <div>
+                    <span class="project-tag">Uzaktan Algılama</span>
+                    <span class="project-tag">Zamansal Analiz</span>
+                </div>
+                <h1 class="project-hero-title">Meke Maarı Zamansal Değişim Analizi</h1>
+                <p class="project-hero-subtitle">Uydu görüntüleri ve CBS kullanılarak, Meke Gölü çevresindeki hidrolojik ve morfolojik değişimin yıllar bazında incelendiği mekânsal araştırma projesi.</p>
             </div>
         </section>
 
@@ -312,6 +316,96 @@
                             onload="document.getElementById('pdfLoading').classList.add('hidden')">
                         </iframe>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+                <!-- Proje Özeti -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Proje Özeti</h2>
+                    <p class="detail-text">"Dünyanın Nazar Boncuğu" olarak bilinen Konya Karapınar'daki Meke Maarı'nın son yıllarda maruz kaldığı kuraklık ve tahribatın, uydu görüntüleri aracılığıyla incelenmesidir. Proje kapsamında alanın farklı yıllara ait (Landsat vb.) verileri analiz edilerek, göl yüzey alanındaki daralma ve topoğrafik değişim kartografik olarak modellenmiştir.</p>
+                </div>
+
+                <!-- Çözülen Problem -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Çözülen Problem</h2>
+                    <p class="detail-text">İklim krizi ve yanlış su yönetiminin yol açtığı çevresel deformasyonun salt gözlemlerle değil, nicel ve somut bir şekilde kanıtlanması ihtiyacı vardır. Gözlemlerin ötesine geçerek Meke Gölü'nün yaşadığı kuruma sürecini bilimsel ve mekânsal kalıplara oturtmak, böylece ekolojik değişimin boyutunu kamuoyu ve araştırmacılar için görünür kılmak hedeflenmiştir.</p>
+                </div>
+
+                <!-- Yaklaşım / Çözüm Mantığı -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Yaklaşım / Çözüm Mantığı</h2>
+                    <p class="detail-text">Çalışmada mekânsal analizin güvenilirliğini artırmak amacıyla, öncelikle sahanın geçmiş yıllardaki durumu için detaylı literatür taraması yapılmıştır. Doğrulanan bilgiler ışığında, çok zamanlı (multi-temporal) uydu görüntüleri üzerinden MNDWI (Modifiye Edilmiş Normalize Su İndeksi) hesaplamaları uygulanmıştır. Yıllara göre değişen su kütlesi piksel bazında izole edilerek vektörel alanlara dönüştürülmüş ve daralma sınırları yüzdesel olarak kıyaslanmıştır.</p>
+                </div>
+
+                <!-- Sistem Nasıl Çalışıyor -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Analiz Adımları</h2>
+                    <div class="timeline-cards">
+                        <div class="t-card">
+                            <div class="t-number">1</div>
+                            <div class="t-text">Meke Gölü'nün geçmiş dönem su durumunu incelemek amacıyla literatür taraması ve arşiv verisi toplama.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">2</div>
+                            <div class="t-text">Seçilen periyotlara uygun bulutsuz uydu görüntülerinin temin edilip atmosferik düzeltmelerinin uygulanması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">3</div>
+                            <div class="t-text">MNDWI (Modifiye Normalize Su İndeksi) algoritması kullanılarak su alanlarının hassas bir şekilde ayrıştırılması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">4</div>
+                            <div class="t-text">Hesaplanan indeks sonuçları üzerinden her yıla ait göl sınır alanlarının sınıflandırılıp çıkarılması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">5</div>
+                            <div class="t-text">Literatür verileri ve güncel analiz sonuçlarının karşılaştırılarak yüzey alanı daralma oranlarının raporlanması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">6</div>
+                            <div class="t-text">Nihai daralma sınırlarının tematik kartografik haritalara dönüştürülmesi.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temel Özellikler -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Temel Kazanımlar</h2>
+                    <ul class="feature-grid">
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Zamansal olarak yüksek doğruluklu değişim haritalaması</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Uzaktan Algılama verileriyle saha çalışmasına ihtiyaç duymayan veri üretimi</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Kuraklık izleme politikaları için somut veri sunumu</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Ekolojik raporlamalara CBS altyapısının entegrasyonu</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CBS Perspektifi -->
+                <div class="detail-block highlight-block">
+                    <h2 class="detail-title">CBS / Mekânsal Analiz Perspektifi</h2>
+                    <p class="detail-text">Proje, salt konumsal analizden ziyade Remote Sensing (Uzaktan Algılama) disiplininin gücünü kullanarak gezegenin geçirdiği değişimlerin "mekânsal hafızasını" korumayı amaçlar. Klasik ölçümler yerine uyduların spektral bantlarını kullanarak, ekolojik tahribat gibi soyut kavramları görünür bir çevre farkındalık projesine dönüştürür.</p>
+                </div>
+
+
+                <!-- CTA -->
+                <div class="cta-block">
+                    <h2 class="cta-title">Tam Raporu İnceleyin</h2>
+                    <p class="cta-desc">Meke Maarı'nda yaptığım analizin metodolojisini, spektral bulguları ve tüm analiz çıktılarını içeren araştırma raporumu hemen görüntüleyebilirsiniz.</p>
+                    <a href="https://raw.githubusercontent.com/georehber/projects/main/meke_maari.pdf" target="_blank" class="btn btn-primary cta-btn">PDF Raporu İndir & İncele</a>
                 </div>
             </div>
         </section>
