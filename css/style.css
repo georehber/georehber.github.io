@@ -792,6 +792,306 @@ body.dark .scroll-top-btn {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Guvenli Sehir Details Page */
+.pdf-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.pdf-back-link:hover {
+    opacity: 0.7;
+}
+
+.project-hero {
+    padding: 6rem 0 4rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(var(--primary), 0.05) 0%, transparent 100%);
+}
+
+.project-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    margin: 0 0.25rem 1rem;
+    background-color: rgba(var(--primary), 0.1);
+    color: var(--primary);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.project-hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.project-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--muted-foreground);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.project-details {
+    padding: 2rem 0 5rem;
+}
+
+.detail-block {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.detail-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.detail-text {
+    font-size: 1.125rem;
+    color: rgba(var(--foreground), 0.85);
+    line-height: 1.8;
+}
+
+/* Timeline / Num Cards */
+.timeline-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .timeline-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.t-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.t-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.t-text {
+    font-size: 1rem;
+    color: var(--foreground);
+    line-height: 1.5;
+}
+
+/* Feature Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.feature-grid li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--secondary);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.feature-grid svg {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Highlight Block */
+.highlight-block {
+    background-color: rgba(var(--primary), 0.05);
+    border-left: 4px solid var(--primary);
+    padding: 2rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Limits Card */
+.limits-card {
+    background-color: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.limits-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.limits-header svg {
+    color: rgb(239, 68, 68);
+    width: 24px;
+    height: 24px;
+}
+
+.limits-header h2 {
+    color: rgb(239, 68, 68);
+}
+
+/* Roadmap Grid */
+.roadmap-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.roadmap-item {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--foreground);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Browser Mockup */
+.project-mockup {
+    margin: -2rem 0 3rem;
+}
+
+.browser-mockup {
+    background-color: var(--card);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+body.dark .browser-mockup {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.browser-header {
+    background-color: var(--secondary);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.browser-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff5f56;
+}
+
+.browser-dots span:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.browser-dots span:nth-child(3) {
+    background-color: #27c93f;
+}
+
+.browser-url {
+    margin: 0 auto;
+    background-color: var(--card);
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--muted-foreground);
+    font-family: 'Fira Code', monospace;
+    border: 1px solid var(--border);
+}
+
+.browser-content {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    position: relative;
+    background-color: #f1f5f9;
+}
+
+body.dark .browser-content {
+    background-color: #1e293b;
+}
+
+.browser-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* CTA */
+.cta-block {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--secondary);
+    border-radius: 0.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-desc {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Utility Classes */
 .highlight {
     color: var(--primary);

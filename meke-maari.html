@@ -189,6 +189,13 @@
 
 <body>
     <div id="root">
+        <!-- Scroll to Top Button -->
+        <button id="scrollTopBtn" class="scroll-top-btn" title="Yukarı Git" style="display: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+        </button>
+
         <!-- Navigation -->
         <nav class="navbar">
             <div class="container navbar-content">
@@ -263,21 +270,23 @@
             </div>
         </nav>
 
-        <!-- PDF Viewer Section -->
-        <section class="pdf-viewer-section">
-            <div class="container">
-                <div class="pdf-header">
-                    <a href="index.html#portfolio" class="pdf-back-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7" />
-                        </svg>
-                        Portfolyoya Dön
-                    </a>
-                    <h1 class="pdf-title">Mekânsal Analiz</h1>
-                    <p class="pdf-description">Meke Maarı'nın zamansal değişimi ve mekânsal inceleme.</p>
-                </div>
+        <!-- Project Hero Section -->
+        <section class="project-hero">
+            <div class="container project-hero-content">
+                <a href="index.html#portfolio" class="pdf-back-link" style="justify-content: center; margin-bottom: 2rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Portfolyoya Dön
+                </a>
+                <h1 class="project-hero-title">Mekânsal Analiz</h1>
+                <p class="project-hero-subtitle">Meke Maarı'nın zamansal değişimi ve mekânsal inceleme.</p>
+            </div>
+        </section>
 
+        <!-- Document Viewer Section -->
+        <section class="project-mockup">
+            <div class="container">
                 <div class="pdf-container">
                     <div class="pdf-download-bar">
                         <span>meke_maari.pdf</span>
