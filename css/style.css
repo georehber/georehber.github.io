@@ -562,7 +562,8 @@ body.dark .profile-img-wrapper {
     height: 28px;
 }
 
-.about-item:nth-child(2) .about-icon {
+.about-item:nth-child(2) .about-icon,
+.about-item:nth-child(4) .about-icon {
     color: var(--accent);
 }
 
