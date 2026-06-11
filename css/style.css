@@ -283,6 +283,23 @@ button {
     font-weight: 500;
 }
 
+.hero-subtitle-static,
+.hero-subtitle-dynamic {
+    display: block;
+}
+
+.hero-subtitle-divider {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hero-subtitle-static,
+    .hero-subtitle-dynamic,
+    .hero-subtitle-divider {
+        display: inline;
+    }
+}
+
 .cursor {
     display: inline-block;
     width: 2px;
