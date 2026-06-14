@@ -120,6 +120,9 @@ button {
 }
 
 .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--primary);
@@ -127,6 +130,18 @@ button {
     letter-spacing: -0.02em;
     transition: opacity 0.3s ease;
     cursor: pointer;
+}
+
+.navbar-logo {
+    height: 3rem;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+    .navbar-logo {
+        height: 4rem;
+    }
 }
 
 .navbar-brand:hover {
