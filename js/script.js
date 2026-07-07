@@ -131,48 +131,6 @@ if (scrollTopBtn) {
     window.addEventListener('scroll', handleScroll);
 }
 
-// Navigation to QGIS Plugins page
-function navigateToQgis() {
-    window.location.href = 'qgis-eklentileri.html';
-}
-
-// Typing Animation for Hero Subtitle
-const typingTexts = ["Mekânsal Analiz", "Uzaktan Algılama", "CBS (GIS)"];
-let typingIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeEffect() {
-    const typedTextElement = document.querySelector('.typed-text');
-    if (!typedTextElement) return;
-
-    const currentText = typingTexts[typingIndex];
-
-    if (isDeleting) {
-        typedTextElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typedTextElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-    }
-
-    let typeSpeed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; // Pause at end
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        typingIndex++;
-        if (typingIndex === typingTexts.length) {
-            typingIndex = 0;
-        }
-        typeSpeed = 500; // Pause before typing next
-    }
-
-    setTimeout(typeEffect, typeSpeed);
-}
-
 // Scroll Reveal Animations
 function reveal() {
     var reveals = document.querySelectorAll('.reveal');
@@ -191,11 +149,37 @@ function reveal() {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
-    setTimeout(typeEffect, 1000); // Start typing animation
-    reveal(); // Trigger initial reveals
+    reveal();
 });
 
 window.addEventListener('scroll', reveal);
+
+// Newsletter request form for the static GitHub Pages site
+const newsletterForm = document.getElementById('newsletterForm');
+const newsletterEmail = document.getElementById('newsletterEmail');
+const newsletterMessage = document.getElementById('newsletterMessage');
+
+if (newsletterForm && newsletterEmail && newsletterMessage) {
+    newsletterForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const email = newsletterEmail.value.trim();
+        const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!isValidEmail) {
+            newsletterMessage.textContent = 'Lütfen geçerli bir e-posta adresi yazın.';
+            return;
+        }
+
+        const subject = encodeURIComponent('GeoRehber duyuru listesine katılmak istiyorum');
+        const body = encodeURIComponent(
+            `Merhaba Mehmet Ali,\n\nGeoRehber'deki yeni ders, video ve kaynak duyurularından haberdar olmak istiyorum.\n\nE-posta adresim: ${email}\n`
+        );
+
+        newsletterMessage.textContent = 'E-posta uygulamanız açılıyor. Hazır mesajı göndererek kayıt talebinizi iletebilirsiniz.';
+        window.location.href = `mailto:georehber01@gmail.com?subject=${subject}&body=${body}`;
+    });
+}
 
 // ====== GA4 Event Tracking ======
 document.addEventListener('DOMContentLoaded', () => {
@@ -215,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
         // Find the closest interactive element
-        const target = e.target.closest('a, button, .btn, .project-card, .plugin-card a, .download-btn');
+        const target = e.target.closest('a, button, .btn, .project-card, .work-card, .path-card, .plugin-card a, .download-btn');
         if (!target) return;
 
         let eventName = '';
@@ -256,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             params.event_label = 'WhatsApp';
         }
         // --- 3. PDF / Portfolio Links ---
-        else if (hrefUrl.includes('.pdf') || target.closest('.pdf-download-btn') || target.closest('.project-card') || hrefUrl.includes('storymaps.arcgis.com') || hrefUrl.includes('udemy.com')) {
+        else if (hrefUrl.includes('.pdf') || target.closest('.pdf-download-btn') || target.closest('.project-card') || target.closest('.work-card') || hrefUrl.includes('storymaps.arcgis.com') || hrefUrl.includes('udemy.com')) {
             eventName = 'click_portfolio_pdf';
             params.event_category = 'portfolio';
             params.event_label = params.link_text || 'Portfolio Item/PDF';
