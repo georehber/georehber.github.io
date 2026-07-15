@@ -13,13 +13,14 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayfa Bulunamadı - Georehber</title>
-    <meta name="description" content="Aradığınız sayfa bulunamadı. Lütfen ana sayfaya veya çalışmalara dönün.">
+    <title>Sayfa Bulunamadı | GeoRehber</title>
+    <meta name="description" content="Aradığınız sayfa bulunamadı. GeoRehber ana sayfasına veya uygulamalar bölümüne dönebilirsiniz.">
+    <meta name="robots" content="noindex, follow">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
     <link class="apple-touch-icon" rel="apple-touch-icon" href="favicon.png">
-    
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/style.css?v=20260715-5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -80,15 +81,17 @@
         <nav class="navbar">
             <div class="container navbar-content">
                 <a href="index.html" class="navbar-brand">
-                    <img src="favicon.png" alt="GeoRehber Logo" class="navbar-logo">GEOREHBER
+                    <img src="assets/logo.webp" alt="GeoRehber Logo" class="navbar-logo" width="64" height="64">GEOREHBER
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="desktop-menu">
+                    <a href="index.html#learn" class="nav-link">Eğitimler</a>
+                    <a href="index.html#updates" class="nav-link">Duyurular</a>
+                    <a href="uygulamalar.html" class="nav-link">Uygulamalar</a>
                     <a href="index.html#about" class="nav-link">Hakkında</a>
-                    <a href="index.html#portfolio" class="nav-link">Çalışmalar</a>
                     <a href="index.html#contact" class="nav-link">İletişim</a>
-                    <button id="themeToggle" class="theme-toggle" title="Gece Modu">
+                    <button id="themeToggle" class="theme-toggle" type="button" title="Gece Modu" aria-label="Koyu temayı aç">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
@@ -110,7 +113,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="mobile-menu-controls">
-                    <button id="themeToggleMobile" class="theme-toggle" title="Gece Modu">
+                    <button id="themeToggleMobile" class="theme-toggle" type="button" title="Gece Modu" aria-label="Koyu temayı aç">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
@@ -128,7 +131,7 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <button id="mobileMenuBtn" class="mobile-menu-btn" title="Menü">
+                    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" title="Menü" aria-label="Menüyü aç" aria-controls="mobileMenu" aria-expanded="false">
                         <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <line x1="3" y1="6" x2="21" y2="6" />
@@ -146,8 +149,10 @@
 
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="mobile-menu" style="display: none;">
+                <a href="index.html#learn" class="mobile-nav-link">Eğitimler</a>
+                <a href="index.html#updates" class="mobile-nav-link">Duyurular</a>
+                <a href="uygulamalar.html" class="mobile-nav-link">Uygulamalar</a>
                 <a href="index.html#about" class="mobile-nav-link">Hakkında</a>
-                <a href="index.html#portfolio" class="mobile-nav-link">Çalışmalar</a>
                 <a href="index.html#contact" class="mobile-nav-link">İletişim</a>
             </div>
         </nav>
@@ -162,8 +167,8 @@
                     <a href="index.html" class="btn btn-primary">
                         Ana Sayfa
                     </a>
-                    <a href="index.html#portfolio" class="btn btn-secondary">
-                        Çalışmalar
+                    <a href="uygulamalar.html" class="btn btn-secondary">
+                        Uygulamalar
                     </a>
                     <a href="qgis-eklentileri.html" class="btn btn-secondary">
                         QGIS Eklentileri
@@ -176,10 +181,10 @@
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
-                    <p class="footer-text">© 2026 Mehmet Ali Yanmaz. Tüm hakları saklıdır.</p>
+                    <p class="footer-text">© 2026 GeoRehber. Tüm hakları saklıdır.</p>
                     <div class="footer-links">
                         <a href="https://linkedin.com/in/mehmetaliyanmaz" target="_blank" rel="noopener noreferrer"
-                            title="LinkedIn">
+                            title="LinkedIn" aria-label="LinkedIn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
@@ -187,7 +192,7 @@
                             </svg>
                         </a>
                         <a href="https://www.instagram.com/georehber" target="_blank" rel="noopener noreferrer"
-                            title="Instagram">
+                            title="Instagram" aria-label="Instagram">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -196,7 +201,7 @@
                             </svg>
                         </a>
                         <a href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener noreferrer"
-                            title="YouTube">
+                            title="YouTube" aria-label="YouTube">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path
@@ -205,7 +210,7 @@
                                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                             </svg>
                         </a>
-                        <a href="https://wa.me/905316066176" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                        <a href="https://wa.me/905316066176" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path
@@ -213,7 +218,7 @@
                                 </path>
                             </svg>
                         </a>
-                        <a href="mailto:georehber01@gmail.com" title="E-posta">
+                        <a href="mailto:georehber01@gmail.com" title="E-posta" aria-label="E-posta">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -226,7 +231,7 @@
         </footer>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=20260715-5"></script>
 </body>
 
 </html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3NJW4TZFDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBS Uygulamaları ve Proje Örnekleri | GeoRehber</title>
+    <meta name="description"
+        content="GeoRehber tarafından hazırlanan Web CBS uygulamaları, QGIS araçları, mekânsal analiz raporları ve harita tabanlı proje örnekleri.">
+    <link rel="canonical" href="https://georehber.com/uygulamalar.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://georehber.com/uygulamalar.html">
+    <meta property="og:title" content="CBS Uygulamaları ve Proje Örnekleri | GeoRehber">
+    <meta property="og:description"
+        content="Web CBS uygulamaları, QGIS araçları ve mekânsal analiz örneklerini tek sayfada inceleyin.">
+    <meta property="og:image" content="https://georehber.com/assets/og-georehber.png">
+    <meta property="og:site_name" content="GeoRehber">
+    <meta property="og:locale" content="tr_TR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CBS Uygulamaları ve Proje Örnekleri | GeoRehber">
+    <meta name="twitter:description"
+        content="Web CBS uygulamaları, QGIS araçları ve mekânsal analiz örneklerini tek sayfada inceleyin.">
+    <meta name="twitter:image" content="https://georehber.com/assets/og-georehber.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "GeoRehber CBS Uygulamaları",
+        "url": "https://georehber.com/uygulamalar.html",
+        "isPartOf": {"@type": "WebSite", "name": "GeoRehber", "url": "https://georehber.com/"}
+    }
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css?v=20260715-5">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="root">
+        <button id="scrollTopBtn" class="scroll-top-btn" type="button" title="Yukarı Git"
+            aria-label="Sayfanın başına dön" style="display: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+        </button>
+
+        <nav class="navbar" aria-label="Ana menü">
+            <div class="container navbar-content">
+                <a href="index.html" class="navbar-brand">
+                    <img src="assets/logo.webp" alt="GeoRehber Logo" class="navbar-logo" width="64" height="64">GEOREHBER
+                </a>
+
+                <div class="desktop-menu">
+                    <a href="index.html#learn" class="nav-link">Eğitimler</a>
+                    <a href="index.html#updates" class="nav-link">Duyurular</a>
+                    <a href="uygulamalar.html" class="nav-link" aria-current="page">Uygulamalar</a>
+                    <a href="index.html#about" class="nav-link">Hakkında</a>
+                    <a href="index.html#contact" class="nav-link">İletişim</a>
+                    <button id="themeToggle" class="theme-toggle" type="button" title="Gece Modu"
+                        aria-label="Koyu temayı aç">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="mobile-menu-controls">
+                    <button id="themeToggleMobile" class="theme-toggle" type="button" title="Gece Modu"
+                        aria-label="Koyu temayı aç">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" title="Menü"
+                        aria-label="Menüyü aç" aria-controls="mobileMenu" aria-expanded="false">
+                        <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="mobile-menu" style="display: none;">
+                <a href="index.html#learn" class="mobile-nav-link">Eğitimler</a>
+                <a href="index.html#updates" class="mobile-nav-link">Duyurular</a>
+                <a href="uygulamalar.html" class="mobile-nav-link" aria-current="page">Uygulamalar</a>
+                <a href="index.html#about" class="mobile-nav-link">Hakkında</a>
+                <a href="index.html#contact" class="mobile-nav-link">İletişim</a>
+            </div>
+        </nav>
+
+        <main>
+            <section class="listing-hero">
+                <div class="container listing-hero-content">
+                    <p class="eyebrow">Uygulamalar ve kaynaklar</p>
+                    <h1>Farklı CBS yaklaşımlarını somut örneklerle incele.</h1>
+                    <p>Web tabanlı haritalar, QGIS araçları, uzaktan algılama çalışmaları ve karar destek analizleri.</p>
+                </div>
+            </section>
+
+            <section class="section applications-section">
+                <div class="container">
+                    <div class="work-grid applications-grid">
+                        <a class="work-card" href="guvenli-sehir.html">
+                            <span class="work-type">Web CBS</span>
+                            <h2>Güvenli Şehir Bilgi Sistemi</h2>
+                            <p>Kullanıcıların risk ve olay noktaları ekleyebildiği, yoğunluk temelli ısı haritası kullanan web tabanlı CBS platformu.</p>
+                            <span class="btn btn-link">Projeyi incele</span>
+                        </a>
+
+                        <a class="work-card" href="https://hatayatlas.georehber.com" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="work-type">Kent Rehberi</span>
+                            <h2>Hatay Kent Rehberi</h2>
+                            <p>Turistik noktalar, sağlık hizmetleri ve günlük ihtiyaç alanlarını harita tabanlı sunan kent atlası.</p>
+                            <span class="btn btn-link">Siteyi ziyaret et</span>
+                        </a>
+
+                        <a class="work-card" href="qgis-eklentileri.html">
+                            <span class="work-type">QGIS Araçları</span>
+                            <h2>QGIS Otomasyon ve Analiz Eklentileri</h2>
+                            <p>GeoRehber Location Map ve Risk &amp; Suitability Analysis gibi PyQGIS araçları.</p>
+                            <span class="btn btn-link">Eklentileri gör</span>
+                        </a>
+
+                        <a class="work-card" href="meke-maari.html">
+                            <span class="work-type">Uzaktan Algılama</span>
+                            <h2>Meke Maarı Zamansal Değişim Analizi</h2>
+                            <p>Uydu görüntüleri ve CBS ile Meke Gölü çevresindeki değişimi inceleyen mekânsal araştırma.</p>
+                            <span class="btn btn-link">Raporu incele</span>
+                        </a>
+
+                        <a class="work-card" href="bayburt-ges.html">
+                            <span class="work-type">Karar Destek</span>
+                            <h2>Bayburt İli GES Uygunluk Analizi</h2>
+                            <p>Güneş enerjisi santrali kurulumu için çok kriterli mekânsal uygunluk analizi.</p>
+                            <span class="btn btn-link">Analizi incele</span>
+                        </a>
+
+                        <a class="work-card"
+                            href="https://storymaps.arcgis.com/stories/1e30b8bdacc247a5ad81db688fe236a5"
+                            target="_blank" rel="noopener noreferrer">
+                            <span class="work-type">StoryMaps</span>
+                            <h2>Türkiye'nin Tehlike Altındaki Memelileri</h2>
+                            <p>Esri StoryMaps üzerinden hazırlanan, harita ve veri destekli interaktif mekânsal anlatım.</p>
+                            <span class="btn btn-link">StoryMap'i aç</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact compact-contact">
+                <div class="container contact-content">
+                    <div>
+                        <h2 class="contact-title">Bir çalışma hakkında iletişime geç</h2>
+                        <p class="contact-subtitle">Proje, eğitim veya iş birliği için ayrıntıları paylaşabilirsin.</p>
+                    </div>
+                    <a href="mailto:georehber01@gmail.com" class="btn btn-contact email">E-posta Gönder</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-content">
+                <p class="footer-text">&copy; 2026 GeoRehber. Tüm hakları saklıdır.</p>
+                <div class="footer-links">
+                    <a href="https://tr.linkedin.com/in/mehmetaliyanmaz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.instagram.com/georehber" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener noreferrer">YouTube</a>
+                    <a href="mailto:georehber01@gmail.com">E-posta</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js?v=20260715-5"></script>
+</body>
+
+</html>

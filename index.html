@@ -16,6 +16,7 @@
     <title>GeoRehber | CBS Eğitimleri ve Uygulamalı Harita Rehberi</title>
     <meta name="description"
         content="GeoRehber — CBS eğitimleri, ArcGIS Pro ve QGIS içerikleri, web haritaları ve uygulamalı mekansal analiz kaynakları için rehber platform.">
+    <link rel="canonical" href="https://georehber.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -23,22 +24,49 @@
     <meta property="og:title" content="GeoRehber | CBS Eğitimleri ve Uygulamalı Harita Rehberi">
     <meta property="og:description"
         content="ArcGIS Pro, QGIS, uzaktan algılama ve web haritaları üzerine uygulamalı CBS içerikleri.">
-    <meta property="og:image" content="https://georehber.com/assets/logo.png">
+    <meta property="og:image" content="https://georehber.com/assets/og-georehber.png">
     <meta property="og:site_name" content="GeoRehber">
     <meta property="og:locale" content="tr_TR">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://georehber.com/">
-    <meta property="twitter:title" content="GeoRehber | CBS Eğitimleri ve Uygulamalı Harita Rehberi">
-    <meta property="twitter:description"
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://georehber.com/">
+    <meta name="twitter:title" content="GeoRehber | CBS Eğitimleri ve Uygulamalı Harita Rehberi">
+    <meta name="twitter:description"
         content="ArcGIS Pro, QGIS, uzaktan algılama ve web haritaları üzerine uygulamalı CBS içerikleri.">
-    <meta property="twitter:image" content="https://georehber.com/assets/logo.png">
+    <meta name="twitter:image" content="https://georehber.com/assets/og-georehber.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://georehber.com/#website",
+                "url": "https://georehber.com/",
+                "name": "GeoRehber",
+                "description": "CBS eğitimleri, uygulamalı analizler, web haritaları ve GeoRehber kaynakları."
+            },
+            {
+                "@type": "Person",
+                "@id": "https://georehber.com/#mehmet-ali-yanmaz",
+                "name": "Mehmet Ali Yanmaz",
+                "jobTitle": "CBS Uzmanı",
+                "url": "https://georehber.com/",
+                "sameAs": [
+                    "https://tr.linkedin.com/in/mehmetaliyanmaz",
+                    "https://www.instagram.com/georehber",
+                    "https://www.youtube.com/@georehber/"
+                ]
+            }
+        ]
+    }
+    </script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260715-5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -48,7 +76,8 @@
 
 <body>
     <div id="root">
-        <button id="scrollTopBtn" class="scroll-top-btn" title="Yukarı Git" style="display: none;">
+        <button id="scrollTopBtn" class="scroll-top-btn" type="button" title="Yukarı Git"
+            aria-label="Sayfanın başına dön" style="display: none;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>
@@ -58,7 +87,7 @@
             <div class="container navbar-content">
                 <a href="#" class="navbar-brand"
                     onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
-                    <img src="favicon.png" alt="GeoRehber Logo" class="navbar-logo">GEOREHBER
+                    <img src="assets/logo.webp" alt="GeoRehber Logo" class="navbar-logo" width="64" height="64">GEOREHBER
                 </a>
 
                 <div class="desktop-menu">
@@ -67,7 +96,8 @@
                     <a href="#work" class="nav-link" onclick="smoothScroll(event, 'work')">Uygulamalar</a>
                     <a href="#about" class="nav-link" onclick="smoothScroll(event, 'about')">Hakkında</a>
                     <a href="#contact" class="nav-link" onclick="smoothScroll(event, 'contact')">İletişim</a>
-                    <button id="themeToggle" class="theme-toggle" title="Gece Modu">
+                    <button id="themeToggle" class="theme-toggle" type="button" title="Gece Modu"
+                        aria-label="Koyu temayı aç">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
@@ -88,7 +118,8 @@
                 </div>
 
                 <div class="mobile-menu-controls">
-                    <button id="themeToggleMobile" class="theme-toggle" title="Gece Modu">
+                    <button id="themeToggleMobile" class="theme-toggle" type="button" title="Gece Modu"
+                        aria-label="Koyu temayı aç">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5" />
@@ -106,7 +137,8 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
-                    <button id="mobileMenuBtn" class="mobile-menu-btn" title="Menü">
+                    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" title="Menü"
+                        aria-label="Menüyü aç" aria-controls="mobileMenu" aria-expanded="false">
                         <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <line x1="3" y1="6" x2="21" y2="6" />
@@ -150,51 +182,33 @@
                                 rel="noopener noreferrer">YouTube videoları</a>
                         </div>
 
-                        <div class="trust-row" aria-label="GeoRehber konu başlıkları">
-                            <span>ArcGIS Pro</span>
-                            <span>QGIS</span>
-                            <span>Uzaktan Algılama</span>
-                            <span>Web Haritaları</span>
-                        </div>
+                        <ul class="trust-row" aria-label="GeoRehber konu başlıkları">
+                            <li>ArcGIS Pro</li>
+                            <li>QGIS</li>
+                            <li>Uzaktan Algılama</li>
+                            <li>Web Haritaları</li>
+                        </ul>
                     </div>
 
-                    <aside class="hero-panel" aria-label="GeoRehber başlangıç kartı">
-                        <img src="assets/logo.png" alt="GeoRehber" class="hero-panel-logo">
-                        <p class="panel-kicker">Sıfırdan ileri seviyeye</p>
-                        <h2>Önce öğren, sonra kendi haritanı üret.</h2>
-                        <p>
-                            İçeriklerin odağı teori anlatmakla sınırlı değil; veri ekleme, analiz yapma, harita çıktısı
-                            alma ve web tabanlı CBS uygulamaları geliştirme süreçlerini adım adım göstermek.
-                        </p>
-                        <a href="#learn" onclick="smoothScroll(event, 'learn')" class="panel-link">Nereden başlayacağını seç</a>
+                    <aside class="hero-panel" aria-label="GeoRehber öğrenme yaklaşımı">
+                        <p class="eyebrow">Uygulamalı öğrenme</p>
+                        <h2>Bir işlemi yalnızca uygulama, neden yaptığını da anla.</h2>
+                        <ol class="hero-route">
+                            <li>
+                                <span>01</span>
+                                <div><strong>Temeli kur</strong><small>CBS mantığını ve veri yapısını öğren.</small></div>
+                            </li>
+                            <li>
+                                <span>02</span>
+                                <div><strong>Uygula</strong><small>Gerçek verilerle analiz ve harita üret.</small></div>
+                            </li>
+                            <li>
+                                <span>03</span>
+                                <div><strong>Geliştir</strong><small>Proje örneklerini inceleyip kendi üretimine geç.</small></div>
+                            </li>
+                        </ol>
+                        <a href="#learn" onclick="smoothScroll(event, 'learn')" class="panel-link">Başlangıç yolunu seç →</a>
                     </aside>
-                </div>
-            </section>
-
-            <section class="section intro-section">
-                <div class="container">
-                    <div class="section-heading compact">
-                        <p class="eyebrow">GeoRehber ne sunar?</p>
-                        <h2>Eğitim, uygulama ve kaynak üretimi.</h2>
-                    </div>
-
-                    <div class="value-grid">
-                        <article class="value-card">
-                            <span class="value-number">01</span>
-                            <h3>Uygulamalı eğitim</h3>
-                            <p>ArcGIS Pro ve CBS temellerini gerçek veri ve örnek analizlerle öğrenmeye odaklanan dersler.</p>
-                        </article>
-                        <article class="value-card">
-                            <span class="value-number">02</span>
-                            <h3>Harita tabanlı üretim</h3>
-                            <p>Kent rehberi, risk haritası, uygunluk analizi ve StoryMaps gibi canlı veya incelenebilir işler.</p>
-                        </article>
-                        <article class="value-card">
-                            <span class="value-number">03</span>
-                            <h3>Kısa ve takip edilebilir içerikler</h3>
-                            <p>YouTube, Instagram ve LinkedIn üzerinden CBS araçları, veri kaynakları ve analiz notları.</p>
-                        </article>
-                    </div>
                 </div>
             </section>
 
@@ -223,6 +237,13 @@
                             <p>NDVI, güneş radyasyonu, çatı GES potansiyeli, Survey123 ve Experience Builder gibi konularda kısa anlatımlar.</p>
                             <span class="path-action">Kanala git</span>
                         </a>
+
+                        <a class="path-card" href="uygulamalar.html">
+                            <span class="path-label">Uygulama</span>
+                            <h3>Proje örnekleri ve CBS araçları</h3>
+                            <p>Web CBS uygulamalarını, mekânsal analiz raporlarını ve GeoRehber QGIS eklentilerini incele.</p>
+                            <span class="path-action">Uygulamaları gör</span>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -242,10 +263,10 @@
                         <label for="newsletterEmail">E-posta adresin</label>
                         <div class="newsletter-row">
                             <input id="newsletterEmail" name="email" type="email" placeholder="ornek@mail.com" required>
-                            <button class="btn btn-primary" type="submit">Haberdar ol</button>
+                            <button class="btn btn-primary" type="submit">Kayıt talebi gönder</button>
                         </div>
                         <p class="newsletter-note">
-                            Kayıt talebin e-posta olarak iletilir. Dilediğin zaman listeden çıkmak istediğini yazabilirsin.
+                            Butona bastığında e-posta uygulaman açılır. Hazır mesajı göndererek duyuru listesine katılabilirsin.
                         </p>
                         <p class="newsletter-message" id="newsletterMessage" role="status"></p>
                     </form>
@@ -257,7 +278,7 @@
                     <div class="section-heading">
                         <p class="eyebrow">Uygulamalı çalışmalar</p>
                         <h2>Gerçek verilerle hazırlanmış proje örnekleri ve araçlar.</h2>
-                        <p>Eğitim içeriklerinde anlatılan yöntemlerin somut örnekleri.</p>
+                        <p>Farklı CBS yaklaşımlarını temsil eden öne çıkan çalışmalar.</p>
                     </div>
 
                     <div class="work-grid">
@@ -268,25 +289,11 @@
                             <span class="btn btn-link">Projeyi incele</span>
                         </a>
 
-                        <a class="work-card" href="https://hatayatlas.georehber.com" target="_blank" rel="noopener noreferrer">
-                            <span class="work-type">Kent Rehberi</span>
-                            <h3>Hatay Kent Rehberi</h3>
-                            <p>Turistik noktalar, sağlık hizmetleri ve günlük ihtiyaç alanlarını harita tabanlı sunan kent atlası.</p>
-                            <span class="btn btn-link">Siteyi ziyaret et</span>
-                        </a>
-
                         <a class="work-card" href="qgis-eklentileri.html">
                             <span class="work-type">QGIS Araçları</span>
                             <h3>QGIS Otomasyon ve Analiz Eklentileri</h3>
                             <p>GeoRehber Location Map ve Risk &amp; Suitability Analysis gibi PyQGIS araçları.</p>
                             <span class="btn btn-link">Eklentileri gör</span>
-                        </a>
-
-                        <a class="work-card" href="meke-maari.html">
-                            <span class="work-type">Uzaktan Algılama</span>
-                            <h3>Meke Maarı Zamansal Değişim Analizi</h3>
-                            <p>Uydu görüntüleri ve CBS ile Meke Gölü çevresindeki değişimi inceleyen mekansal araştırma.</p>
-                            <span class="btn btn-link">Raporu incele</span>
                         </a>
 
                         <a class="work-card" href="bayburt-ges.html">
@@ -296,13 +303,9 @@
                             <span class="btn btn-link">Analizi incele</span>
                         </a>
 
-                        <a class="work-card"
-                            href="https://storymaps.arcgis.com/stories/1e30b8bdacc247a5ad81db688fe236a5" target="_blank" rel="noopener noreferrer">
-                            <span class="work-type">StoryMaps</span>
-                            <h3>Türkiye'nin Tehlike Altındaki Memelileri</h3>
-                            <p>Esri StoryMaps üzerinden hazırlanan, harita ve veri destekli interaktif mekansal anlatım.</p>
-                            <span class="btn btn-link">StoryMap'i aç</span>
-                        </a>
+                    </div>
+                    <div class="section-action">
+                        <a class="btn btn-secondary" href="uygulamalar.html">Tüm uygulamaları gör</a>
                     </div>
                 </div>
             </section>
@@ -310,7 +313,7 @@
             <section id="about" class="section about-brand reveal">
                 <div class="container about-brand-grid">
                     <div class="about-avatar-row">
-                        <img src="assets/profile.png" alt="Mehmet Ali Yanmaz" class="about-photo">
+                        <img src="assets/profile.webp" alt="Mehmet Ali Yanmaz" class="about-photo" width="104" height="104" loading="lazy">
                         <div>
                             <h2>Hakkında</h2>
                             <p class="eyebrow">Mehmet Ali Yanmaz</p>
@@ -338,10 +341,7 @@
                     <div class="contact-content">
                         <div>
                             <h2 class="contact-title">İletişim</h2>
-                            <p class="contact-subtitle">Eğitim, proje veya iş birliği için ulaşabilirsin.</p>
-                            <p class="contact-subtitle" style="margin-top: 0.5rem;">
-                                GeoRehber içerikleri, CBS projeleri veya eğitim talepleri için aşağıdaki kanallardan benimle iletişime geçebilirsin.
-                            </p>
+                            <p class="contact-subtitle">GeoRehber içerikleri, CBS projeleri, eğitim veya iş birliği için ulaşabilirsin.</p>
                         </div>
 
                         <div class="contact-buttons">
@@ -388,7 +388,7 @@
         </footer>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=20260715-5"></script>
 </body>
 
 </html>
