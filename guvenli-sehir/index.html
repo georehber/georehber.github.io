@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Güvenli Şehir Bilgi Sistemi | GeoRehber</title>
+<meta name="description" content="Kullanıcıların risk bildirimleriyle oluşan, yoğunluk temelli katılımcı güvenlik haritası. Bir noktayı işaretleyip risk bildirimi yapabilirsiniz.">
+<meta name="theme-color" content="#003286">
+<link rel="canonical" href="https://georehber.com/guvenli-sehir/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Güvenli Şehir Bilgi Sistemi">
+<meta property="og:description" content="Kullanıcı bildirimleriyle oluşan risk yoğunluk haritası.">
+<meta property="og:image" content="https://georehber.com/assets/og-georehber.png">
+<meta property="og:url" content="https://georehber.com/guvenli-sehir/">
+<meta property="og:site_name" content="GeoRehber">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://georehber.com/assets/og-georehber.png">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://js.arcgis.com">
+<link rel="preconnect" href="https://www.arcgis.com">
+<link rel="preconnect" href="https://bakircayuni.maps.arcgis.com">
+<link rel="preconnect" href="https://services-eu1.arcgis.com">
+<link rel="preconnect" href="https://basemaps.arcgis.com">
+<link rel="dns-prefetch" href="https://survey123.arcgis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.32/"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-3NJW4TZFDZ');
+</script>
+<style>
+  :root {
+    --ana: #003286;
+    --ana-koyu: #002362;
+    --ana-zemin: #e3efff;
+    --murekkep: #12080b;
+    --ikincil: #686163;
+    --cizgi: #e4e4e7;
+    --kart: #ffffff;
+    --zemin: #fcfcfc;
+    --golge: 0 8px 24px rgba(20, 35, 70, .06);
+    --golge-guclu: 0 18px 48px rgba(20, 35, 70, .10);
+    --yaricap: 12px;
+    --yaricap-sm: 8px;
+    --font-baslik: Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-govde: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --kenar: 16px;
+    --baslik: 60px;
+    --alt: 64px;
+    --calcite-font-family: var(--font-govde);
+    --calcite-sans-family: var(--font-govde);
+    --calcite-color-brand: var(--ana);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; width: 100%; height: 100%; overflow: hidden;
+    background: var(--zemin); color: var(--murekkep);
+    font-family: var(--font-govde); -webkit-font-smoothing: antialiased;
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--ana); outline-offset: 2px; }
+
+  header {
+    position: fixed; inset: 0 0 auto 0; height: calc(var(--baslik) + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) var(--kenar) 0; z-index: 30;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--kart); border-bottom: 3px solid var(--ana);
+  }
+  .marka { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; color: inherit; text-decoration: none; }
+  .marka img { width: 40px; height: 40px; flex: none; }
+  .marka-yazi { min-width: 0; }
+  .marka h1 {
+    margin: 0; font-family: var(--font-baslik); font-size: 18px; font-weight: 700; letter-spacing: -.01em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ana);
+  }
+  .slogan {
+    display: block; margin-top: 1px; font-size: 11.5px; color: var(--ikincil); letter-spacing: .02em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ust-dugme {
+    flex: none; display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px;
+    border: 1px solid var(--cizgi); border-radius: 999px; background: var(--kart); cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--ana); text-decoration: none;
+  }
+  .ust-dugme:hover { background: var(--ana-zemin); }
+  .ust-dugme.birincil { background: var(--ana); border-color: var(--ana); color: #fff; }
+  .ust-dugme.birincil:hover { background: var(--ana-koyu); }
+
+  #harita { position: fixed; top: calc(var(--baslik) + 3px + env(safe-area-inset-top)); left: 0; right: 0; bottom: 0;
+            background: #eef1ea; }
+
+  #katman-paneli {
+    position: fixed; z-index: 20; top: calc(var(--baslik) + 3px + var(--kenar) + env(safe-area-inset-top));
+    left: var(--kenar); width: 300px; max-height: calc(100% - var(--baslik) - 3px - 2 * var(--kenar) - 70px);
+    display: flex; flex-direction: column;
+    background: var(--kart); border: 1px solid var(--cizgi); border-radius: var(--yaricap); box-shadow: var(--golge);
+  }
+  .panel-baslik {
+    flex: none; display: flex; align-items: center; gap: 8px; width: 100%; padding: 12px 14px;
+    border: 0; background: none; cursor: pointer; text-align: left; border-radius: var(--yaricap); color: var(--ana);
+  }
+  .panel-baslik strong { flex: 1; font-family: var(--font-baslik); font-size: 14px; font-weight: 600; color: var(--murekkep); }
+  .panel-baslik .ok { width: 18px; height: 18px; transition: transform .2s; color: var(--ikincil); }
+  #katman-paneli[data-acik="false"] .ok { transform: rotate(-90deg); }
+  #katman-paneli[data-acik="false"] .panel-govde { display: none; }
+  .panel-govde {
+    flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 10px 12px; border-top: 1px solid var(--cizgi);
+    scrollbar-width: thin; scrollbar-color: #b9c3d6 transparent; overscroll-behavior: contain;
+  }
+  .bolum { padding: 4px 0 10px; }
+  .bolum + .bolum { border-top: 1px solid #f0f0f2; }
+  .bolum-baslik { margin: 10px 0 8px; font-family: var(--font-baslik); font-size: 12px; font-weight: 600;
+                  text-transform: uppercase; letter-spacing: .07em; color: var(--ana); }
+  #arama .esri-search { width: 100%; box-shadow: none; border: 1px solid var(--cizgi); border-radius: var(--yaricap-sm); overflow: hidden; }
+
+  .yogunluk-cubuk { height: 12px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); background: #ddd; }
+  .yogunluk-etiket { display: flex; justify-content: space-between; margin-top: 4px; font-size: 12px; color: var(--ikincil); }
+
+  .puanlar { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+  .puan-satir { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; font-size: 13px; }
+  .puan-satir .ad { font-weight: 500; }
+  .puan-satir .deger { font-family: var(--font-baslik); font-weight: 600; color: var(--ana); font-variant-numeric: tabular-nums; }
+  .puan-satir .cubuk { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: #eef0f4; overflow: hidden; }
+  .puan-satir .cubuk i { display: block; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #ffaa00, #ff0000); }
+  .panel-not { margin: 8px 0 0; font-size: 12px; color: var(--ikincil); line-height: 1.45; }
+
+  .katman {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
+    padding: 6px 0; cursor: pointer;
+  }
+  .katman-ad { font-size: 14px; font-weight: 600; line-height: 1.25; }
+  .katman-ipucu { display: block; font-size: 12px; font-weight: 400; color: var(--ikincil); margin-top: 2px; }
+  .anahtar { position: relative; width: 36px; height: 22px; flex: none; }
+  .anahtar input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .anahtar span { position: absolute; inset: 0; border-radius: 11px; background: #cfd3db; transition: background .15s; pointer-events: none; }
+  .anahtar span::after {
+    content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s;
+  }
+  .anahtar input:checked + span { background: var(--ana); }
+  .anahtar input:checked + span::after { transform: translateX(14px); }
+  .anahtar input:focus-visible + span { outline: 3px solid var(--ana); outline-offset: 2px; }
+
+  .bildir-dugme {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin: 4px 0;
+    height: 40px; border: 0; border-radius: 999px; background: var(--ana); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .bildir-dugme:hover { background: var(--ana-koyu); }
+
+  #sayac {
+    position: fixed; z-index: 15; left: var(--kenar);
+    bottom: calc(26px + env(safe-area-inset-bottom));
+    max-width: calc(100% - 2 * var(--kenar) - 120px);
+    display: flex; align-items: center; gap: 10px; padding: 11px 16px;
+    background: var(--kart); border: 1px solid var(--cizgi); border-radius: 999px; box-shadow: var(--golge);
+    font-size: 14px; white-space: nowrap; overflow: hidden;
+  }
+  #sayac .nokta { width: 8px; height: 8px; border-radius: 50%; background: #ff0000; flex: none; }
+  #sayac b { font-weight: 700; color: var(--ana); }
+  #sayac .ayrac { color: #c3c7cf; margin: 0 8px; }
+  #sayac .metin { overflow: hidden; text-overflow: ellipsis; }
+
+  dialog {
+    width: min(560px, calc(100% - 2 * var(--kenar))); max-height: calc(100% - 64px); padding: 0;
+    border: 0; border-radius: 16px; box-shadow: var(--golge-guclu); color: var(--murekkep);
+  }
+  dialog[open] { display: flex; flex-direction: column; }
+  dialog::backdrop { background: rgba(0, 20, 60, .45); }
+  .dialog-ic { padding: 24px 24px 8px; overflow-y: auto; }
+  .dialog-marka { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .dialog-marka img { width: 48px; height: 48px; }
+  dialog h2 { margin: 0; font-family: var(--font-baslik); font-size: 22px; font-weight: 700; color: var(--ana); }
+  dialog .giris { margin: 0 0 16px; color: var(--ikincil); font-size: 15px; line-height: 1.5; }
+  dialog h3 { margin: 18px 0 6px; font-family: var(--font-baslik); font-size: 12px; text-transform: uppercase;
+              letter-spacing: .07em; color: var(--ana); }
+  dialog p, dialog li { font-size: 14px; line-height: 1.55; margin: 0; }
+  dialog ul { margin: 0; padding-left: 18px; }
+  dialog li + li { margin-top: 4px; }
+  dialog a { color: var(--ana); }
+  .dialog-alt { display: flex; justify-content: flex-end; padding: 12px 24px 20px; }
+  .dialog-alt button { height: 40px; padding: 0 18px; border: 0; border-radius: 999px; cursor: pointer;
+                       background: var(--ana); color: #f8f8f8; font-weight: 600; }
+  .dialog-alt button:hover { background: var(--ana-koyu); }
+
+  /* Risk bildirimi formu: sağdan açılan panel */
+  #form-penceresi {
+    margin: 0 0 0 auto; width: min(480px, 100%); height: 100%; max-height: none; max-width: none;
+    border-radius: 0;
+  }
+  .form-ust { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 20px; border-bottom: 3px solid var(--ana); }
+  .form-ust h2 { flex: 1; font-size: 17px; }
+  .kapat { width: 36px; height: 36px; border: 1px solid var(--cizgi); border-radius: 50%; background: var(--kart); cursor: pointer; display: grid; place-items: center; }
+  .kapat:hover { background: var(--ana-zemin); }
+  #form-cerceve { flex: 1; width: 100%; border: 0; display: block; }
+
+  #yukleniyor {
+    position: fixed; inset: 0; z-index: 25; display: grid; place-items: center; background: var(--zemin);
+    transition: opacity .35s;
+  }
+  #yukleniyor.bitti { opacity: 0; pointer-events: none; }
+  .yukleme-ic { display: grid; justify-items: center; gap: 14px; color: var(--ikincil); font-size: 14px; }
+  .yukleme-ic img { width: 72px; height: 72px; }
+  .donen { width: 32px; height: 32px; border: 3px solid var(--cizgi); border-top-color: var(--ana); border-radius: 50%;
+           animation: don .9s linear infinite; }
+  @keyframes don { to { transform: rotate(360deg); } }
+
+  /* Risk bildirimi popup'ı */
+  .rp { font-size: 14px; line-height: 1.4; }
+  .rp-ozet { display: flex; align-items: center; gap: 14px; padding: 12px 14px; margin-bottom: 14px;
+             border-radius: var(--yaricap); background: var(--seviye-zemin, #f4f5f7); }
+  .rp-puan { flex: none; white-space: nowrap; font-family: var(--font-baslik); font-size: 30px; font-weight: 700; line-height: 1; color: var(--seviye, var(--ana)); }
+  .rp-puan small { font-size: 14px; font-weight: 600; color: var(--ikincil); }
+  .rp-ozet-yazi { min-width: 0; }
+  .rp-rozet { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+              color: #fff; background: var(--seviye, var(--ana)); }
+  .rp-ozet-alt { display: block; margin-top: 4px; font-size: 12px; color: var(--ikincil); }
+  .rp-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+  .rp-satir { display: grid; grid-template-columns: 1fr auto; gap: 5px 10px; align-items: center; }
+  .rp-ad { font-weight: 600; }
+  .rp-seviye { font-size: 12px; font-weight: 600; color: var(--seviye, var(--ikincil)); }
+  .rp-olcek { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+  .rp-olcek i { height: 7px; border-radius: 2px; background: #eceef2; }
+  .rp-not { margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--cizgi); font-size: 12px; color: var(--ikincil); }
+
+  .esri-view .esri-ui-corner .esri-component.esri-widget--button,
+  .esri-view .esri-ui-corner .esri-zoom { box-shadow: var(--golge); border-radius: var(--yaricap-sm); overflow: hidden; }
+  .esri-attribution, .esri-popup__main-container, .esri-features { font-family: var(--font-govde); }
+  .esri-popup__main-container { border-radius: var(--yaricap) !important; }
+
+  @media (max-width: 720px) {
+    .marka h1 { font-size: 15px; }
+    .marka img { width: 34px; height: 34px; }
+    .slogan { font-size: 10.5px; }
+    .ust-dugme span { display: none; }
+    .ust-dugme { width: 36px; padding: 0; justify-content: center; }
+    #katman-paneli { right: calc(var(--kenar) + 48px); width: auto;
+                     max-height: calc(100% - var(--baslik) - var(--alt) - 3px - 2 * var(--kenar) - 40px); }
+    .panel-baslik { padding: 10px 12px; }
+    #harita { bottom: calc(var(--alt) + env(safe-area-inset-bottom)); }
+    #sayac {
+      left: 0; right: 0; bottom: 0; width: 100%; max-width: none;
+      height: calc(var(--alt) + env(safe-area-inset-bottom));
+      padding: 0 var(--kenar) env(safe-area-inset-bottom);
+      border: 0; border-top: 1px solid var(--cizgi); border-radius: 0; box-shadow: 0 -6px 16px rgba(20, 35, 70, .06);
+    }
+    #sayac .metin { display: flex; flex-direction: column; gap: 2px; min-width: 0; line-height: 1.2; }
+    #sayac .s1, #sayac .s2 { display: block; overflow: hidden; text-overflow: ellipsis; }
+    #sayac .s2 { font-size: 12px; color: var(--ikincil); }
+    #sayac .ayrac { display: none; }
+  }
+  @media (max-width: 360px) {
+    .slogan { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation-duration: 0s !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="marka" href="../" title="GeoRehber ana sayfa">
+    <img src="../assets/logo.webp" alt="GeoRehber logosu" width="40" height="40">
+    <span class="marka-yazi">
+      <h1>Güvenli Şehir Bilgi Sistemi</h1>
+      <span class="slogan">Kullanıcı bildirimleriyle oluşan risk yoğunluk haritası</span>
+    </span>
+  </a>
+  <button class="ust-dugme birincil" type="button" id="bildir-ust" aria-haspopup="dialog" aria-label="Risk bildir">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 6.5v6M9 9.5h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+    <span>Risk bildir</span>
+  </button>
+  <button class="ust-dugme" type="button" id="hakkinda-ac" aria-haspopup="dialog" aria-label="Hakkında">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 10.5v6M12 7.2v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span>Hakkında</span>
+  </button>
+</header>
+
+<div id="harita" role="application" aria-label="Güvenli şehir risk yoğunluk haritası"></div>
+
+<section id="katman-paneli" data-acik="true" aria-label="Arama, lejant ve risk puanları">
+  <button class="panel-baslik" type="button" id="panel-ac-kapa" aria-expanded="true" aria-controls="panel-govde">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5zm-9 9l9 5 9-5M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <strong>Lejant ve risk puanları</strong>
+    <svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="panel-govde" id="panel-govde" tabindex="0" aria-label="Panel içeriği (kaydırılabilir)">
+    <div class="bolum">
+      <div class="bolum-baslik">Yer ara</div>
+      <div id="arama"></div>
+    </div>
+
+    <div class="bolum">
+      <div class="bolum-baslik">Risk yoğunluğu</div>
+      <div class="yogunluk-cubuk" id="yogunluk-cubuk" aria-hidden="true"></div>
+      <div class="yogunluk-etiket"><span>Az bildirim</span><span>Çok bildirim</span></div>
+      <label class="katman" style="margin-top:10px">
+        <span class="katman-ad">Bildirim noktaları<span class="katman-ipucu">Yakınlaşınca görünür, tıklayınca puanlar açılır</span></span>
+        <span class="anahtar"><input type="checkbox" id="noktalar-anahtar" checked aria-label="Bildirim noktalarını göster"><span></span></span>
+      </label>
+    </div>
+
+    <div class="bolum">
+      <div class="bolum-baslik">Ortalama risk puanı</div>
+      <ul class="puanlar" id="puanlar"></ul>
+      <p class="panel-not">1 risk yok, 5 en yüksek risk demektir. Tüm bildirimlerin ortalamasıdır.</p>
+    </div>
+
+    <div class="bolum">
+      <button class="bildir-dugme" type="button" id="bildir-panel">Bir noktayı işaretle, risk bildir</button>
+    </div>
+  </div>
+</section>
+
+<div id="sayac" aria-live="polite"><span class="nokta" aria-hidden="true"></span><span class="metin">Yükleniyor...</span></div>
+
+<dialog id="hakkinda" aria-labelledby="hakkinda-baslik">
+  <div class="dialog-ic">
+    <div class="dialog-marka">
+      <img src="../assets/logo.webp" alt="" width="48" height="48">
+      <h2 id="hakkinda-baslik">Güvenli Şehir Bilgi Sistemi</h2>
+    </div>
+    <p class="giris">Kullanıcıların kent güvenliğiyle ilgili risk noktalarını gönüllü olarak işaretlediği katılımcı bir CBS platformu. Bildirimler biriktikçe yoğunluk temelli bir ısı haritasına dönüşür ve bölgesel risk örüntüleri görünür hale gelir.</p>
+    <h3>Nasıl kullanılır</h3>
+    <ul>
+      <li><b>Haritayı oku:</b> Renk kırmızıya doğru koyulaştıkça o çevrede daha çok bildirim var demektir.</li>
+      <li><b>Ayrıntıya bak:</b> Yakınlaşınca bildirim noktaları görünür; bir noktaya dokunduğunuzda beş risk türünün puanları açılır.</li>
+      <li><b>Bildir:</b> "Risk bildir" ile formu açın, konumu işaretleyin ve her riski 1-5 arası puanlayın.</li>
+    </ul>
+    <h3>Değerlendirilen riskler</h3>
+    <p>Issız köşe, rahatsız edilme, hayvan saldırısı, çete saldırısı ve uyuşturucu kullanımı.</p>
+    <h3>Bilmeniz gerekenler</h3>
+    <ul>
+      <li>Harita resmî suç verisine değil, kullanıcıların gönüllü bildirimlerine dayanır.</li>
+      <li>Bildirimler doğrulanmaz; az bildirim olan yerlerde tek bir kayıt bile haritayı etkileyebilir.</li>
+      <li>Kesin bir güvenlik değerlendirmesi değil, topluluk temelli bir farkındalık gösterimidir.</li>
+    </ul>
+    <h3>Künye</h3>
+    <p>Hazırlayan: Mehmet Ali Yanmaz · <a href="https://georehber.com/">georehber.com</a> · Araç: ArcGIS Online, Survey123, ArcGIS Maps SDK for JavaScript</p>
+  </div>
+  <div class="dialog-alt"><button type="button" id="hakkinda-kapat">Haritaya dön</button></div>
+</dialog>
+
+<dialog id="form-penceresi" aria-labelledby="form-baslik">
+  <div class="form-ust">
+    <h2 id="form-baslik">Risk bildir</h2>
+    <button class="kapat" type="button" id="form-kapat" aria-label="Formu kapat">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <iframe id="form-cerceve" title="Risk bildirimi formu" allow="geolocation"></iframe>
+</dialog>
+
+<div id="yukleniyor" role="status"><div class="yukleme-ic"><img src="../assets/logo.webp" alt="" width="72" height="72"><span class="donen" aria-hidden="true"></span>Harita yükleniyor</div></div>
+
+<script>
+require(["esri/WebMap", "esri/views/MapView", "esri/widgets/Home", "esri/widgets/Zoom", "esri/widgets/Locate",
+         "esri/widgets/Search", "esri/core/reactiveUtils", "esri/popup/content/CustomContent"],
+        (WebMap, MapView, Home, Zoom, Locate, Search, reactiveUtils, CustomContent) => {
+  const $ = s => document.querySelector(s);
+  const sayi = (n, b = 0) => Number(n).toLocaleString("tr-TR", { minimumFractionDigits: b, maximumFractionDigits: b });
+  const darEkran = window.matchMedia("(max-width: 720px)");
+  const PORTAL = "https://bakircayuni.maps.arcgis.com";
+  const FORM_URL = `https://survey123.arcgis.com/share/36cf95bd94604803976f33847ab6f35f?portalUrl=${encodeURIComponent(PORTAL)}&hide=navbar`;
+  const RISKLER = [
+    ["issiz_kose", "Issız köşe"], ["rahatsiz_edilme", "Rahatsız edilme"], ["hayvan_saldirisi", "Hayvan saldırısı"],
+    ["cete", "Çete saldırısı"], ["uyusturucu", "Uyuşturucu kullanımı"]
+  ];
+
+  // Web haritasındaki popup ifadeleriyle aynı eşikler: 1 çok düşük ... 5 çok yüksek
+  const SEVIYE = [null,
+    { ad: "Çok düşük", renk: "#1a9850", zemin: "#e7f5ec" },
+    { ad: "Düşük", renk: "#66a61e", zemin: "#eef6e4" },
+    { ad: "Orta", renk: "#e08a00", zemin: "#fdf3e1" },
+    { ad: "Yüksek", renk: "#e8590c", zemin: "#fdeee5" },
+    { ad: "Çok yüksek", renk: "#c92a2a", zemin: "#fbe9e9" }];
+  const gecerli = d => Number.isInteger(d) && d >= 1 && d <= 5;
+
+  function riskKarti({ graphic }) {
+    const a = graphic.attributes, kutu = document.createElement("div");
+    kutu.className = "rp";
+    const degerler = RISKLER.map(([alan]) => a[alan]).filter(gecerli);
+    const ort = degerler.length ? degerler.reduce((t, d) => t + d, 0) / degerler.length : null;
+    const genel = ort ? SEVIYE[Math.round(ort)] : null;
+    const ozet = document.createElement("div");
+    ozet.className = "rp-ozet";
+    if (genel) ozet.style.cssText = `--seviye:${genel.renk};--seviye-zemin:${genel.zemin}`;
+    ozet.innerHTML = `<span class="rp-puan">${ort ? sayi(ort, 1) : "–"}<small> / 5</small></span>` +
+      `<span class="rp-ozet-yazi"><span class="rp-rozet">${genel ? genel.ad + " risk" : "Belirtilmedi"}</span>` +
+      `<span class="rp-ozet-alt">${degerler.length} risk türünün ortalaması</span></span>`;
+    const liste = document.createElement("ul");
+    liste.className = "rp-liste";
+    for (const [alan, ad] of RISKLER) {
+      const d = a[alan], sv = gecerli(d) ? SEVIYE[d] : null;
+      const li = document.createElement("li");
+      li.className = "rp-satir";
+      if (sv) li.style.setProperty("--seviye", sv.renk);
+      li.innerHTML = `<span class="rp-ad">${ad}</span><span class="rp-seviye">${sv ? sv.ad : "Belirtilmedi"}</span>` +
+        `<span class="rp-olcek" aria-label="${ad}: ${sv ? d + " / 5" : "belirtilmedi"}">` +
+        [1, 2, 3, 4, 5].map(i => `<i${sv && i <= d ? ` style="background:${sv.renk}"` : ""}></i>`).join("") + `</span>`;
+      liste.append(li);
+    }
+    const not = document.createElement("p");
+    not.className = "rp-not";
+    const tarih = a.CreationDate ? new Date(a.CreationDate).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }) : null;
+    not.textContent = (tarih ? `${tarih} tarihinde bildirildi. ` : "") + "Gönüllü bildirimdir, doğrulanmamıştır.";
+    kutu.append(ozet, liste, not);
+    return kutu;
+  }
+
+  const panel = $("#katman-paneli");
+  let panelDegisti = () => {};
+  const paneliAyarla = durum => {
+    panel.dataset.acik = String(durum);
+    $("#panel-ac-kapa").setAttribute("aria-expanded", String(durum));
+    panelDegisti();
+  };
+  $("#panel-ac-kapa").addEventListener("click", () => paneliAyarla(panel.dataset.acik !== "true"));
+  if (darEkran.matches) paneliAyarla(false);
+
+  const hakkinda = $("#hakkinda");
+  $("#hakkinda-ac").addEventListener("click", () => hakkinda.showModal());
+  $("#hakkinda-kapat").addEventListener("click", () => hakkinda.close());
+  hakkinda.addEventListener("click", e => { if (e.target === hakkinda) hakkinda.close(); });
+
+  // Form ilk açılışta yüklenir; kapanınca harita yeni bildirimleri çeker
+  const formPenceresi = $("#form-penceresi"), formCerceve = $("#form-cerceve");
+  let formKapandi = () => {};
+  const formuAc = () => {
+    formCerceve.src = FORM_URL;
+    formPenceresi.showModal();
+  };
+  $("#bildir-ust").addEventListener("click", formuAc);
+  $("#bildir-panel").addEventListener("click", formuAc);
+  $("#form-kapat").addEventListener("click", () => formPenceresi.close());
+  formPenceresi.addEventListener("close", () => { formCerceve.src = "about:blank"; formKapandi(); });
+
+  // Isı haritası, popup ve altlık web haritasında hazırlandı; olduğu gibi kullanılır
+  const harita = new WebMap({ portalItem: { id: "46e1c2ab1dee459aad5eb51ec56ffd51", portal: { url: PORTAL } } });
+  const view = new MapView({
+    container: "harita", map: harita,
+    constraints: { rotationEnabled: false, snapToZoom: false, minZoom: 5 },
+    ui: { components: ["attribution"] },
+    popup: { dockEnabled: true, dockOptions: { buttonEnabled: false, breakpoint: false,
+             position: darEkran.matches ? "bottom-center" : "top-right" } }
+  });
+  view.ui.add(new Zoom({ view }), "top-right");
+  const home = new Home({ view });
+  view.ui.add(home, "top-right");
+  view.ui.add(new Locate({ view, popupEnabled: false, scale: 25000 }), "top-right");
+
+  function bosluguGuncelle() {
+    const b = panel.getBoundingClientRect(), h = view.container.getBoundingClientRect(), k = 16;
+    view.padding = darEkran.matches
+      ? { top: Math.max(0, Math.round(b.bottom - h.top)) + k, left: 0, right: 0, bottom: 0 }
+      : { top: 0, left: panel.dataset.acik === "true" ? Math.round(b.right - h.left) + k : 0, right: 0, bottom: 0 };
+  }
+  // Popup padding'e göre yerleştiği için onu padding'le değil, haritayı kaydırarak açıkta bırak
+  async function noktayiGoster(nokta) {
+    const W = view.width, H = view.height, p = view.padding;
+    const alan = darEkran.matches
+      ? { l: 0, r: W, t: p.top || 0, b: H * 0.55 }
+      : { l: p.left || 0, r: W - 400, t: 0, b: H };
+    const sp = view.toScreen(nokta), c = view.toScreen(view.center);
+    const dx = sp.x - (alan.l + alan.r) / 2, dy = sp.y - (alan.t + alan.b) / 2;
+    if (Math.abs(dx) > 4 || Math.abs(dy) > 4)
+      await view.goTo({ center: view.toMap({ x: c.x + dx, y: c.y + dy }) }, { duration: 400 }).catch(() => {});
+  }
+  reactiveUtils.watch(() => view.popup.selectedFeature, f => {
+    if (f && f.geometry && f.geometry.type === "point") noktayiGoster(f.geometry);
+  });
+  panelDegisti = bosluguGuncelle;
+  darEkran.addEventListener("change", () => {
+    view.popup.dockOptions = { ...view.popup.dockOptions, position: darEkran.matches ? "bottom-center" : "top-right" };
+    bosluguGuncelle();
+  });
+  new ResizeObserver(bosluguGuncelle).observe(panel);
+
+  (async () => {
+    await harita.loadAll();
+    const isi = harita.allLayers.find(l => l.type === "feature" && l.renderer && l.renderer.type === "heatmap");
+    if (!isi) throw new Error("Isı haritası katmanı bulunamadı");
+    isi.popupEnabled = false;
+
+    // Aynı veriden nokta katmanı: popup web haritasındaki tablo, yalnızca yakın ölçekte görünür
+    const noktalar = isi.clone();
+    Object.assign(noktalar, {
+      title: "Bildirim noktaları", opacity: 1, minScale: 150000, maxScale: 0, popupEnabled: true,
+      popupTemplate: { title: "Risk bildirimi", outFields: ["*"],
+        content: [new CustomContent({ outFields: ["*"], creator: riskKarti }), { type: "attachments" }] },
+      renderer: { type: "simple", symbol: { type: "simple-marker", style: "circle", size: 9, color: [213, 6, 33, 0.9],
+                  outline: { color: "#ffffff", width: 1.5 } } }
+    });
+    harita.add(noktalar);
+    const anahtar = $("#noktalar-anahtar");
+    anahtar.addEventListener("change", () => { noktalar.visible = anahtar.checked; });
+
+    const durak = isi.renderer.colorStops.filter(d => d.color.a > 0.05);
+    $("#yogunluk-cubuk").style.background = `linear-gradient(90deg, ${durak.map((d, i) =>
+      `rgba(${d.color.r},${d.color.g},${d.color.b},${d.color.a}) ${Math.round(i / (durak.length - 1) * 100)}%`).join(", ")})`;
+
+    const search = new Search({ view, container: "arama", popupEnabled: false, resultGraphicEnabled: true,
+                                allPlaceholder: "Adres ya da yer ara", locationEnabled: false });
+    search.on("select-result", () => { if (darEkran.matches) paneliAyarla(false); });
+
+    async function istatistik() {
+      const s = await isi.queryFeatures({
+        where: "1=1",
+        outStatistics: [{ statisticType: "count", onStatisticField: isi.objectIdField, outStatisticFieldName: "adet" },
+          ...RISKLER.map(([alan]) => ({ statisticType: "avg", onStatisticField: alan, outStatisticFieldName: alan }))]
+      });
+      const a = s.features[0].attributes;
+      $("#puanlar").replaceChildren(...RISKLER.map(([alan, ad]) => {
+        const li = document.createElement("li"), deger = a[alan] || 0;
+        li.className = "puan-satir";
+        li.innerHTML = `<span class="ad">${ad}</span><span class="deger">${sayi(deger, 1)}</span>` +
+          `<span class="cubuk"><i style="width:${Math.min(deger / 5, 1) * 100}%"></i></span>`;
+        return li;
+      }));
+      const enYuksek = RISKLER.reduce((m, r) => (a[r[0]] || 0) > (a[m[0]] || 0) ? r : m);
+      $("#sayac .metin").innerHTML =
+        `<span class="s1"><b>${sayi(a.adet)}</b> risk bildirimi</span><span class="ayrac">·</span>` +
+        `<span class="s2">En yüksek ortalama: <b>${enYuksek[1].toLocaleLowerCase("tr")}</b></span>`;
+    }
+    await istatistik();
+    formKapandi = () => { isi.refresh(); noktalar.refresh(); istatistik().catch(() => {}); };
+
+    await reactiveUtils.whenOnce(() => view.ready);
+    bosluguGuncelle();
+    // Servisin queryExtent'i dünya kapsamı döndürüyor; kapsamı noktalardan hesapla
+    const konumlar = (await isi.queryFeatures({ where: "1=1", returnGeometry: true, outSpatialReference: view.spatialReference }))
+      .features.map(f => f.geometry).filter(g => g && isFinite(g.x) && isFinite(g.y) && (g.x || g.y));
+    let baslangic = view.extent;
+    if (konumlar.length) {
+      const xs = konumlar.map(g => g.x), ys = konumlar.map(g => g.y);
+      baslangic = view.extent.clone();
+      Object.assign(baslangic, { xmin: Math.min(...xs), xmax: Math.max(...xs), ymin: Math.min(...ys), ymax: Math.max(...ys) });
+      baslangic = baslangic.expand(1.6);
+    }
+    await view.goTo(baslangic, { animate: false }).catch(() => {});
+    home.goToOverride = () => view.goTo(baslangic, { duration: 600 });
+
+    const perdeyiKaldir = () => $("#yukleniyor").classList.add("bitti");
+    reactiveUtils.whenOnce(() => !view.updating).then(perdeyiKaldir);
+    setTimeout(perdeyiKaldir, 6000);
+  })().catch(hata => {
+    $("#sayac .metin").textContent = "Harita yüklenemedi. Sayfayı yenileyin.";
+    $("#yukleniyor").classList.add("bitti");
+    console.error(hata);
+  });
+});
+</script>
+</body>
+</html>

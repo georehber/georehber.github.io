@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3NJW4TZFDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mekânsal Analiz - Bayburt GES Uygunluk | GeoRehber</title>
+    <meta name="description" content="Bayburt ili sınırları içerisinde Güneş Enerjisi Santrali (GES) kurulumu için uygun alanların belirlendiği CBS tabanlı mekânsal analiz raporu.">
+    <link rel="canonical" href="https://georehber.com/bayburt-ges.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://georehber.com/bayburt-ges.html">
+    <meta property="og:title" content="Mekânsal Analiz - Bayburt GES Uygunluk | GeoRehber">
+    <meta property="og:description" content="Bayburt ili sınırları içerisinde Güneş Enerjisi Santrali (GES) kurulumu için uygun alanların belirlendiği CBS tabanlı mekânsal analiz raporu.">
+    <meta property="og:image" content="https://georehber.com/assets/og-georehber.png">
+    <meta property="og:site_name" content="GeoRehber">
+    <meta property="og:locale" content="tr_TR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://georehber.com/bayburt-ges.html">
+    <meta name="twitter:title" content="Mekânsal Analiz - Bayburt GES Uygunluk | GeoRehber">
+    <meta name="twitter:description" content="Bayburt ili sınırları içerisinde Güneş Enerjisi Santrali (GES) kurulumu için uygun alanların belirlendiği CBS tabanlı mekânsal analiz raporu.">
+    <meta name="twitter:image" content="https://georehber.com/assets/og-georehber.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css?v=20261101-1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        .pdf-viewer-section {
+            padding: 2rem 0 3rem;
+        }
+
+        .pdf-header {
+            margin-bottom: 2rem;
+        }
+
+        .pdf-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .pdf-back-link:hover {
+            opacity: 0.7;
+        }
+
+        .pdf-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-description {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
+            max-width: 48rem;
+        }
+
+        .pdf-container {
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background-color: var(--card);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .pdf-iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            min-height: 600px;
+        }
+
+        .pdf-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background-color: var(--card);
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .pdf-loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .pdf-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .pdf-loading-text {
+            font-size: 0.95rem;
+            color: var(--muted-foreground);
+            font-weight: 500;
+        }
+
+        .pdf-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pdf-download-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background-color: var(--secondary);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .pdf-download-bar span {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+        }
+
+        .pdf-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 640px) {
+            .pdf-title {
+                font-size: 1.5rem;
+            }
+            .pdf-iframe-wrapper {
+                height: 70vh;
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- Scroll to Top Button -->
+        <button id="scrollTopBtn" class="scroll-top-btn" type="button" title="Yukarı Git" aria-label="Sayfanın başına dön" style="display: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+        </button>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container navbar-content">
+                <a href="index.html" class="navbar-brand">
+                    <img src="assets/logo.webp" alt="GeoRehber Logo" class="navbar-logo" width="64" height="64">GEOREHBER
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="desktop-menu">
+                    <a href="index.html#learn" class="nav-link">Eğitimler</a>
+                    <a href="index.html#updates" class="nav-link">Duyurular</a>
+                    <a href="uygulamalar.html" class="nav-link" aria-current="page">Uygulamalar</a>
+                    <a href="index.html#about" class="nav-link">Hakkında</a>
+                    <a href="index.html#contact" class="nav-link">İletişim</a>
+                    <button id="themeToggle" class="theme-toggle" type="button" title="Gece Modu" aria-label="Koyu temayı aç">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-controls">
+                    <button id="themeToggleMobile" class="theme-toggle" type="button" title="Gece Modu" aria-label="Koyu temayı aç">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" title="Menü" aria-label="Menüyü aç" aria-controls="mobileMenu" aria-expanded="false">
+                        <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu" style="display: none;">
+                <a href="index.html#learn" class="mobile-nav-link">Eğitimler</a>
+                <a href="index.html#updates" class="mobile-nav-link">Duyurular</a>
+                <a href="uygulamalar.html" class="mobile-nav-link" aria-current="page">Uygulamalar</a>
+                <a href="index.html#about" class="mobile-nav-link">Hakkında</a>
+                <a href="index.html#contact" class="mobile-nav-link">İletişim</a>
+            </div>
+        </nav>
+
+        <!-- Project Hero Section -->
+        <section class="project-hero">
+            <div class="container project-hero-content">
+                <a href="uygulamalar.html" class="pdf-back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Uygulamalara dön
+                </a>
+                <div>
+                    <span class="project-tag">Karar Destek Sistemleri</span>
+                    <span class="project-tag">AHP &amp; ÇKKV</span>
+                </div>
+                <h1 class="project-hero-title">Bayburt İli GES Uygunluk Analizi</h1>
+                <p class="project-hero-subtitle">Bayburt ili sınırları içerisinde güneş enerjisi santrali (GES) kurulumu için çok kriterli mekânsal veri kümelerinin ağırlıklı analiziyle hazırlanan mekânsal uygunluk projesi.</p>
+            </div>
+        </section>
+
+        <!-- Document Viewer Section -->
+        <section class="project-mockup">
+            <div class="container">
+                <div class="pdf-container">
+                    <div class="pdf-download-bar">
+                        <span>Bayburt_GES.pdf</span>
+                        <a href="https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf"
+                           target="_blank" rel="noopener noreferrer" class="pdf-download-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            İndir
+                        </a>
+                    </div>
+                    <div class="pdf-iframe-wrapper">
+                        <div class="pdf-loading" id="pdfLoading">
+                            <div class="pdf-spinner"></div>
+                            <span class="pdf-loading-text">PDF yükleniyor...</span>
+                        </div>
+                        <iframe
+                            src="https://docs.google.com/gview?embedded=true&amp;url=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorehber%2Fprojects%2Fmain%2FBayburt_GES.pdf"
+                            title="Bayburt GES - Mekânsal Analiz"
+                            onload="document.getElementById('pdfLoading').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+                <!-- Proje Özeti -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Proje Özeti</h2>
+                    <p class="detail-text">Güneş Enerjisi Santralleri (GES), kurulum aşamasında yüksek radyasyon potansiyeli beklerken aynı zamanda topoğrafik ve çevresel sınırlılıklarla kısıtlanan kompleks yatırımlardır. Bu proje, Bayburt ili genelinde verimli ve yönetmeliklere uygun GES arazilerini belirlemek amacıyla geliştirilmiş, çeşitli raster ve vektör veri setlerinin AHP (Analitik Hiyerarşi Süreci) gibi çok kriterli karar verme (ÇKKV) yöntemleriyle çakıştırıldığı, bilimsel temelli bir mekânsal karar destek modellemesidir.</p>
+                </div>
+
+                <!-- Çözülen Problem -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Çözülen Problem</h2>
+                    <p class="detail-text">Dev ölçekli enerji yatırımlarında yer seçimi rastgele yapılamaz. Yatırımın yapılacağı arazinin eğimi, bakısı, güneşlenme süresi, trafo merkezlerine olan fiziki uzaklığı, yakın çevrede tarım veya orman alanlarının bulunup bulunmadığı gibi onlarca farklı çevresel/sosyal faktörün aynı anda değerlendirilmesi gerekir. Aylar sürebilecek bu çok katmanlı mühendislik problemi, CBS temelli mekânsal modelleme kullanılarak yüksek doğrulukta sistematize edilmiştir.</p>
+                </div>
+
+                <!-- Yaklaşım / Çözüm Mantığı -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Yaklaşım / Çözüm Mantığı</h2>
+                    <p class="detail-text">Geniş yüzölçümüne sahip çalışma alanı içerisinde kanunen kısıtlayıcı olan alanlar (göller, tarım arazileri vb.) öncelikle analiz dışında tutulmuştur. Kalan potansiyel alanlar; güneye bakan yamaçlar (Aspect), optimum eğim oranları (Slope) ve şebekeye yakınlık gibi kriterlere göre uygunluk değerleriyle puanlanarak (Reclassify) uzman ağırlıklandırma yöntemleriyle (AHP) birbiri üzerine çakıştırılmıştır (Weighted Sum).</p>
+                </div>
+
+                <!-- Sistem Nasıl Çalışıyor -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Analiz Adımları</h2>
+                    <div class="timeline-cards">
+                        <div class="t-card">
+                            <div class="t-number">1</div>
+                            <div class="t-text">Girdi Verilerinin Toplanması: Sayısal Yükseklik Modeli (DEM) üzerinden eğim ve bakı üretimi; yollar, altyapı ve arazi kullanım verilerinin temini.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">2</div>
+                            <div class="t-text">Distance Accumulation (Mesafe Analizi): Tesislerin yollara, akarsulara, göllere ve enerji nakil hatlarına olan yakınlık/uzaklık maliyetlerinin hesaplanması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">3</div>
+                            <div class="t-text">Kısıtlama Yönetimi: Çevresel koruma bölgeleri, su alanları ve sivil yerleşim sınırlarının maskelenerek uygunsuz alan olarak ayrılması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">4</div>
+                            <div class="t-text">Reclassify (Yeniden Sınıflandırma): Güneş ışınımı, arazi örtüsü, eğim gibi parametrelerin amaca uygun olarak yeni değerlerle sınıflandırılması.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">5</div>
+                            <div class="t-text">Weighted Sum (Ağırlıklı Toplam): Analitik Hiyerarşi Süreci (AHP) ile hesaplanan önem yüzdelerine göre kriterlerin matematiksel olarak birleştirilmesi.</div>
+                        </div>
+                        <div class="t-card">
+                            <div class="t-number">6</div>
+                            <div class="t-text">Kartografik Görselleştirme: Nihai haritanın "En Yüksek Uygunluk", "Uygun", "Düşük Uygunluk" seviyelerine ayrılarak sunulması.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temel Özellikler -->
+                <div class="detail-block">
+                    <h2 class="detail-title">Temel Kazanımlar</h2>
+                    <ul class="feature-grid">
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Karar Destek Sistemleri (DSS) ile riskten arındırılmış yatırım stratejisi</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Milyonlarca metrekare alanın piksel hassasiyetinde filtrelenmesi</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Enerji nakil hatlarına mesafe temelli altyapı maliyet optimizasyonu</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Yenilenebilir enerji dönüşümü için somut, kanıta dayalı fizibilite tabanı</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CBS Perspektifi -->
+                <div class="detail-block highlight-block">
+                    <h2 class="detail-title">CBS / Mekânsal Analiz Perspektifi</h2>
+                    <p class="detail-text">Proje, CBS tabanlı ÇKKV (Çok Kriterli Karar Verme) modellerinin enerji sektöründe yer seçimi süreçlerini devrimsel bir biçimde dönüştürdüğünü göstermektedir. "Projeyi nereye kurmalıyız?" sorusu, sübjektif idari kararlarla değil; doğrudan topografi, ulaşılırlık, mevzuat ve ekoloji gibi somut kısıtların kesişim kümesinde yer alan algoritmalar vasıtasıyla geometrik hassasiyetle yanıtlanmaktadır.</p>
+                </div>
+
+
+                <!-- CTA -->
+                <div class="cta-block">
+                    <h2 class="cta-title">Tam Raporu İnceleyin</h2>
+                    <p class="cta-desc">Bayburt ili üzerine tasarladığım bu modellemenin metodolojisini, analiz denklemlerini ve hazırladığım uygunluk haritalarını içeren detaylı araştırma PDF raporumu hemen görüntüleyebilirsiniz.</p>
+                    <a href="https://raw.githubusercontent.com/georehber/projects/main/Bayburt_GES.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary cta-btn">PDF Raporu İndir &amp; İncele</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 GeoRehber. Tüm hakları saklıdır.</p>
+                    <div class="footer-links">
+                        <a href="https://linkedin.com/in/mehmetaliyanmaz" target="_blank" rel="noopener noreferrer"
+                            title="LinkedIn" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/georehber" target="_blank" rel="noopener noreferrer"
+                            title="Instagram" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener noreferrer"
+                            title="YouTube" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/905316066176" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="mailto:georehber01@gmail.com" title="E-posta" aria-label="E-posta">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js?v=20261101-1"></script>
+</body>
+
+</html>
