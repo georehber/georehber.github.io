@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mehmet Ali Yanmaz | CBS Uzmanı Portfolyosu</title>
+<meta name="description" content="CBS Uzmanı Mehmet Ali Yanmaz'ın CBS, uzaktan algılama ve web haritacılık projeleri: ArcGIS Pro, ArcGIS Online, Survey123, StoryMaps, QGIS ve yapay zekâ destekli web harita uygulamaları.">
+<meta name="theme-color" content="#003286">
+<link rel="canonical" href="https://georehber.com/portfolyo/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Mehmet Ali Yanmaz | CBS Uzmanı Portfolyosu">
+<meta property="og:description" content="CBS, uzaktan algılama ve web haritacılık projeleri; hepsi canlı.">
+<meta property="og:image" content="https://georehber.com/assets/portfolyo/hatay-kent-rehberi.webp">
+<meta property="og:url" content="https://georehber.com/portfolyo/">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mehmet Ali Yanmaz",
+  "jobTitle": "CBS Uzmanı",
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "İzmir Bakırçay Üniversitesi" },
+  "email": "mailto:georehber01@gmail.com",
+  "url": "https://georehber.com/portfolyo/",
+  "sameAs": ["https://tr.linkedin.com/in/mehmetaliyanmaz", "https://www.youtube.com/@georehber/", "https://github.com/georehber"]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-3NJW4TZFDZ');
+</script>
+<style>
+  :root {
+    --ana: #003286;
+    --ana-koyu: #002362;
+    --ana-zemin: #e3efff;
+    --aksan: #11ad00;
+    --murekkep: #12080b;
+    --ikincil: #5f585a;
+    --cizgi: #e4e4e7;
+    --kart: #ffffff;
+    --zemin: #fafafa;
+    --golge: 0 8px 24px rgba(20, 35, 70, .06);
+    --golge-guclu: 0 18px 48px rgba(20, 35, 70, .12);
+    --yaricap: 14px;
+    --font-baslik: Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-govde: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--zemin); color: var(--murekkep); font-family: var(--font-govde);
+         font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--ana); }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 3px solid var(--ana); outline-offset: 2px; }
+  .kap { width: min(1080px, 100% - 32px); margin: 0 auto; }
+  h1, h2, h3 { font-family: var(--font-baslik); letter-spacing: -.015em; line-height: 1.15; margin: 0; }
+  section { padding: 56px 0; scroll-margin-top: 60px; }
+  .bolum-baslik { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .bolum-baslik h2 { font-size: clamp(24px, 3.4vw, 32px); }
+  .bolum-baslik p { margin: 0; color: var(--ikincil); }
+  .ust-etiket { display: block; margin-bottom: 6px; font-family: var(--font-baslik); font-size: 12.5px; font-weight: 600;
+                letter-spacing: .08em; text-transform: uppercase; color: var(--ana); }
+
+  /* Üst şerit */
+  .serit { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); backdrop-filter: blur(10px);
+           border-bottom: 3px solid var(--ana); }
+  .serit .kap { display: flex; align-items: center; gap: 14px; height: 58px; }
+  .serit .ad { flex: 1; font-family: var(--font-baslik); font-weight: 700; color: var(--ana); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .serit nav { display: flex; gap: 4px; }
+  .serit nav a { padding: 6px 10px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--murekkep); text-decoration: none; }
+  .serit nav a:hover { background: var(--ana-zemin); color: var(--ana); }
+  .dugme { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 42px; padding: 0 18px;
+           border-radius: 999px; border: 1px solid var(--cizgi); background: var(--kart); color: var(--ana);
+           font: 600 14px var(--font-govde); text-decoration: none; cursor: pointer; white-space: nowrap; }
+  .dugme:hover { background: var(--ana-zemin); }
+  .dugme.birincil { background: var(--ana); border-color: var(--ana); color: #fff; }
+  .dugme.birincil:hover { background: var(--ana-koyu); }
+  .dugme.kucuk { height: 34px; padding: 0 14px; font-size: 13px; }
+
+  /* Giriş */
+  .giris { padding: 64px 0 48px; background:
+           radial-gradient(circle at 85% 0%, rgba(0, 50, 134, .10), transparent 26rem),
+           linear-gradient(180deg, #f1f4f9, var(--zemin)); border-bottom: 1px solid var(--cizgi); }
+  .giris .kimlik { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; }
+  .foto { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: var(--golge-guclu); }
+  .giris h1 { font-size: clamp(34px, 5.4vw, 54px); color: var(--ana); }
+  .unvan { margin: 8px 0 14px; font-family: var(--font-baslik); font-size: clamp(17px, 2.2vw, 21px); font-weight: 600; }
+  .giris p.ozet { max-width: 640px; margin: 0 0 22px; color: var(--ikincil); font-size: 17px; }
+  .giris .eylemler { display: flex; flex-wrap: wrap; gap: 10px; }
+  .rakamlar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 36px; }
+  .rakam { padding: 14px 16px; background: var(--kart); border: 1px solid var(--cizgi); border-radius: var(--yaricap); }
+  .rakam b { display: block; font-family: var(--font-baslik); font-size: 26px; color: var(--ana); line-height: 1.1; }
+  .rakam span { font-size: 13px; color: var(--ikincil); }
+
+  /* Yetkinlikler */
+  .yetkinlik-izgara { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .yetkinlik-grup { padding: 18px; background: var(--kart); border: 1px solid var(--cizgi); border-radius: var(--yaricap); }
+  .yetkinlik-grup h3 { font-size: 15px; margin-bottom: 10px; }
+  .yetkinlik-grup .etiketler { display: flex; flex-wrap: wrap; gap: 6px; }
+  .etiket { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px;
+            border: 1px solid var(--cizgi); background: #f6f7f9; font: 500 13px var(--font-govde); color: var(--murekkep); cursor: pointer; }
+  .etiket:hover { border-color: var(--ana); color: var(--ana); }
+  .etiket[aria-pressed="true"] { background: var(--ana); border-color: var(--ana); color: #fff; }
+  .etiket small { font-size: 11px; opacity: .7; }
+  .filtre-notu { margin: -8px 0 14px; font-size: 14px; color: var(--ikincil); min-height: 22px; }
+  .filtre-notu:empty { display: none; }
+  .filtre-notu button { border: 0; background: none; padding: 0; color: var(--ana); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; }
+
+  /* Projeler */
+  .proje-izgara { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .proje { display: flex; flex-direction: column; background: var(--kart); border: 1px solid var(--cizgi);
+           border-radius: var(--yaricap); overflow: hidden; box-shadow: var(--golge); transition: opacity .2s, transform .2s; }
+  .proje.vurgulu { outline: 3px solid var(--ana); outline-offset: 2px; }
+  .proje.soluk { opacity: .45; }
+  .proje.one-cikan { grid-column: 1 / -1; display: grid; grid-template-columns: 1.35fr 1fr; }
+  .proje-gorsel { position: relative; aspect-ratio: 16 / 10; background: #eef1f5; overflow: hidden; }
+  .proje-gorsel img { width: 100%; height: 100%; object-fit: cover; }
+  .proje-gorsel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
+  .canli-rozet { position: absolute; left: 12px; top: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px;
+                 border-radius: 999px; background: rgba(255,255,255,.94); font-size: 12px; font-weight: 600; color: var(--murekkep); box-shadow: var(--golge); }
+  .canli-rozet i { width: 7px; height: 7px; border-radius: 50%; background: var(--aksan); }
+  .proje-govde { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 20px; flex: 1; }
+  .proje-tur { font-family: var(--font-baslik); font-size: 12px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ana); }
+  .proje h3 { font-size: 21px; }
+  .proje p { margin: 0; color: var(--ikincil); font-size: 15px; }
+  .proje ul.katki { margin: 0; padding-left: 18px; font-size: 14px; color: var(--murekkep); }
+  .proje ul.katki li + li { margin-top: 3px; }
+  .araclar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .araclar span { padding: 2px 9px; border-radius: 6px; background: var(--ana-zemin); color: var(--ana); font-size: 12px; font-weight: 600; }
+  .araclar span.ai { background: #fff; color: var(--ikincil); box-shadow: inset 0 0 0 1px var(--cizgi); }
+  .grup-notu { margin: 10px 0 0; font-size: 12.5px; color: var(--ikincil); line-height: 1.45; }
+  .seffaflik { margin: -8px 0 16px; padding: 10px 14px; border-left: 3px solid var(--ana); background: var(--ana-zemin);
+               border-radius: 0 8px 8px 0; font-size: 14px; color: var(--murekkep); }
+  .not { font-size: 13px; color: var(--ikincil); font-style: italic; }
+  .proje-eylem { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+
+  /* İçerik üretimi */
+  .icerik-izgara { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; gap: 16px; }
+  .icerik { display: flex; flex-direction: column; background: var(--kart); border: 1px solid var(--cizgi); border-radius: var(--yaricap);
+            overflow: hidden; text-decoration: none; color: inherit; }
+  .icerik:hover { border-color: var(--ana); }
+  .icerik img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .icerik div { padding: 12px 14px 14px; }
+  .icerik b { display: block; font-size: 14.5px; line-height: 1.35; }
+  .icerik span { font-size: 12.5px; color: var(--ikincil); }
+  .icerik.kurs { background: var(--ana); color: #fff; border-color: var(--ana); justify-content: center; }
+  .icerik.kurs div { padding: 22px; }
+  .icerik.kurs .ust-etiket { color: #b9d2ff; }
+  .icerik.kurs b { font-size: 19px; font-family: var(--font-baslik); margin-bottom: 8px; }
+  .icerik.kurs span { color: #dbe6ff; font-size: 14px; }
+  .icerik-yigin { display: grid; gap: 16px; }
+  .icerik.kanal { background: #c4302b; border-color: #c4302b; color: #fff; justify-content: center; }
+  .icerik.kanal:hover, .icerik.kurs:hover { filter: brightness(1.08); }
+  .icerik.kanal div { display: flex; align-items: center; gap: 14px; padding: 18px 22px; }
+  .icerik.kanal svg { flex: none; }
+  .icerik.kanal .ust-etiket { color: #ffd6d4; margin-bottom: 2px; }
+  .icerik.kanal b { font-family: var(--font-baslik); font-size: 17px; }
+  .icerik.kanal span { color: #ffe4e2; font-size: 13px; }
+
+  /* Eğitim ve iletişim */
+  .iki-kolon { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .kart { padding: 22px; background: var(--kart); border: 1px solid var(--cizgi); border-radius: var(--yaricap); }
+  .kart h3 { font-size: 19px; margin-bottom: 4px; }
+  .kart .alt { color: var(--ikincil); margin: 0 0 12px; }
+  .kart p { margin: 0 0 8px; }
+  .kart .ikinci-okul { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--cizgi); }
+  .iletisim-listesi { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .iletisim-listesi a { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; text-decoration: none; }
+  .iletisim-listesi a:hover { text-decoration: underline; }
+  .iletisim-listesi svg { flex: none; }
+  footer { padding: 28px 0 40px; color: var(--ikincil); font-size: 13px; border-top: 1px solid var(--cizgi); }
+  footer .kap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .proje.one-cikan { grid-template-columns: 1fr; }
+    .yetkinlik-izgara { grid-template-columns: 1fr 1fr; }
+    .icerik-izgara { grid-template-columns: 1fr 1fr; }
+    .serit nav { display: none; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 40px 0; }
+    .giris { padding: 36px 0 32px; }
+    .giris .kimlik { grid-template-columns: 1fr; gap: 18px; text-align: left; }
+    .foto { width: 112px; height: 112px; }
+    .rakamlar { grid-template-columns: 1fr 1fr; }
+    .yetkinlik-izgara, .proje-izgara, .iki-kolon, .icerik-izgara { grid-template-columns: 1fr; }
+    .serit .dugme span { display: none; }
+  }
+
+  /* Yazdırınca tek sayfalık sade CV düzeni */
+  @media print {
+    .serit, .eylemler, .proje-eylem, .filtre-notu, #icerik, .proje-gorsel, footer, .canli-rozet { display: none !important; }
+    body { background: #fff; font-size: 11pt; }
+    section, .giris { padding: 12pt 0; background: none; border: 0; }
+    .proje-izgara, .yetkinlik-izgara { grid-template-columns: 1fr 1fr; gap: 8pt; }
+    .proje, .proje.one-cikan { display: block; box-shadow: none; break-inside: avoid; }
+    .proje.soluk { opacity: 1; }
+    .proje.vurgulu { outline: 0; }
+    .etiket { border: 0; background: none; padding: 0 6pt 0 0; }
+    .etiket small { display: none; }
+    a { color: inherit; text-decoration: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="serit">
+  <div class="kap">
+    <a class="ad" href="#ust">Mehmet Ali Yanmaz</a>
+    <nav aria-label="Bölümler">
+      <a href="#yetkinlikler">Yetkinlikler</a>
+      <a href="#projeler">Projeler</a>
+      <a href="#icerik">İçerik üretimi</a>
+      <a href="#egitim">Eğitim</a>
+    </nav>
+    <a class="dugme birincil kucuk" href="mailto:georehber01@gmail.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm17 2-9 6-9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>İletişime geç</span>
+    </a>
+  </div>
+</header>
+
+<main id="ust">
+  <section class="giris">
+    <div class="kap kimlik">
+      <img class="foto" src="../assets/profile.webp" alt="Mehmet Ali Yanmaz" width="168" height="168">
+      <div>
+        <span class="ust-etiket">Portfolyo</span>
+        <h1>Mehmet Ali Yanmaz</h1>
+        <p class="unvan">CBS Uzmanı</p>
+        <p class="ozet">Haziran 2026'da İzmir Bakırçay Üniversitesi Coğrafya Bölümü'nden mezun oldum. Projelerin coğrafi tarafını yürütüyorum: konu ve veri seçimi, CBS analizleri, harita tasarımı ve ArcGIS Online'da yayınlama. Web uygulamalarının ve QGIS eklentilerinin kodunu yapay zekâ araçlarıyla birlikte hazırlıyorum. Aşağıdaki projelerin hepsi yayında; dokunup deneyebilirsiniz. GeoRehber adıyla CBS eğitim videoları ve bir Udemy kursu da hazırlıyorum.</p>
+        <div class="eylemler">
+          <a class="dugme birincil" href="#projeler">Projeleri incele</a>
+          <a class="dugme" href="mailto:georehber01@gmail.com">georehber01@gmail.com</a>
+          <a class="dugme" href="Mehmet_Ali_Yanmaz_CV.pdf" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            CV indir
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="kap rakamlar">
+      <div class="rakam"><b>9</b><span>yayında proje</span></div>
+      <div class="rakam"><b>5</b><span>etkileşimli web haritası</span></div>
+      <div class="rakam"><b>2</b><span>QGIS eklentisi</span></div>
+      <div class="rakam"><b>11</b><span>CBS eğitim videosu</span></div>
+    </div>
+  </section>
+
+  <section id="yetkinlikler">
+    <div class="kap">
+      <div class="bolum-baslik">
+        <div><span class="ust-etiket">Yetkinlikler</span><h2>Neler yapabiliyorum</h2></div>
+        <p>Bir yetkinliğe tıklayarak ilgili projeleri görebilirsiniz.</p>
+      </div>
+      <div class="yetkinlik-izgara" id="yetkinlik-izgara">
+        <div class="yetkinlik-grup">
+          <h3>CBS yazılımları</h3>
+          <div class="etiketler">
+            <button class="etiket" data-beceri="arcgis-pro">ArcGIS Pro</button>
+            <button class="etiket" data-beceri="arcgis-online">ArcGIS Online</button>
+            <button class="etiket" data-beceri="qgis">QGIS</button>
+          </div>
+        </div>
+        <div class="yetkinlik-grup">
+          <h3>Web CBS</h3>
+          <div class="etiketler">
+            <button class="etiket" data-beceri="survey123">Survey123</button>
+            <button class="etiket" data-beceri="storymaps">StoryMaps</button>
+            <button class="etiket" data-beceri="experience">Experience Builder</button>
+          </div>
+        </div>
+        <div class="yetkinlik-grup">
+          <h3>Yapay zekâ destekli geliştirme</h3>
+          <div class="etiketler">
+            <button class="etiket" data-beceri="ai-web">Web harita uygulamaları</button>
+            <button class="etiket" data-beceri="ai-qgis">QGIS eklentileri</button>
+            <button class="etiket" data-beceri="ai-python">Python ile analiz</button>
+          </div>
+          <p class="grup-notu">Kodlar yapay zekâ araçlarıyla yazılmaktadır. Gereksinimlerin belirlenmesi, veri ve analizlerin hazırlanması ve sonuçların test edilmesi tarafımdan yürütülmektedir. Bu alanda Anadolu Üniversitesi'nde önlisans eğitimime devam ediyorum.</p>
+        </div>
+        <div class="yetkinlik-grup">
+          <h3>Mekânsal analiz</h3>
+          <div class="etiketler">
+            <button class="etiket" data-beceri="ckka">Çok kriterli karar analizi (AHP)</button>
+            <button class="etiket" data-beceri="uygunluk">Uygunluk analizi</button>
+            <button class="etiket" data-beceri="raster">Raster ve DEM analizi</button>
+            <button class="etiket" data-beceri="yogunluk">Yoğunluk analizi</button>
+          </div>
+        </div>
+        <div class="yetkinlik-grup">
+          <h3>Uzaktan algılama</h3>
+          <div class="etiketler">
+            <button class="etiket" data-beceri="uydu">Uydu görüntüsü işleme</button>
+            <button class="etiket" data-beceri="zamansal">Zamansal değişim analizi</button>
+          </div>
+        </div>
+        <div class="yetkinlik-grup">
+          <h3>Kartografya ve veri</h3>
+          <div class="etiketler">
+            <button class="etiket" data-beceri="tasarim">Harita tasarımı</button>
+            <button class="etiket" data-beceri="katilimci">Katılımcı veri toplama</button>
+            <button class="etiket" data-beceri="anlati">Harita ile anlatım</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projeler" style="padding-top:0">
+    <div class="kap">
+      <div class="bolum-baslik">
+        <div><span class="ust-etiket">Projeler</span><h2>Seçili çalışmalar</h2></div>
+        <p>"Canlı önizle" uygulamayı bu sayfada açar.</p>
+      </div>
+      <p class="seffaflik">Web uygulamalarının ve QGIS eklentilerinin kodu yapay zekâ araçlarıyla yazıldı. Konu belirleme, veri hazırlama, CBS analizi, harita tasarımı ve yayınlama aşamalarını ben yürüttüm.</p>
+      <p class="filtre-notu" id="filtre-notu" aria-live="polite"></p>
+      <div class="proje-izgara">
+
+        <article class="proje one-cikan" data-beceri="arcgis-online ai-web tasarim anlati">
+          <div class="proje-gorsel" data-canli="../kurtulustan-kurulusa/">
+            <img src="../assets/portfolyo/kurtulustan-kurulusa.webp" alt="Kurtuluştan Kuruluşa haritası: Anadolu üzerinde zaman çizelgesi ve vapur rotası" width="800" height="500">
+            <span class="canli-rozet"><i></i>Yayında</span>
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Etkileşimli zaman haritası</span>
+            <h3>Kurtuluştan Kuruluşa</h3>
+            <p>Atatürk'ün 16 Mayıs 1919'dan 29 Ekim 1923'e kadar bulunduğu yerleri ve yolculuklarını gün gün izleyen harita.</p>
+            <ul class="katki">
+              <li>Zaman çizelgesiyle oynatılabilen yolculuk anlatımı</li>
+              <li>Türkçe ve İngilizce arayüz</li>
+              <li>Tren, otomobil ve vapur yolculukları ayrı sembollerle</li>
+            </ul>
+            <div class="araclar"><span>ArcGIS Online</span><span class="ai">Yapay zekâ destekli kod</span></div>
+            <div class="proje-eylem">
+              <button class="dugme birincil kucuk" type="button" data-onizle>Canlı önizle</button>
+              <a class="dugme kucuk" href="../kurtulustan-kurulusa/" target="_blank" rel="noopener">Yeni sekmede aç</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="arcgis-online ai-web survey123 katilimci yogunluk tasarim">
+          <div class="proje-gorsel" data-canli="../her-yerde-ataturk/">
+            <img src="../assets/portfolyo/her-yerde-ataturk.webp" alt="Her Yerde Atatürk: Türkiye'deki Atatürk caddelerinin yoğunluk haritası" width="800" height="500" loading="lazy">
+            <span class="canli-rozet"><i></i>Yayında</span>
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Katılımcı web haritası</span>
+            <h3>Her Yerde Atatürk</h3>
+            <p>Atatürk adını taşıyan caddeleri, anıtları ve ziyaretçilerin eklediği yerleri tek haritada toplayan proje.</p>
+            <ul class="katki">
+              <li>Caddeler için yoğunluk gösterimi, 310 anıt</li>
+              <li>Survey123 ile ziyaretçi katkısı ve moderasyon sayfası</li>
+            </ul>
+            <div class="araclar"><span>ArcGIS Online</span><span>Survey123</span><span class="ai">Yapay zekâ destekli kod</span></div>
+            <div class="proje-eylem">
+              <button class="dugme birincil kucuk" type="button" data-onizle>Canlı önizle</button>
+              <a class="dugme kucuk" href="../her-yerde-ataturk/" target="_blank" rel="noopener">Yeni sekmede aç</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="arcgis-pro arcgis-online ai-web ai-python raster uygunluk uydu tasarim">
+          <div class="proje-gorsel" data-canli="../artemis-ay-inis/">
+            <img src="../assets/portfolyo/artemis-ay-inis.webp" alt="Artemis: Ay'ın güney kutbunda iniş uygunluğu haritası" width="800" height="500" loading="lazy">
+            <span class="canli-rozet"><i></i>Yayında</span>
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Uygunluk analizi</span>
+            <h3>Artemis Ay'da nereye inmeli?</h3>
+            <p>NASA'nın Ay'ın güney kutbundaki dokuz aday iniş bölgesini güneş, Dünya ile bağlantı, buza yakınlık ve eğime göre sıraladım.</p>
+            <ul class="katki">
+              <li>NASA LRO yükseklik, aydınlanma ve sıcaklık verileri</li>
+              <li>Renk körlüğüne uygun (Okabe-Ito) palet</li>
+            </ul>
+            <div class="araclar"><span>ArcGIS Pro</span><span>ArcGIS Online</span><span class="ai">Yapay zekâ destekli kod</span></div>
+            <div class="proje-eylem">
+              <button class="dugme birincil kucuk" type="button" data-onizle>Canlı önizle</button>
+              <a class="dugme kucuk" href="../artemis-ay-inis/" target="_blank" rel="noopener">Yeni sekmede aç</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="arcgis-online ai-web tasarim">
+          <div class="proje-gorsel" data-canli="../hatay-kent-rehberi/">
+            <img src="../assets/portfolyo/hatay-kent-rehberi.webp" alt="Hatay Kent Rehberi: hastane, eczane ve turistik noktalar haritası" width="800" height="500" loading="lazy">
+            <span class="canli-rozet"><i></i>Yayında</span>
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Kent rehberi</span>
+            <h3>Hatay Kent Rehberi</h3>
+            <p>438 sağlık noktası ve 27 gezilecek yeri arama, filtreleme ve "yakınımda ne var" listesiyle sunan kent atlası.</p>
+            <ul class="katki">
+              <li>Konuma göre en yakın yerler ve yol tarifi</li>
+              <li>Özel tasarlanmış sağlık sembolleri, eczaneler için kümeleme</li>
+            </ul>
+            <div class="araclar"><span>ArcGIS Online</span><span class="ai">Yapay zekâ destekli kod</span></div>
+            <div class="proje-eylem">
+              <button class="dugme birincil kucuk" type="button" data-onizle>Canlı önizle</button>
+              <a class="dugme kucuk" href="../hatay-kent-rehberi/" target="_blank" rel="noopener">Yeni sekmede aç</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="arcgis-online ai-web survey123 experience katilimci yogunluk">
+          <div class="proje-gorsel" data-canli="../guvenli-sehir/">
+            <img src="../assets/portfolyo/guvenli-sehir.webp" alt="Güvenli Şehir: kullanıcı bildirimlerinden oluşan risk yoğunluk haritası" width="800" height="500" loading="lazy">
+            <span class="canli-rozet"><i></i>Yayında</span>
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Katılımcı CBS</span>
+            <h3>Güvenli Şehir Bilgi Sistemi</h3>
+            <p>Kullanıcıların risk noktalarını bildirdiği ve bildirimlerin ısı haritasına dönüştüğü gönüllü coğrafi bilgi platformu.</p>
+            <ul class="katki">
+              <li>Survey123 formu ile beş risk türünde 1-5 puanlama</li>
+              <li>Isı haritası ve risk türüne göre ortalama puanlar</li>
+            </ul>
+            <div class="araclar"><span>Survey123</span><span>ArcGIS Online</span><span class="ai">Yapay zekâ destekli kod</span></div>
+            <div class="proje-eylem">
+              <button class="dugme birincil kucuk" type="button" data-onizle>Canlı önizle</button>
+              <a class="dugme kucuk" href="../guvenli-sehir/" target="_blank" rel="noopener">Yeni sekmede aç</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="qgis ai-qgis uygunluk raster tasarim">
+          <div class="proje-gorsel">
+            <img src="../assets/portfolyo/qgis-eklentileri.webp" alt="GeoRehber QGIS eklentileri sayfası" width="800" height="500" loading="lazy">
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">QGIS araçları</span>
+            <h3>QGIS eklentileri</h3>
+            <p>Tekrarlayan CBS işlerini hızlandıran iki QGIS eklentisi. İş akışını ben belirledim, kodları yapay zekâ ile yazıldı; ikisi de indirilebilir.</p>
+            <ul class="katki">
+              <li>Location Map: lejant, ölçek ve yön okuyla otomatik lokasyon haritası</li>
+              <li>Risk &amp; Suitability Analysis: sınıflandırma, normalizasyon ve ağırlıklı çakıştırma</li>
+            </ul>
+            <div class="araclar"><span>QGIS</span><span class="ai">Yapay zekâ destekli kod</span></div>
+            <div class="proje-eylem">
+              <a class="dugme birincil kucuk" href="../qgis-eklentileri.html">Eklentileri gör</a>
+              <a class="dugme kucuk" href="https://www.youtube.com/watch?v=TyEJg3KSlpQ" target="_blank" rel="noopener">Tanıtım videosu</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="arcgis-pro ckka uygunluk raster tasarim">
+          <div class="proje-gorsel">
+            <img src="../assets/portfolyo/bayburt-ges.webp" alt="Bayburt GES uygunluk analizi posteri" width="800" height="500" loading="lazy">
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Karar destek · AHP</span>
+            <h3>Bayburt İli GES Uygunluk Analizi</h3>
+            <p>Güneş ışınımı, eğim, bakı, arazi kullanımı ve altyapıya uzaklık kriterlerini ağırlıklandırarak güneş enerjisi santrali için uygun alanları belirledim.</p>
+            <div class="araclar"><span>ArcGIS Pro</span><span>AHP</span><span>Weighted Sum</span></div>
+            <div class="proje-eylem">
+              <a class="dugme birincil kucuk" href="../bayburt-ges.html">Analizi incele</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="arcgis-pro uydu zamansal raster tasarim">
+          <div class="proje-gorsel">
+            <img src="../assets/portfolyo/meke-maari.webp" alt="Meke Maarı'nın volkanik oluşumu ve hidromorfolojik evrimi posteri" width="800" height="500" loading="lazy">
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Uzaktan algılama</span>
+            <h3>Meke Maarı Zamansal Değişim Analizi</h3>
+            <p>Konya Karapınar'daki Meke Gölü'nün kuraklıkla geçirdiği değişimi uydu görüntüleriyle yıllar bazında inceledik.</p>
+            <div class="araclar"><span>Uydu görüntüleri</span><span>ArcGIS Pro</span><span>Zamansal analiz</span></div>
+            <p class="not">4 kişilik ekip çalışması, ilk yazar</p>
+            <div class="proje-eylem">
+              <a class="dugme birincil kucuk" href="../meke-maari.html">Raporu incele</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="proje" data-beceri="storymaps experience arcgis-online anlati tasarim survey123 katilimci">
+          <div class="proje-gorsel" data-canli="https://storymaps.arcgis.com/stories/1e30b8bdacc247a5ad81db688fe236a5">
+            <img src="../assets/portfolyo/arta-kalanlar.webp" alt="Arta Kalanlar StoryMap kapağı: Türkiye'de tehlike altındaki memeli türleri" width="800" height="500" loading="lazy">
+            <span class="canli-rozet"><i></i>Yayında</span>
+          </div>
+          <div class="proje-govde">
+            <span class="proje-tur">Harita ile anlatım</span>
+            <h3>Arta Kalanlar</h3>
+            <p>Türkiye'de tehlike altındaki kara, deniz ve uçan memeli türlerini IUCN Kırmızı Liste verileriyle haritalayan StoryMap.</p>
+            <div class="araclar"><span>ArcGIS StoryMaps</span><span>Experience Builder</span><span>Survey123</span></div>
+            <div class="proje-eylem">
+              <button class="dugme birincil kucuk" type="button" data-onizle>Canlı önizle</button>
+              <a class="dugme kucuk" href="https://storymaps.arcgis.com/stories/1e30b8bdacc247a5ad81db688fe236a5" target="_blank" rel="noopener">Yeni sekmede aç</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="icerik" style="background:#f1f4f9;border-top:1px solid var(--cizgi);border-bottom:1px solid var(--cizgi)">
+    <div class="kap">
+      <div class="bolum-baslik">
+        <div><span class="ust-etiket">İçerik üretimi</span><h2>Öğrendiğimi anlatıyorum</h2></div>
+        <p><a href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener">GeoRehber YouTube kanalı</a></p>
+      </div>
+      <div class="icerik-izgara">
+        <div class="icerik-yigin">
+          <a class="icerik kurs" href="https://www.udemy.com/course/arcgis-pro-georehber/?referralCode=47108E9DAFE854ECC196" target="_blank" rel="noopener">
+            <div>
+              <span class="ust-etiket">Udemy kursu</span>
+              <b>ArcGIS Pro ile Sıfırdan CBS Öğren</b>
+              <span>Veri ekleme, öznitelik tablosu, join, seçim, DEM, eğim, bakı ve harita çıktısı.</span>
+            </div>
+          </a>
+          <a class="icerik kanal" href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener">
+            <div>
+              <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+              <span style="display:block"><span class="ust-etiket">YouTube kanalı</span><b>GeoRehber</b><span style="display:block">11 CBS eğitim videosu</span></span>
+            </div>
+          </a>
+        </div>
+        <a class="icerik" href="https://www.youtube.com/watch?v=97aTrIB2Ujk" target="_blank" rel="noopener">
+          <img src="https://i.ytimg.com/vi/97aTrIB2Ujk/hqdefault.jpg" alt="" width="480" height="270" loading="lazy">
+          <div><b>ArcGIS Pro ile Çatı Güneş Enerjisi Potansiyeli Hesaplama</b><span>Güneş paneli kurulumu için çatı analizi</span></div>
+        </a>
+        <a class="icerik" href="https://www.youtube.com/watch?v=i8X3dpNQMrQ" target="_blank" rel="noopener">
+          <img src="https://i.ytimg.com/vi/i8X3dpNQMrQ/hqdefault.jpg" alt="" width="480" height="270" loading="lazy">
+          <div><b>ArcGIS Pro ile NDVI Analizi Nasıl Yapılır?</b><span>Uygulamalı NDVI analizi</span></div>
+        </a>
+        <a class="icerik" href="https://www.youtube.com/watch?v=A8-4CjgXNCI" target="_blank" rel="noopener">
+          <img src="https://i.ytimg.com/vi/A8-4CjgXNCI/hqdefault.jpg" alt="" width="480" height="270" loading="lazy">
+          <div><b>NDVI Nedir? Formülü, Uydu Bantları ve Değerlerin Yorumlanması</b><span>NDVI'nin teorik anlatımı</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="egitim">
+    <div class="kap iki-kolon">
+      <div class="kart">
+        <span class="ust-etiket">Eğitim</span>
+        <h3>İzmir Bakırçay Üniversitesi</h3>
+        <p class="alt">Coğrafya Bölümü, lisans · Haziran 2026'da mezun</p>
+        <p>Eğitimim boyunca coğrafi bilgi sistemleri, uzaktan algılama, mekânsal veri analizi ve harita tasarımı alanlarında çalıştım. Bayburt GES ve Meke Maarı çalışmaları bölüm projelerimdir.</p>
+        <h3 class="ikinci-okul">Anadolu Üniversitesi Açıköğretim Fakültesi</h3>
+        <p class="alt">Yapay Zekâ Destekli Kodlama, önlisans · 2026-2027 güz döneminde başladı, devam ediyor</p>
+      </div>
+      <div class="kart">
+        <span class="ust-etiket">İletişim</span>
+        <h3>Birlikte çalışalım</h3>
+        <p class="alt">CBS, web haritacılık ve mekânsal analiz pozisyonlarına açığım.</p>
+        <ul class="iletisim-listesi">
+          <li><a href="mailto:georehber01@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm17 2-9 6-9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>georehber01@gmail.com</a></li>
+          <li><a href="https://tr.linkedin.com/in/mehmetaliyanmaz" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 9h3.55v11.45H3.56V9Z"/></svg>linkedin.com/in/mehmetaliyanmaz</a></li>
+          <li><a href="https://github.com/georehber" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>github.com/georehber</a></li>
+          <li><a href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>youtube.com/@georehber</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="kap">
+    <span>© 2026 Mehmet Ali Yanmaz</span>
+    <a href="../">georehber.com</a>
+  </div>
+</footer>
+
+<script>
+  // Yetkinlik süzgeci: her etiket, onu kullanan projelerin sayısını gösterir
+  const projeler = [...document.querySelectorAll(".proje")];
+  const etiketler = [...document.querySelectorAll(".etiket[data-beceri]")];
+  const not = document.getElementById("filtre-notu");
+  etiketler.forEach(e => {
+    const adet = projeler.filter(p => p.dataset.beceri.split(" ").includes(e.dataset.beceri)).length;
+    e.insertAdjacentHTML("beforeend", ` <small>${adet}</small>`);
+    e.setAttribute("aria-pressed", "false");
+  });
+  // Projeler gizlenmez; ilgili olanlar vurgulanır
+  function suz(beceri, etiket) {
+    etiketler.forEach(e => e.setAttribute("aria-pressed", String(e === etiket)));
+    const ilgili = projeler.filter(p => beceri && p.dataset.beceri.split(" ").includes(beceri));
+    projeler.forEach(p => {
+      p.classList.toggle("vurgulu", ilgili.includes(p));
+      p.classList.toggle("soluk", !!beceri && !ilgili.includes(p));
+    });
+    if (beceri) {
+      not.innerHTML = `<b>${etiket.firstChild.textContent.trim()}</b> kullanılan ${ilgili.length} proje vurgulandı. <button type="button">Vurguyu kaldır</button>`;
+      not.querySelector("button").addEventListener("click", () => suz(null, null));
+      ilgili[0].scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      not.textContent = "";
+    }
+  }
+  etiketler.forEach(e => e.addEventListener("click", () =>
+    e.getAttribute("aria-pressed") === "true" ? suz(null, null) : suz(e.dataset.beceri, e)));
+
+  // Canlı önizleme: uygulama yalnızca istenince yüklenir, sayfa hafif kalır
+  document.querySelectorAll("[data-onizle]").forEach(d => d.addEventListener("click", () => {
+    const kutu = d.closest(".proje").querySelector(".proje-gorsel");
+    const mevcut = kutu.querySelector("iframe");
+    if (mevcut) {
+      mevcut.remove();
+      d.textContent = "Canlı önizle";
+      return;
+    }
+    const f = document.createElement("iframe");
+    f.src = kutu.dataset.canli;
+    f.title = d.closest(".proje").querySelector("h3").textContent + " canlı önizleme";
+    f.allow = "geolocation; fullscreen";
+    kutu.append(f);
+    d.textContent = "Önizlemeyi kapat";
+  }));
+
+</script>
+</body>
+</html>

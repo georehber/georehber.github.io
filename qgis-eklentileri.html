@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3NJW4TZFDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QGIS Eklentileri ve Python Araçları | GeoRehber</title>
+    <meta name="description" content="GeoRehber tarafından geliştirilen QGIS eklentileri (plugins) ve PyQGIS araçları. Lokasyon haritaları ve risk analiz eklentilerini indirebilirsiniz.">
+    <link rel="canonical" href="https://georehber.com/qgis-eklentileri.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://georehber.com/qgis-eklentileri.html">
+    <meta property="og:title" content="QGIS Eklentileri ve Python Araçları | GeoRehber">
+    <meta property="og:description" content="GeoRehber tarafından geliştirilen QGIS eklentileri (plugins) ve PyQGIS araçları. Lokasyon haritaları ve risk analiz eklentilerini indirebilirsiniz.">
+    <meta property="og:image" content="https://georehber.com/assets/og-georehber.png">
+    <meta property="og:site_name" content="GeoRehber">
+    <meta property="og:locale" content="tr_TR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://georehber.com/qgis-eklentileri.html">
+    <meta name="twitter:title" content="QGIS Eklentileri ve Python Araçları | GeoRehber">
+    <meta name="twitter:description" content="GeoRehber tarafından geliştirilen QGIS eklentileri (plugins) ve PyQGIS araçları. Lokasyon haritaları ve risk analiz eklentilerini indirebilirsiniz.">
+    <meta name="twitter:image" content="https://georehber.com/assets/og-georehber.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link class="icon" rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css?v=20261101-1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        .qgis-page-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+        }
+
+        .qgis-title {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        @media (min-width: 768px) {
+            .qgis-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .qgis-description {
+            font-size: 1.125rem;
+            color: rgba(var(--foreground), 0.8);
+            max-width: 56rem;
+            margin-bottom: 3rem;
+        }
+
+        .plugins-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .plugins-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .plugin-card {
+            padding: 1.5rem;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .plugin-card:hover {
+            border-color: #22c55e;
+            animation: greenGlow 2s ease-in-out infinite;
+        }
+
+        body.dark .plugin-card:hover {
+            animation: greenGlowDark 2s ease-in-out infinite;
+        }
+
+        @keyframes greenGlow {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
+            }
+        }
+
+        @keyframes greenGlowDark {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+            }
+            50% {
+                box-shadow: 0 4px 24px rgba(34, 197, 94, 0.5);
+            }
+        }
+
+        .plugin-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .plugin-icon {
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .plugin-info {
+            flex: 1;
+        }
+
+        .plugin-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .plugin-version {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .plugin-description {
+            color: rgba(var(--foreground), 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .features-section {
+            margin-bottom: 1rem;
+        }
+
+        .features-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .features-title svg {
+            color: var(--primary);
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .features-list li {
+            font-size: 0.875rem;
+            color: rgba(var(--foreground), 0.7);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 0.25rem;
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: oklch(0.4 0.15 260);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(var(--primary), 0.3);
+        }
+
+        .installation-guide {
+            background-color: rgba(var(--secondary), 0.5);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+
+        .installation-guide h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .installation-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .installation-step {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border-radius: 50%;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: rgba(var(--foreground), 0.7);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- Scroll to Top Button -->
+        <button id="scrollTopBtn" class="scroll-top-btn" type="button" title="Yukarı Git" aria-label="Sayfanın başına dön" style="display: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+        </button>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container navbar-content">
+                <a href="index.html" class="navbar-brand">
+                    <img src="assets/logo.webp" alt="GeoRehber Logo" class="navbar-logo" width="64" height="64">GEOREHBER
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="desktop-menu">
+                    <a href="index.html#learn" class="nav-link">Eğitimler</a>
+                    <a href="index.html#updates" class="nav-link">Duyurular</a>
+                    <a href="uygulamalar.html" class="nav-link" aria-current="page">Uygulamalar</a>
+                    <a href="index.html#about" class="nav-link">Hakkında</a>
+                    <a href="index.html#contact" class="nav-link">İletişim</a>
+                    <button id="themeToggle" class="theme-toggle" type="button" title="Gece Modu" aria-label="Koyu temayı aç">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-controls">
+                    <button id="themeToggleMobile" class="theme-toggle" type="button" title="Gece Modu" aria-label="Koyu temayı aç">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" title="Menü" aria-label="Menüyü aç" aria-controls="mobileMenu" aria-expanded="false">
+                        <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" style="display: none;">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu" style="display: none;">
+                <a href="index.html#learn" class="mobile-nav-link">Eğitimler</a>
+                <a href="index.html#updates" class="mobile-nav-link">Duyurular</a>
+                <a href="uygulamalar.html" class="mobile-nav-link" aria-current="page">Uygulamalar</a>
+                <a href="index.html#about" class="mobile-nav-link">Hakkında</a>
+                <a href="index.html#contact" class="mobile-nav-link">İletişim</a>
+            </div>
+        </nav>
+
+        <!-- Project Hero Section -->
+        <section class="project-hero">
+            <div class="container project-hero-content">
+                <a href="uygulamalar.html" class="pdf-back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Uygulamalara dön
+                </a>
+                <h1 class="project-hero-title">QGIS Eklentileri</h1>
+                <p class="project-hero-subtitle">QGIS ve Python (PyQGIS) birleşimiyle geliştirilen GeoRehber eklentileri. Lokasyon haritaları, otomatik layout üretimi ve tekrarlayan CBS iş akışlarını hızlandıran araçlar.</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="container qgis-content">
+            <!-- Plugins Grid -->
+            <div class="plugins-grid">
+                <!-- Plugin 1 -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <svg class="plugin-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        <div class="plugin-info">
+                            <div class="plugin-name">GeoRehber Location Map</div>
+                            <div class="plugin-version">v1.0.0 • QGIS 3+</div>
+                        </div>
+                    </div>
+
+                    <p class="plugin-description">
+                        İl / ilçe verilerinden otomatik olarak lokasyon haritası, sayfa düzeni, kartografik tasarım
+                        yapan, lejant, ölçek çubuğu ve yön oku oluşturan QGIS eklentisi.
+                    </p>
+
+                    <div class="features-section">
+                        <div class="features-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+                            </svg>
+                            Özellikler
+                        </div>
+                        <ul class="features-list">
+                            <li>Otomatik lokasyon haritası oluşturma</li>
+                            <li>Sayfa düzeni tasarımı</li>
+                            <li>Kartografik tasarım</li>
+                            <li>Lejant, ölçek çubuğu ve yön oku</li>
+                        </ul>
+                    </div>
+
+                    <div class="plugin-download">
+                        <a href="plugins/georehber_location_map.zip" class="download-btn" download>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Eklentiyi İndir (.zip)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Plugin 2 -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <svg class="plugin-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        <div class="plugin-info">
+                            <div class="plugin-name">GeoRehber Risk &amp; Suitability Analysis</div>
+                            <div class="plugin-version">v1.0.0 • QGIS 3.x+</div>
+                        </div>
+                    </div>
+
+                    <p class="plugin-description">
+                        Raster tabanlı risk ve uygunluk analizinde kullanılan sınıflandırma, normalizasyon ve ağırlıklı
+                        ortalama (weighted overlay) işlemlerini tek bir yapılandırılmış analiz süreci içinde birleştiren
+                        QGIS eklentisi.
+                    </p>
+
+                    <div class="features-section">
+                        <div class="features-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+                            </svg>
+                            Özellikler
+                        </div>
+                        <ul class="features-list">
+                            <li>Raster tabanlı risk analizi</li>
+                            <li>Uygunluk analizi</li>
+                            <li>Sınıflandırma ve normalizasyon</li>
+                            <li>Ağırlıklı ortalama (weighted overlay)</li>
+                            <li>Çalışma alanı (AOI) belirleme</li>
+                            <li>%100 kontrollü ağırlıklandırma</li>
+                        </ul>
+                    </div>
+
+                    <div class="plugin-download">
+                        <a href="plugins/georehber_risk_suitability_analysis.zip" class="download-btn" download>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Eklentiyi İndir (.zip)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Installation Guide -->
+            <div class="installation-guide">
+                <h2>QGIS Eklenti Kurulum Rehberi</h2>
+
+                <div class="installation-steps">
+                    <div class="installation-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Eklentiyi İndir</h3>
+                            <p>Yukarıdaki 'Eklentiyi İndir (.zip)' butonu ile eklentiyi indirin.</p>
+                        </div>
+                    </div>
+
+                    <div class="installation-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Plugins Menüsüne Gidin</h3>
+                            <p>QGIS menüsünden Plugins → Manage and Install Plugins... bölümüne gidin.</p>
+                        </div>
+                    </div>
+
+                    <div class="installation-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>ZIP'ten Yükle</h3>
+                            <p>Sol alttaki 'Install from ZIP' seçeneğine tıklayın.</p>
+                        </div>
+                    </div>
+
+                    <div class="installation-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Dosya Seçin</h3>
+                            <p>İndirdiğiniz ZIP dosyasını seçin.</p>
+                        </div>
+                    </div>
+
+                    <div class="installation-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Kurulumu Tamamla</h3>
+                            <p>'Install Plugin' butonuna basın. Kurulum tamamlandığında QGIS üst menüsünde eklenti aktif
+                                olur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 GeoRehber. Tüm hakları saklıdır.</p>
+                    <div class="footer-links">
+                        <a href="https://linkedin.com/in/mehmetaliyanmaz" target="_blank" rel="noopener noreferrer"
+                            title="LinkedIn" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/georehber" target="_blank" rel="noopener noreferrer"
+                            title="Instagram" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@georehber/" target="_blank" rel="noopener noreferrer"
+                            title="YouTube" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/905316066176" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="mailto:georehber01@gmail.com" title="E-posta" aria-label="E-posta">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js?v=20261101-1"></script>
+</body>
+
+</html>

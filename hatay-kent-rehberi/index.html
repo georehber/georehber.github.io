@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hatay Kent Rehberi | GeoRehber</title>
+<meta name="description" content="Hatay'daki hastaneleri, eczaneleri, diş sağlığı merkezlerini ve kültür, inanç ve doğa turizmi noktalarını tek bir etkileşimli haritada bulun.">
+<meta name="theme-color" content="#003286">
+<link rel="canonical" href="https://georehber.com/hatay-kent-rehberi/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hatay Kent Rehberi">
+<meta property="og:description" content="Hastaneler, eczaneler ve gezilecek yerler tek bir Hatay haritasında.">
+<meta property="og:image" content="https://georehber.com/assets/og-georehber.png">
+<meta property="og:url" content="https://georehber.com/hatay-kent-rehberi/">
+<meta property="og:site_name" content="GeoRehber">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://georehber.com/assets/og-georehber.png">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://js.arcgis.com">
+<link rel="preconnect" href="https://www.arcgis.com">
+<link rel="preconnect" href="https://bakircayuni.maps.arcgis.com">
+<link rel="preconnect" href="https://services-eu1.arcgis.com">
+<link rel="preconnect" href="https://basemaps.arcgis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.32/"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NJW4TZFDZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-3NJW4TZFDZ');
+</script>
+<style>
+  :root {
+    --ana: #003286;
+    --ana-koyu: #002362;
+    --ana-zemin: #e3efff;
+    --murekkep: #12080b;
+    --ikincil: #686163;
+    --cizgi: #e4e4e7;
+    --kart: #ffffff;
+    --zemin: #fcfcfc;
+    --golge: 0 8px 24px rgba(20, 35, 70, .06);
+    --golge-guclu: 0 18px 48px rgba(20, 35, 70, .10);
+    --yaricap: 12px;
+    --yaricap-sm: 8px;
+    --font-baslik: Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-govde: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --kenar: 16px;
+    --baslik: 60px;
+    --alt: 64px;
+    --calcite-font-family: var(--font-govde);
+    --calcite-sans-family: var(--font-govde);
+    --calcite-color-brand: var(--ana);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; width: 100%; height: 100%; overflow: hidden;
+    background: var(--zemin); color: var(--murekkep);
+    font-family: var(--font-govde); -webkit-font-smoothing: antialiased;
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--ana); outline-offset: 2px; }
+
+  header {
+    position: fixed; inset: 0 0 auto 0; height: calc(var(--baslik) + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) var(--kenar) 0; z-index: 30;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--kart); border-bottom: 3px solid var(--ana);
+  }
+  .marka { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; color: inherit; text-decoration: none; }
+  .marka img { width: 40px; height: 40px; flex: none; }
+  .marka-yazi { min-width: 0; }
+  .marka h1 {
+    margin: 0; font-family: var(--font-baslik); font-size: 18px; font-weight: 700; letter-spacing: -.01em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ana);
+  }
+  .slogan {
+    display: block; margin-top: 1px; font-size: 11.5px; color: var(--ikincil); letter-spacing: .02em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ust-dugme {
+    flex: none; display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px;
+    border: 1px solid var(--cizgi); border-radius: 999px; background: var(--kart); cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--ana); text-decoration: none;
+  }
+  .ust-dugme:hover { background: var(--ana-zemin); }
+
+  #harita { position: fixed; top: calc(var(--baslik) + 3px + env(safe-area-inset-top)); left: 0; right: 0; bottom: 0;
+            background: #eef1ea; }
+
+  #katman-paneli {
+    position: fixed; z-index: 20; top: calc(var(--baslik) + 3px + var(--kenar) + env(safe-area-inset-top));
+    left: var(--kenar); width: 320px; max-height: calc(100% - var(--baslik) - 3px - 2 * var(--kenar) - 70px);
+    display: flex; flex-direction: column;
+    background: var(--kart); border: 1px solid var(--cizgi); border-radius: var(--yaricap); box-shadow: var(--golge);
+  }
+  .panel-baslik {
+    flex: none; display: flex; align-items: center; gap: 8px; width: 100%; padding: 12px 14px;
+    border: 0; background: none; cursor: pointer; text-align: left; border-radius: var(--yaricap); color: var(--ana);
+  }
+  .panel-baslik strong { flex: 1; font-family: var(--font-baslik); font-size: 14px; font-weight: 600; color: var(--murekkep); }
+  .panel-baslik .ok { width: 18px; height: 18px; transition: transform .2s; color: var(--ikincil); }
+  #katman-paneli[data-acik="false"] .ok { transform: rotate(-90deg); }
+  #katman-paneli[data-acik="false"] .panel-govde { display: none; }
+  .panel-govde {
+    flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 4px 8px 6px; border-top: 1px solid var(--cizgi);
+    scrollbar-width: thin; scrollbar-color: #b9c3d6 transparent; overscroll-behavior: contain;
+  }
+  .bolum + .bolum { border-top: 1px solid #f0f0f2; }
+  #arama { margin: 8px 4px 10px; }
+  #arama .esri-search { width: 100%; box-shadow: none; border: 1px solid var(--cizgi); border-radius: var(--yaricap-sm); overflow: hidden; }
+
+  .katman {
+    display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px;
+    padding: 10px 8px; border-radius: var(--yaricap-sm); cursor: pointer;
+  }
+  .katman:hover { background: #f7f8fa; }
+  .katman.alt { padding: 6px 8px 6px 20px; grid-template-columns: 20px 1fr auto auto; }
+  .simge { width: 28px; height: 28px; display: grid; place-items: center; transition: opacity .15s; }
+  .alt .simge { width: 20px; height: 20px; }
+  .katman-ad { font-size: 14px; font-weight: 600; line-height: 1.25; transition: opacity .15s; }
+  .alt .katman-ad { font-size: 13px; font-weight: 500; }
+  .katman-ipucu { display: block; font-size: 12px; font-weight: 400; color: var(--ikincil); margin-top: 2px; }
+  .adet { font-size: 12px; color: var(--ikincil); font-variant-numeric: tabular-nums; }
+  .katman[data-durum="kapali"] .katman-ad, .katman[data-durum="kapali"] .simge,
+  .katman[data-durum="kapali"] .adet { opacity: .4; }
+  .anahtar { position: relative; width: 36px; height: 22px; flex: none; }
+  .alt .anahtar { width: 30px; height: 18px; }
+  .anahtar input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .anahtar span {
+    position: absolute; inset: 0; border-radius: 11px; background: #cfd3db; transition: background .15s;
+    pointer-events: none;
+  }
+  .anahtar span::after {
+    content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s;
+  }
+  .alt .anahtar span::after { width: 12px; height: 12px; }
+  .anahtar input:checked + span { background: var(--ana); }
+  .anahtar input:checked + span::after { transform: translateX(14px); }
+  .alt .anahtar input:checked + span::after { transform: translateX(12px); }
+  .anahtar input:focus-visible + span { outline: 3px solid var(--ana); outline-offset: 2px; }
+
+  .bolum-baslik { margin: 12px 8px 6px; font-family: var(--font-baslik); font-size: 12px; font-weight: 600;
+                  text-transform: uppercase; letter-spacing: .07em; color: var(--ana); }
+  .yakin-dugme {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: calc(100% - 16px); margin: 4px 8px 8px;
+    height: 38px; border: 0; border-radius: 999px; background: var(--ana); color: #fff; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .yakin-dugme:hover { background: var(--ana-koyu); }
+  .yakin-dugme[disabled] { opacity: .6; cursor: progress; }
+  .liste { list-style: none; margin: 0 4px 4px; padding: 0; }
+  .liste li {
+    display: grid; grid-template-columns: 14px 1fr auto; align-items: center; gap: 10px; padding: 8px;
+    border-radius: var(--yaricap-sm); cursor: pointer; font-size: 13px;
+  }
+  .liste li:hover, .liste li:focus-visible { background: var(--ana-zemin); outline: none; }
+  .liste .renk { width: 10px; height: 10px; border-radius: 50%; }
+  .liste .renk.elmas { border-radius: 2px; transform: rotate(45deg); }
+  .liste .ad { font-weight: 600; line-height: 1.25; }
+  .liste .alt-yazi { display: block; font-weight: 400; font-size: 12px; color: var(--ikincil); margin-top: 1px; }
+  .liste .mesafe { font-family: var(--font-baslik); font-weight: 600; color: var(--ana); white-space: nowrap; }
+  .panel-not { margin: 4px 8px 2px; font-size: 12px; color: var(--ikincil); line-height: 1.45; }
+  .panel-not:empty { display: none; }
+
+  #sayac {
+    position: fixed; z-index: 15; left: var(--kenar);
+    bottom: calc(26px + env(safe-area-inset-bottom));
+    max-width: calc(100% - 2 * var(--kenar) - 120px);
+    display: flex; align-items: center; gap: 10px; padding: 11px 16px;
+    background: var(--kart); border: 1px solid var(--cizgi); border-radius: 999px; box-shadow: var(--golge);
+    font-size: 14px; white-space: nowrap; overflow: hidden;
+  }
+  #sayac .nokta { width: 8px; height: 8px; border-radius: 50%; background: var(--ana); flex: none; }
+  #sayac b { font-weight: 700; color: var(--ana); }
+  #sayac .ayrac { color: #c3c7cf; margin: 0 8px; }
+  #sayac .metin { overflow: hidden; text-overflow: ellipsis; }
+
+  dialog {
+    width: min(560px, calc(100% - 2 * var(--kenar))); max-height: calc(100% - 64px); padding: 0;
+    border: 0; border-radius: 16px; box-shadow: var(--golge-guclu); color: var(--murekkep);
+  }
+  dialog[open] { display: flex; flex-direction: column; }
+  dialog::backdrop { background: rgba(0, 20, 60, .45); }
+  .dialog-ic { padding: 24px 24px 8px; overflow-y: auto; }
+  .dialog-marka { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .dialog-marka img { width: 48px; height: 48px; }
+  dialog h2 { margin: 0; font-family: var(--font-baslik); font-size: 22px; font-weight: 700; color: var(--ana); }
+  dialog .giris { margin: 0 0 16px; color: var(--ikincil); font-size: 15px; line-height: 1.5; }
+  dialog h3 { margin: 18px 0 6px; font-family: var(--font-baslik); font-size: 12px; text-transform: uppercase;
+              letter-spacing: .07em; color: var(--ana); }
+  dialog p, dialog li { font-size: 14px; line-height: 1.55; margin: 0; }
+  dialog ul { margin: 0; padding-left: 18px; }
+  dialog li + li { margin-top: 4px; }
+  dialog a { color: var(--ana); }
+  .rakamlar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .rakam { padding: 12px; border-radius: var(--yaricap-sm); background: var(--ana-zemin); }
+  .rakam b { display: block; font-family: var(--font-baslik); font-size: 20px; font-weight: 700; color: var(--ana); }
+  .rakam span { font-size: 12px; color: var(--ikincil); }
+  .dialog-alt { display: flex; justify-content: flex-end; padding: 12px 24px 20px; }
+  .dialog-alt button { height: 40px; padding: 0 18px; border: 0; border-radius: 999px; cursor: pointer;
+                       background: var(--ana); color: #f8f8f8; font-weight: 600; }
+  .dialog-alt button:hover { background: var(--ana-koyu); }
+
+  #yukleniyor {
+    position: fixed; inset: 0; z-index: 25; display: grid; place-items: center; background: var(--zemin);
+    transition: opacity .35s;
+  }
+  #yukleniyor.bitti { opacity: 0; pointer-events: none; }
+  .yukleme-ic { display: grid; justify-items: center; gap: 14px; color: var(--ikincil); font-size: 14px; }
+  .yukleme-ic img { width: 72px; height: 72px; }
+  .donen { width: 32px; height: 32px; border: 3px solid var(--cizgi); border-top-color: var(--ana); border-radius: 50%;
+           animation: don .9s linear infinite; }
+  @keyframes don { to { transform: rotate(360deg); } }
+
+  /* Popup içeriği */
+  .yer { font-size: 14px; line-height: 1.5; }
+  .yer-etiket { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px;
+                font-size: 12px; font-weight: 600; color: #fff; }
+  .yer dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0 0 12px; }
+  .yer dt { color: var(--ikincil); }
+  .yer dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+  .yer a { color: var(--ana); }
+  .yol-tarifi { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-radius: 999px;
+                background: var(--ana); color: #fff !important; font-weight: 600; font-size: 13px; text-decoration: none; }
+  .yol-tarifi:hover { background: var(--ana-koyu); }
+
+  .esri-view .esri-ui-corner .esri-component.esri-widget--button,
+  .esri-view .esri-ui-corner .esri-zoom { box-shadow: var(--golge); border-radius: var(--yaricap-sm); overflow: hidden; }
+  .esri-attribution, .esri-popup__main-container, .esri-features { font-family: var(--font-govde); }
+  .esri-popup__main-container { border-radius: var(--yaricap) !important; }
+
+  @media (max-width: 720px) {
+    .marka h1 { font-size: 15px; }
+    .marka img { width: 34px; height: 34px; }
+    .slogan { font-size: 10.5px; }
+    .ust-dugme span { display: none; }
+    .ust-dugme { width: 36px; padding: 0; justify-content: center; }
+    #katman-paneli { right: calc(var(--kenar) + 48px); width: auto;
+                     max-height: calc(100% - var(--baslik) - var(--alt) - 3px - 2 * var(--kenar) - 40px); }
+    .katman { padding: 8px 6px; }
+    .panel-baslik { padding: 10px 12px; }
+    #harita { bottom: calc(var(--alt) + env(safe-area-inset-bottom)); }
+    #sayac {
+      left: 0; right: 0; bottom: 0; width: 100%; max-width: none;
+      height: calc(var(--alt) + env(safe-area-inset-bottom));
+      padding: 0 var(--kenar) env(safe-area-inset-bottom);
+      border: 0; border-top: 1px solid var(--cizgi); border-radius: 0; box-shadow: 0 -6px 16px rgba(20, 35, 70, .06);
+    }
+    #sayac .metin { display: flex; flex-direction: column; gap: 2px; min-width: 0; line-height: 1.2; }
+    #sayac .s1, #sayac .s2 { display: block; overflow: hidden; text-overflow: ellipsis; }
+    #sayac .s2 { font-size: 12px; color: var(--ikincil); }
+    #sayac .ayrac { display: none; }
+    .rakamlar { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 360px) {
+    .slogan { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation-duration: 0s !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="marka" href="../" title="GeoRehber ana sayfa">
+    <img src="../assets/logo.webp" alt="GeoRehber logosu" width="40" height="40">
+    <span class="marka-yazi">
+      <h1>Hatay Kent Rehberi</h1>
+      <span class="slogan">Hastaneler, eczaneler ve gezilecek yerler tek haritada</span>
+    </span>
+  </a>
+  <button class="ust-dugme" type="button" id="hakkinda-ac" aria-haspopup="dialog" aria-label="Hakkında">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 10.5v6M12 7.2v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span>Hakkında</span>
+  </button>
+</header>
+
+<div id="harita" role="application" aria-label="Hatay sağlık hizmetleri ve turistik noktalar haritası"></div>
+
+<section id="katman-paneli" data-acik="true" aria-label="Arama, katmanlar ve lejant">
+  <button class="panel-baslik" type="button" id="panel-ac-kapa" aria-expanded="true" aria-controls="panel-govde">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5zm-9 9l9 5 9-5M3 16l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <strong>Ara, katmanlar ve lejant</strong>
+    <svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="panel-govde" id="panel-govde" tabindex="0" aria-label="Panel içeriği (kaydırılabilir)">
+    <div id="arama"></div>
+
+    <div class="bolum" data-grup="saglik">
+      <label class="katman">
+        <span class="simge"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#D55E00"/><path d="M12 7v10M7 12h10" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+        <span class="katman-ad">Sağlık hizmetleri<span class="katman-ipucu">Hastane, eczane ve diş sağlığı</span></span>
+        <span class="anahtar"><input type="checkbox" checked data-ana aria-label="Tüm sağlık hizmetlerini göster"><span></span></span>
+      </label>
+    </div>
+
+    <div class="bolum" data-grup="turizm">
+      <label class="katman">
+        <span class="simge"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2" transform="rotate(45 12 12)" fill="#0072B2"/></svg></span>
+        <span class="katman-ad">Turistik noktalar<span class="katman-ipucu">Kültür, inanç ve doğa</span></span>
+        <span class="anahtar"><input type="checkbox" checked data-ana aria-label="Tüm turistik noktaları göster"><span></span></span>
+      </label>
+    </div>
+
+    <div class="bolum">
+      <div class="bolum-baslik">Yakınımda ne var?</div>
+      <button class="yakin-dugme" type="button" id="yakin-bul">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        Konumuma en yakın yerleri göster
+      </button>
+      <p class="panel-not" id="yakin-not"></p>
+      <ul class="liste" id="yakin-liste"></ul>
+    </div>
+
+    <div class="bolum">
+      <div class="bolum-baslik">Gezilecek yerler</div>
+      <ul class="liste" id="gezi-liste"></ul>
+    </div>
+  </div>
+</section>
+
+<div id="sayac" aria-live="polite"><span class="nokta" aria-hidden="true"></span><span class="metin">Yükleniyor...</span></div>
+
+<dialog id="hakkinda" aria-labelledby="hakkinda-baslik">
+  <div class="dialog-ic">
+    <div class="dialog-marka">
+      <img src="../assets/logo.webp" alt="" width="48" height="48">
+      <h2 id="hakkinda-baslik">Hatay Kent Rehberi</h2>
+    </div>
+    <p class="giris">Hatay'da yaşayanların ve şehri ziyaret edenlerin en çok aradığı yerleri, yani hastaneleri, eczaneleri, diş sağlığı merkezlerini ve gezilecek yerleri tek bir haritada toplar.</p>
+    <div class="rakamlar">
+      <div class="rakam"><b id="r-saglik">–</b><span>sağlık noktası</span></div>
+      <div class="rakam"><b id="r-turizm">–</b><span>turistik nokta</span></div>
+      <div class="rakam"><b id="r-ilce">–</b><span>ilçe</span></div>
+    </div>
+    <h3>Nasıl kullanılır</h3>
+    <ul>
+      <li><b>Ara:</b> Bir eczane, hastane ya da yer adı yazın; harita oraya gider.</li>
+      <li><b>Süz:</b> Paneldeki anahtarlarla istediğiniz türleri açıp kapatın.</li>
+      <li><b>Yakınımda:</b> Konum izni verirseniz size en yakın yerler mesafeleriyle listelenir.</li>
+      <li><b>Ayrıntı:</b> Bir noktaya dokunun; adres, telefon ve yol tarifi bağlantısı açılır.</li>
+    </ul>
+    <h3>Bilmeniz gerekenler</h3>
+    <ul>
+      <li>Nöbetçi eczane bilgisi gösterilmez. Gitmeden önce telefonla teyit edin.</li>
+      <li>Telefon ve adres bilgileri zamanla değişmiş olabilir.</li>
+      <li>Konumunuz yalnızca tarayıcınızda kullanılır, hiçbir yere gönderilmez.</li>
+    </ul>
+    <h3>Künye</h3>
+    <p>Hazırlayan: Mehmet Ali Yanmaz · <a href="https://georehber.com/">georehber.com</a> · Araç: ArcGIS Online, ArcGIS Maps SDK for JavaScript</p>
+  </div>
+  <div class="dialog-alt"><button type="button" id="hakkinda-kapat">Haritaya dön</button></div>
+</dialog>
+
+<div id="yukleniyor" role="status"><div class="yukleme-ic"><img src="../assets/logo.webp" alt="" width="72" height="72"><span class="donen" aria-hidden="true"></span>Harita yükleniyor</div></div>
+
+<script>
+require(["esri/WebMap", "esri/views/MapView", "esri/layers/FeatureLayer", "esri/widgets/Home", "esri/widgets/Zoom",
+         "esri/widgets/Locate", "esri/widgets/Search", "esri/core/reactiveUtils", "esri/geometry/support/webMercatorUtils",
+         "esri/symbols/support/symbolUtils"],
+        (WebMap, MapView, FeatureLayer, Home, Zoom, Locate, Search, reactiveUtils, webMercatorUtils, symbolUtils) => {
+  const $ = s => document.querySelector(s);
+  const sayi = n => Number(n).toLocaleString("tr-TR");
+  const darEkran = window.matchMedia("(max-width: 720px)");
+  const SERVIS = "https://services-eu1.arcgis.com/uaOuNze8ggz2HsSW/arcgis/rest/services";
+
+  // Kategori tanımları: renk ve şekil lejantla haritada aynı
+  const KATEGORI = {
+    hospital: { ad: "Hastane", renk: "#D55E00", grup: "saglik" },
+    pharmacy: { ad: "Eczane", renk: "#009E73", grup: "saglik" },
+    Dentist:  { ad: "Diş sağlığı", renk: "#CC79A7", grup: "saglik" },
+    KM: { ad: "Kültürel miras", renk: "#0072B2", grup: "turizm" },
+    IT: { ad: "İnanç turizmi", renk: "#E69F00", grup: "turizm" },
+    DG: { ad: "Doğa ve gezi", renk: "#56B4E9", grup: "turizm" }
+  };
+  const acik = new Set(Object.keys(KATEGORI));
+
+  const panel = $("#katman-paneli");
+  let panelDegisti = () => {};
+  const paneliAyarla = durum => {
+    panel.dataset.acik = String(durum);
+    $("#panel-ac-kapa").setAttribute("aria-expanded", String(durum));
+    panelDegisti();
+  };
+  $("#panel-ac-kapa").addEventListener("click", () => paneliAyarla(panel.dataset.acik !== "true"));
+  if (darEkran.matches) paneliAyarla(false);
+
+  const hakkinda = $("#hakkinda");
+  $("#hakkinda-ac").addEventListener("click", () => hakkinda.showModal());
+  $("#hakkinda-kapat").addEventListener("click", () => hakkinda.close());
+  hakkinda.addEventListener("click", e => { if (e.target === hakkinda) hakkinda.close(); });
+
+  const isaret = (renk, sekil, boyut) => ({
+    type: "simple-marker", style: sekil, color: renk, size: boyut, outline: { color: "#ffffff", width: 1.5 }
+  });
+  const renderer = (alan, kodlar, sekil, boyut) => ({
+    type: "unique-value", field: alan,
+    uniqueValueInfos: kodlar.map(k => ({ value: k, label: KATEGORI[k].ad, symbol: isaret(KATEGORI[k].renk, sekil, boyut) }))
+  });
+
+  const el = (etiket, ozellik = {}, ...cocuklar) => {
+    const e = Object.assign(document.createElement(etiket), ozellik);
+    cocuklar.forEach(c => c != null && e.append(c));
+    return e;
+  };
+  function popupIcerik({ graphic }) {
+    const a = graphic.attributes, k = KATEGORI[a.tip] || KATEGORI[a.tema_kod];
+    const kutu = el("div", { className: "yer" });
+    if (k) kutu.append(el("span", { className: "yer-etiket", textContent: a.alt_kategori || k.ad, style: `background:${k.renk}` }));
+    const dl = el("dl");
+    const satir = (ad, deger) => { if (deger) dl.append(el("dt", { textContent: ad }), el("dd", {}, deger)); };
+    satir("İlçe", [a.ilce, a.mahalle].filter(Boolean).join(", "));
+    if (a.telefon) satir("Telefon", el("a", { href: "tel:" + a.telefon.replace(/[^\d+]/g, ""), textContent: a.telefon }));
+    if (a.web) satir("Web", el("a", { href: /^https?:/.test(a.web) ? a.web : "https://" + a.web, textContent: a.web.replace(/^https?:\/\//, ""), target: "_blank", rel: "noopener" }));
+    satir("Tema", a.tema_kod ? a.tema : null);
+    satir("Rota", a.rota_tipi);
+    if (a.aciklama) kutu.append(el("p", { textContent: a.aciklama }));
+    kutu.append(dl);
+    const [lon, lat] = webMercatorUtils.xyToLngLat(graphic.geometry.x, graphic.geometry.y);
+    kutu.append(el("a", { className: "yol-tarifi", target: "_blank", rel: "noopener", textContent: "Yol tarifi al",
+      href: `https://www.google.com/maps/dir/?api=1&destination=${lat.toFixed(6)},${lon.toFixed(6)}` }));
+    return kutu;
+  }
+  const popupTemplate = { title: "{ad}", outFields: ["*"], content: popupIcerik };
+
+  // Servisteki ölçek aralıkları noktaları genel görünümde gizliyordu; minScale/maxScale 0 ile her ölçekte çizilir
+  const ilSiniri = new FeatureLayer({
+    minScale: 0, maxScale: 0,
+    url: `${SERVIS}/kent_rehberi_gdb/FeatureServer/1`, title: "Hatay il sınırı", popupEnabled: false,
+    renderer: { type: "simple", symbol: { type: "simple-fill", color: [0, 50, 134, 0.03], outline: { color: "#003286", width: 2.5 } } }
+  });
+  const ilceSiniri = new FeatureLayer({
+    minScale: 0, maxScale: 0,
+    url: `${SERVIS}/kent_rehberi_gdb/FeatureServer/2`, title: "İlçe sınırları", popupEnabled: false,
+    renderer: { type: "simple", symbol: { type: "simple-fill", color: [0, 0, 0, 0], outline: { color: [0, 50, 134, 0.45], width: 1, style: "dash" } } }
+  });
+  const eczane = new FeatureLayer({
+    minScale: 0, maxScale: 0,
+    url: `${SERVIS}/saglik_hizmetleri/FeatureServer/0`, title: "Eczane", outFields: ["*"],
+    definitionExpression: "tip = 'pharmacy'", renderer: renderer("tip", ["pharmacy"], "circle", 10), popupTemplate,
+    featureReduction: {
+      type: "cluster", clusterRadius: "64px", clusterMinSize: "22px", clusterMaxSize: "44px",
+      labelingInfo: [{
+        deconflictionStrategy: "none", labelPlacement: "center-center",
+        labelExpressionInfo: { expression: "Text($feature.cluster_count, '#,###')" },
+        symbol: { type: "text", color: "#ffffff", font: { weight: "bold", family: "Noto Sans", size: "11px" } }
+      }],
+      popupTemplate: { title: "{cluster_count} eczane", content: "Tek tek görmek için yakınlaştırın." }
+    }
+  });
+  const saglikDiger = new FeatureLayer({
+    minScale: 0, maxScale: 0,
+    url: `${SERVIS}/saglik_hizmetleri/FeatureServer/0`, title: "Hastane ve diş sağlığı", outFields: ["*"],
+    definitionExpression: "tip IN ('hospital', 'Dentist')", renderer: renderer("tip", ["hospital", "Dentist"], "circle", 13), popupTemplate
+  });
+  const turizm = new FeatureLayer({
+    minScale: 0, maxScale: 0,
+    url: `${SERVIS}/kent_rehberi_gdb/FeatureServer/0`, title: "Turistik noktalar", outFields: ["*"],
+    renderer: renderer("tema_kod", ["KM", "IT", "DG"], "diamond", 14), popupTemplate
+  });
+
+  // Görünürlüğü açık kategorilere göre ayarla
+  function filtreUygula() {
+    eczane.visible = acik.has("pharmacy");
+    const diger = ["hospital", "Dentist"].filter(k => acik.has(k));
+    saglikDiger.visible = diger.length > 0;
+    if (diger.length) saglikDiger.definitionExpression = `tip IN (${diger.map(k => `'${k}'`).join(", ")})`;
+    const tur = ["KM", "IT", "DG"].filter(k => acik.has(k));
+    turizm.visible = tur.length > 0;
+    turizm.definitionExpression = tur.length ? `tema_kod IN (${tur.map(k => `'${k}'`).join(", ")})` : null;
+    document.querySelectorAll(".bolum[data-grup]").forEach(b => {
+      const kodlar = [...b.querySelectorAll("input[data-kod]")].map(i => i.dataset.kod);
+      const ana = b.querySelector("input[data-ana]"), acikSayi = kodlar.filter(k => acik.has(k)).length;
+      ana.checked = acikSayi > 0;
+      ana.indeterminate = acikSayi > 0 && acikSayi < kodlar.length;
+      b.querySelector(".katman").dataset.durum = acikSayi ? "acik" : "kapali";
+      b.querySelectorAll("input[data-kod]").forEach(i => {
+        i.checked = acik.has(i.dataset.kod);
+        i.closest(".katman").dataset.durum = i.checked ? "acik" : "kapali";
+      });
+    });
+  }
+
+  function lejantKur(adetler, ozelSemboller) {
+    for (const [kod, k] of Object.entries(KATEGORI)) {
+      const sekil = k.grup === "turizm"
+        ? `<rect x="5" y="5" width="10" height="10" rx="1.5" transform="rotate(45 10 10)" fill="${k.renk}" stroke="#fff" stroke-width="1.2"/>`
+        : `<circle cx="10" cy="10" r="6.5" fill="${k.renk}" stroke="#fff" stroke-width="1.5"/>`;
+      const satir = el("label", { className: "katman alt" });
+      satir.innerHTML = `<span class="simge"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">${sekil}</svg></span>` +
+        `<span class="katman-ad">${k.ad}</span><span class="adet">${sayi(adetler[kod] || 0)}</span>` +
+        `<span class="anahtar"><input type="checkbox" checked data-kod="${kod}" aria-label="${k.ad} göster"><span></span></span>`;
+      if (ozelSemboller[kod]) {
+        symbolUtils.renderPreviewHTML(ozelSemboller[kod], { size: 18 })
+          .then(onizleme => satir.querySelector(".simge").replaceChildren(onizleme)).catch(() => {});
+      }
+      $(`.bolum[data-grup="${k.grup}"]`).append(satir);
+    }
+    document.querySelectorAll("input[data-kod]").forEach(i => i.addEventListener("change", () => {
+      i.checked ? acik.add(i.dataset.kod) : acik.delete(i.dataset.kod);
+      filtreUygula();
+    }));
+    document.querySelectorAll("input[data-ana]").forEach(i => i.addEventListener("change", () => {
+      const grup = i.closest(".bolum").dataset.grup;
+      Object.entries(KATEGORI).filter(([, k]) => k.grup === grup).forEach(([kod]) => i.checked ? acik.add(kod) : acik.delete(kod));
+      filtreUygula();
+    }));
+    filtreUygula();
+  }
+
+  const harita = new WebMap({ portalItem: { id: "7109f91b5ef8460ea541fd9817ac2913", portal: { url: "https://bakircayuni.maps.arcgis.com" } } });
+  const view = new MapView({
+    container: "harita", map: harita,
+    constraints: { rotationEnabled: false, snapToZoom: false, minZoom: 7 },
+    ui: { components: ["attribution"] },
+    popup: { dockEnabled: true, dockOptions: { buttonEnabled: false, breakpoint: false,
+             position: darEkran.matches ? "bottom-center" : "top-right" } }
+  });
+  view.ui.add(new Zoom({ view }), "top-right");
+  const home = new Home({ view });
+  view.ui.add(home, "top-right");
+  const locate = new Locate({ view, popupEnabled: false, scale: 25000 });
+  view.ui.add(locate, "top-right");
+
+  // Panel haritanın üstünü örter; görünen alanı padding ile daralt
+  function bosluguGuncelle() {
+    const b = panel.getBoundingClientRect(), h = view.container.getBoundingClientRect(), k = 16;
+    view.padding = darEkran.matches
+      ? { top: Math.max(0, Math.round(b.bottom - h.top)) + k, left: 0, right: 0, bottom: 0 }
+      : { top: 0, left: panel.dataset.acik === "true" ? Math.round(b.right - h.left) + k : 0, right: 0, bottom: 0 };
+  }
+  // Popup padding'e göre yerleştiği için onu padding'le değil, haritayı kaydırarak açıkta bırak
+  async function noktayiGoster(nokta, zoom) {
+    if (zoom) await view.goTo({ target: nokta, zoom }, { duration: 500 }).catch(() => {});
+    const W = view.width, H = view.height, p = view.padding;
+    const alan = darEkran.matches
+      ? { l: 0, r: W, t: p.top || 0, b: H * 0.55 }
+      : { l: p.left || 0, r: W - 400, t: 0, b: H };
+    const sp = view.toScreen(nokta), c = view.toScreen(view.center);
+    const dx = sp.x - (alan.l + alan.r) / 2, dy = sp.y - (alan.t + alan.b) / 2;
+    if (Math.abs(dx) > 4 || Math.abs(dy) > 4)
+      await view.goTo({ center: view.toMap({ x: c.x + dx, y: c.y + dy }) }, { duration: 400 }).catch(() => {});
+  }
+  panelDegisti = bosluguGuncelle;
+  darEkran.addEventListener("change", () => {
+    view.popup.dockOptions = { ...view.popup.dockOptions, position: darEkran.matches ? "bottom-center" : "top-right" };
+    bosluguGuncelle();
+  });
+  new ResizeObserver(bosluguGuncelle).observe(panel);
+
+  let listedenGidiliyor = false;
+  const git = f => {
+    if (darEkran.matches) paneliAyarla(false);
+    listedenGidiliyor = true;
+    view.openPopup({ features: [f], location: f.geometry });
+    noktayiGoster(f.geometry, Math.max(view.zoom, 15)).finally(() => { listedenGidiliyor = false; });
+  };
+  // Haritada ya da aramada seçilen nokta popup'ın altında kalmasın
+  reactiveUtils.watch(() => view.popup.selectedFeature, f => {
+    if (listedenGidiliyor || !f || !f.geometry || f.geometry.type !== "point" || f.isAggregate) return;
+    noktayiGoster(f.geometry);
+  });
+  const listeSatiri = (f, sag) => {
+    const a = f.attributes, k = KATEGORI[a.tip] || KATEGORI[a.tema_kod];
+    const li = el("li", { tabIndex: 0 });
+    li.innerHTML = `<span class="renk${k.grup === "turizm" ? " elmas" : ""}" style="background:${k.renk}"></span>` +
+      `<span class="ad"></span><span class="mesafe"></span>`;
+    li.querySelector(".ad").append(a.ad, el("span", { className: "alt-yazi", textContent: [a.alt_kategori, a.ilce].filter(Boolean).join(" · ") }));
+    li.querySelector(".mesafe").textContent = sag || "";
+    li.addEventListener("click", () => git(f));
+    li.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); git(f); } });
+    return li;
+  };
+
+  (async () => {
+    await harita.load();
+    // Sağlık sembolleri web haritasında elle hazırlandı; aynılarını oradan al
+    const wmKatman = ad => harita.layers.find(l => l.title === ad);
+    const ozelSemboller = {};
+    await Promise.all([["pharmacy", "Eczane"], ["Dentist", "Diş Sağlığı"], ["hospital", "Hastane"]].map(async ([kod, ad]) => {
+      const l = wmKatman(ad);
+      if (!l) return;
+      await l.load().catch(() => {});
+      if (l.renderer && l.renderer.symbol) ozelSemboller[kod] = l.renderer.symbol.clone();
+    }));
+    if (ozelSemboller.pharmacy) eczane.renderer = { type: "simple", symbol: ozelSemboller.pharmacy };
+    const digerKodlar = ["hospital", "Dentist"].filter(k => ozelSemboller[k]);
+    if (digerKodlar.length === 2) {
+      saglikDiger.renderer = { type: "unique-value", field: "tip",
+        uniqueValueInfos: digerKodlar.map(k => ({ value: k, label: KATEGORI[k].ad, symbol: ozelSemboller[k] })) };
+    }
+    harita.layers.removeAll();
+    harita.addMany([ilceSiniri, ilSiniri, turizm, eczane, saglikDiger]);
+
+    const search = new Search({
+      view, container: "arama", includeDefaultSources: false, allPlaceholder: "Eczane, hastane ya da yer adı ara",
+      locationEnabled: false, popupEnabled: true,
+      sources: [
+        { layer: saglikDiger, searchFields: ["ad"], displayField: "ad", exactMatch: false, outFields: ["*"], name: "Hastane ve diş sağlığı", zoomScale: 8000 },
+        { layer: eczane, searchFields: ["ad"], displayField: "ad", exactMatch: false, outFields: ["*"], name: "Eczane", zoomScale: 8000 },
+        { layer: turizm, searchFields: ["ad"], displayField: "ad", exactMatch: false, outFields: ["*"], name: "Turistik noktalar", zoomScale: 15000 }
+      ]
+    });
+    search.on("select-result", () => { if (darEkran.matches) paneliAyarla(false); });
+
+    const [saglikSay, turizmSay, ilceSay, gezi, sinir] = await Promise.all([
+      new FeatureLayer({ url: `${SERVIS}/saglik_hizmetleri/FeatureServer/0` }).queryFeatures({
+        where: "1=1", groupByFieldsForStatistics: ["tip"],
+        outStatistics: [{ statisticType: "count", onStatisticField: "FID", outStatisticFieldName: "n" }] }),
+      turizm.queryFeatures({ where: "1=1", groupByFieldsForStatistics: ["tema_kod"],
+        outStatistics: [{ statisticType: "count", onStatisticField: "OBJECTID", outStatisticFieldName: "n" }] }),
+      ilceSiniri.queryFeatureCount(),
+      turizm.queryFeatures({ where: "1=1", outFields: ["*"], returnGeometry: true, outSpatialReference: view.spatialReference }),
+      ilSiniri.queryExtent()
+    ]);
+    const adetler = {};
+    [...saglikSay.features, ...turizmSay.features].forEach(f => { adetler[f.attributes.tip || f.attributes.tema_kod] = f.attributes.n; });
+    lejantKur(adetler, ozelSemboller);
+    const topSaglik = ["hospital", "pharmacy", "Dentist"].reduce((t, k) => t + (adetler[k] || 0), 0);
+    const topTurizm = ["KM", "IT", "DG"].reduce((t, k) => t + (adetler[k] || 0), 0);
+    $("#sayac .metin").innerHTML =
+      `<span class="s1"><b>${sayi(topSaglik)}</b> sağlık noktası</span><span class="ayrac">·</span>` +
+      `<span class="s2"><b>${sayi(topTurizm)}</b> gezilecek yer, <b>${sayi(ilceSay)}</b> ilçede</span>`;
+    $("#r-saglik").textContent = sayi(topSaglik);
+    $("#r-turizm").textContent = sayi(topTurizm);
+    $("#r-ilce").textContent = sayi(ilceSay);
+
+    const geziListe = $("#gezi-liste");
+    gezi.features.sort((a, b) => a.attributes.ad.localeCompare(b.attributes.ad, "tr"))
+      .forEach(f => { f.layer = turizm; f.sourceLayer = turizm; geziListe.append(listeSatiri(f)); });
+
+    await reactiveUtils.whenOnce(() => view.ready);
+    bosluguGuncelle();
+    const baslangic = sinir.extent.clone().expand(1.08);
+    await view.goTo(baslangic, { animate: false }).catch(() => {});
+    home.goToOverride = () => view.goTo(baslangic, { duration: 600 });
+
+    // Yakınımdakiler: konum yalnızca tarayıcıda kullanılır
+    let tumNoktalar = null;
+    async function noktalariGetir() {
+      if (tumNoktalar) return tumNoktalar;
+      const ortak = { where: "1=1", outFields: ["*"], returnGeometry: true, outSpatialReference: view.spatialReference };
+      const saglikKatman = new FeatureLayer({ url: `${SERVIS}/saglik_hizmetleri/FeatureServer/0`, outFields: ["*"], popupTemplate });
+      const s = await saglikKatman.queryFeatures(ortak);
+      s.features.forEach(f => { f.layer = f.attributes.tip === "pharmacy" ? eczane : saglikDiger; f.sourceLayer = f.layer; });
+      tumNoktalar = [...s.features, ...gezi.features];
+      return tumNoktalar;
+    }
+    const mesafeKm = (lon1, lat1, lon2, lat2) => {
+      const r = Math.PI / 180, dLat = (lat2 - lat1) * r, dLon = (lon2 - lon1) * r;
+      const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * r) * Math.cos(lat2 * r) * Math.sin(dLon / 2) ** 2;
+      return 12742 * Math.asin(Math.sqrt(h));
+    };
+    const mesafeYaz = km => km < 1 ? `${sayi(Math.round(km * 1000 / 10) * 10)} m` : `${km.toLocaleString("tr-TR", { maximumFractionDigits: 1 })} km`;
+    async function yakinlariListele(lon, lat) {
+      const noktalar = await noktalariGetir();
+      const sirali = noktalar
+        .filter(f => acik.has(f.attributes.tip) || acik.has(f.attributes.tema_kod))
+        .map(f => { const [x, y] = webMercatorUtils.xyToLngLat(f.geometry.x, f.geometry.y); return { f, km: mesafeKm(lon, lat, x, y) }; })
+        .sort((a, b) => a.km - b.km).slice(0, 6);
+      const liste = $("#yakin-liste");
+      liste.replaceChildren(...sirali.map(({ f, km }) => listeSatiri(f, mesafeYaz(km))));
+      $("#yakin-not").textContent = sirali.length
+        ? (sirali[0].km > 60 ? "Hatay'ın dışındasınız; en yakın kayıtlar listelendi." : "Açık katmanlardaki en yakın yerler:")
+        : "Açık katmanlarda gösterilecek yer yok.";
+    }
+    const yakinDugme = $("#yakin-bul");
+    yakinDugme.addEventListener("click", () => {
+      yakinDugme.disabled = true;
+      $("#yakin-not").textContent = "Konumunuz alınıyor...";
+      locate.locate().catch(() => {
+        $("#yakin-not").textContent = "Konum alınamadı. Tarayıcıda konum iznini kontrol edin.";
+      }).finally(() => { yakinDugme.disabled = false; });
+    });
+    locate.on("locate", e => yakinlariListele(e.position.coords.longitude, e.position.coords.latitude));
+
+    const perdeyiKaldir = () => $("#yukleniyor").classList.add("bitti");
+    reactiveUtils.whenOnce(() => !view.updating).then(perdeyiKaldir);
+    setTimeout(perdeyiKaldir, 6000);
+  })().catch(hata => {
+    $("#sayac .metin").textContent = "Harita yüklenemedi. Sayfayı yenileyin.";
+    $("#yukleniyor").classList.add("bitti");
+    console.error(hata);
+  });
+});
+</script>
+</body>
+</html>
